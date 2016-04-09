@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="row" ng-repeat="player in startingPlayers">
+    <div class="col-md-1">
+      <img width="62px" height="74px" src="http://mlb.mlb.com/images/gameday/mugshots/mlb/{{player.player_id}}.jpg" />
+    </div>
+    <div class="col-md-5">
+      <div class="row removeMargins">{{player.player_name}}, {{player.slot}}</div>
+      <div class="row removeMargins">{{hittingStats(player.player_id)}}</div>
+    </div>
+  </div>
+</div>
+</div>

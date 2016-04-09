@@ -1,4 +1,4 @@
-angular.module( 'sample')
-.controller( 'LoginCtrl', function ($scope) {
+angular.module('fantasyBaseball')
+  .controller('LoginCtrl', function($scope) {
 
-});
+  });
