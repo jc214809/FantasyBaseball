@@ -32,9 +32,7 @@
        });
        $scope.allGames = [];
        $scope.gameURLs = [];
-       $scope.boxscores = null;
-       $scope.boxscores2 = null;
-       $scope.scoreBoard = 'http://gd2.mlb.com/components/game/mlb/year_' + "2016" + '/month_' + "04" + '/day_' + "06" + '/master_scoreboard.json';
+       $scope.scoreBoard = 'http://gd2.mlb.com/components/game/mlb/year_' + "2016" + '/month_' + "04" + '/day_' + "10" + '/master_scoreboard.json';
        $http.get($scope.scoreBoard).success(function(data) {
          $scope.eachGame = data.data.games.game;
          angular.forEach($scope.eachGame, function(game) {
@@ -82,8 +80,15 @@
              };
              $scope.hittingStatLine = $scope.hittingStatLine.substring(0, $scope.hittingStatLine.length - 1);
              return $scope.hittingStatLine;
-             //return $scope.allGames[i];
            }
          };
+       };
+       $scope.getHittersScore = function(playerID) {
+         for (var i = 0; i < $scope.allGames.length; i++) {
+           if ($scope.allGames[i].id == playerID) {
+             return ((((parseFloat($scope.allGames[i].h)) - (parseFloat($scope.allGames[i].d) + parseFloat($scope.allGames[i].t) + parseFloat($scope.allGames[i].hr))) * 1) + (parseFloat($scope.allGames[i].d) * 2) + (parseFloat($scope.allGames[i].t) * 3) + (parseFloat($scope.allGames[i].hr) * 4) + (parseFloat($scope.allGames[i].r) * 1) + (parseFloat($scope.allGames[i].rbi) * 1) + (parseFloat($scope.allGames[i].bb) * 1) + (parseFloat($scope.allGames[i].sb) * 2) + (parseFloat($scope.allGames[i].cs) * -1));
+           }
+         };
+         return 0;
        };
      });

@@ -6,3 +6,23 @@ body {
     margin-right: 0px !important;
     margin-left: 0px !important;
 }
+
+.no-pad {
+    padding-right: 0px !important;
+    padding-left: 0px !important;
+}
+
+.player-picture {
+    width: 62px;
+    height: 74px;
+    float: right;
+}
+
+.team-logo {
+    width: 62px;
+    height: 74px;
+}
+
+.col-md-2 {
+    width: 13.19% !important;
+}
