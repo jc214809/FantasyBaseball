@@ -42,7 +42,7 @@
            });
 
            for (var i = 0; i < data.fb_index_schedule.queryResults.row.length; i++) {
-             if (data.fb_index_schedule.queryResults.row[i].team_id != '85827') {
+             if (data.fb_index_schedule.queryResults.row[i].team_id != '85827' && $scope.matchUpIds.indexOf(data.fb_index_schedule.queryResults.row[i].matchup_set) != -1) {
                $scope.opponentsSchedule.push(data.fb_index_schedule.queryResults.row[i]);
              }
            }
