@@ -41,9 +41,9 @@
              }
            });
 
-           for (var i = 0; i < data.fb_index_schedule.queryResults.row.length; i++) {
-             if (data.fb_index_schedule.queryResults.row[i].team_id != '85827' && $scope.matchUpIds.indexOf(data.fb_index_schedule.queryResults.row[i].matchup_set) != -1) {
-               $scope.opponentsSchedule.push(data.fb_index_schedule.queryResults.row[i]);
+           for (var i = 0; i < $scope.masterSchedule.row.length; i++) {
+             if ($scope.masterSchedule.row[i].team_id != '85827' && $scope.matchUpIds.indexOf($scope.masterSchedule.row[i].matchup_set) != -1) {
+               $scope.opponentsSchedule.push($scope.masterSchedule.row[i]);
              }
            }
            $scope.$apply();
