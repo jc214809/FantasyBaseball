@@ -109,14 +109,18 @@
                  }
                }
                $scope.awayScores = $scope.weeklyScoreBoardJson($scope.awayScoreData);
+               var awayTotal = $scope.weeklyTotal($scope.awayScores);
+               $scope.awayScores.total = awayTotal;
                $scope.homeScores = $scope.weeklyScoreBoardJson($scope.homeScoreData);
+               var homeTotal = $scope.weeklyTotal($scope.homeScores);
+               $scope.homeScores.total = homeTotal;
              }
            });
            $scope.$apply();
          }
        });
        $scope.weeklyScoreBoardJson = function(scoringData) {
-         $scope.weeklyScores = ['{ "monday": "0" , "tuesday": "0", "wednesday": "0", "thursday": "0", "friday": "0", "saturday": "0", "sunday": "0" }'];
+         $scope.weeklyScores = ['{ "monday": "0" , "tuesday": "0", "wednesday": "0", "thursday": "0", "friday": "0", "saturday": "0", "sunday": "0", "total": "0"}'];
          var obj = JSON.parse($scope.weeklyScores);
          for (var i = 0; i < scoringData.length; i++) {
            if (scoringData[i].scoring_day == 2) {
@@ -136,6 +140,11 @@
            }
          }
          return obj;
+       };
+
+       $scope.weeklyTotal = function(scores) {
+         var total = parseInt(scores.monday, 10) + parseInt(scores.tuesday, 10) + parseInt(scores.wednesday, 10) + parseInt(scores.thursday, 10) + parseInt(scores.friday, 10) + parseInt(scores.saturday, 10) + parseInt(scores.sunday, 10);
+         return total;
        };
 
        $scope.$on('$routeChangeSuccess', function(e, nextRoute) {
