@@ -2,7 +2,7 @@
 <div ng-controller="weeklyScoreBoardCtrl">
   <div ng-include="'weeklyScoreboard/weeklyScoreBoard.html'"></div>
 </div>
-<div class="container">
-  <lineup starters="awayStartingPlayers" bench="awayBenchPlayers" allgames="allGames"></lineup>
-  <lineup starters="homeStartingPlayers" bench="homeBenchPlayers" allgames="allGames"></lineup>
+<div class="row">
+  <lineup class="col-xs-6" starters="awayStartingPlayers" bench="awayBenchPlayers" allgames="allGames"></lineup>
+  <lineup class="col-xs-6" starters="homeStartingPlayers" bench="homeBenchPlayers" allgames="allGames"></lineup>
 </div>
