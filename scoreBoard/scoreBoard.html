@@ -1,30 +1,8 @@
-<div class="container">
-  <b>Starters</b>
-  <div class="row" ng-repeat="player in startingPlayers">
-    <div class="col-md-2">
-      <img class="team-logo" src="http://mlb.mlb.com/images/logos/42x50/{{player.team_file_code}}.png" />
-      <img class="player-picture" src="http://mlb.mlb.com/images/gameday/mugshots/mlb/{{player.player_id}}.jpg" />
-    </div>
-    <div class="col-md-6">
-      <div class="row removeMargins">
-        <div class="col-md-6 no-pad">{{player.player_name}}, {{player.slot}}</div>
-        <div class="col-md-1 col-md-offset-5 no-pad">Points:{{getHittersScore(player.player_id)}}</div>
-      </div>
-      <div class="row removeMargins">{{hittingStats(player.player_id)}}</div>
-    </div>
-  </div>
-  <b>Bench</b>
-  <div class="row" ng-repeat="player in benchPlayers">
-    <div class="col-md-2">
-      <img class="team-logo" src="http://mlb.mlb.com/images/logos/42x50/{{player.team_file_code}}.png" />
-      <img class="player-picture" src="http://mlb.mlb.com/images/gameday/mugshots/mlb/{{player.player_id}}.jpg" />
-    </div>
-    <div class="col-md-6">
-      <div class="row removeMargins">
-        <div class="col-md-6 no-pad">{{player.player_name}}, {{player.slot}}</div>
-        <div class="col-md-1 col-md-offset-5 no-pad">Points:{{getHittersScore(player.player_id)}}</div>
-      </div>
-      <div class="row removeMargins">{{hittingStats(player.player_id)}}</div>
-    </div>
-  </div>
+<!--  -->
+<div ng-controller="weeklyScoreBoardCtrl">
+  <div ng-include="'weeklyScoreboard/weeklyScoreBoard.html'"></div>
+</div>
+<div class="row">
+  <lineup class="col-xs-6" starters="awayStartingPlayers" bench="awayBenchPlayers" allgames="allGames"></lineup>
+  <lineup class="col-xs-6" starters="homeStartingPlayers" bench="homeBenchPlayers" allgames="allGames"></lineup>
 </div>
