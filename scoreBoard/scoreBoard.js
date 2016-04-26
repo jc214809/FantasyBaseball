@@ -61,7 +61,7 @@
         //     $scope.$apply();
         //   }
         // });
-        $scope.getLineups();
+        //$scope.getLineups();
         $scope.getLineups = function() {
           $.ajax({
             url: 'http://www.mlb.com/fantasylookup/json/named.fb_team_lineup.bam?period_id=' + $scope.periodId + '&team_id=' + $scope.awayTeam.team_id,
