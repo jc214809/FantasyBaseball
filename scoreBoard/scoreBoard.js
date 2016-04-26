@@ -61,6 +61,7 @@
         //     $scope.$apply();
         //   }
         // });
+        
         $scope.getLineups();
         $scope.getLineups = function() {
           $.ajax({
