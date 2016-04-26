@@ -62,7 +62,7 @@
         //   }
         // });
         //$scope.getLineups();
-        $scope.getLineups = function() {
+        //$scope.getLineups = function() {
           $.ajax({
             url: 'http://www.mlb.com/fantasylookup/json/named.fb_team_lineup.bam?period_id=' + $scope.periodId + '&team_id=' + $scope.awayTeam.team_id,
             type: 'GET',
@@ -107,7 +107,7 @@
               $scope.$apply();
             }
           });
-        };
+        //};
         $scope.allGames = [];
         $scope.gameURLs = [];
         $scope.scoreBoard = 'http://gd2.mlb.com/components/game/mlb/year_' + "2016" + '/month_' + "04" + '/day_' + "25" + '/master_scoreboard.json';
