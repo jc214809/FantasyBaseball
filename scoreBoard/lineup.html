@@ -1,8 +1,10 @@
 <b>Starters</b>
 <div class="row" ng-repeat="player in startingPlayers">
-  <div class="col-xs-2">
-    <img class="team-logo" src="http://mlb.mlb.com/images/logos/42x50/{{player.team_file_code}}.png" />
-    <img class="player-picture" src="http://mlb.mlb.com/images/gameday/mugshots/mlb/{{player.player_id}}.jpg" />
+  <div class="col-xs-1">
+    <img class="img-responsive" src="http://mlb.mlb.com/images/logos/42x50/{{player.team_file_code}}.png" />
+    </div>
+     <div class="col-xs-1">
+    <img class="img-responsive" src="http://mlb.mlb.com/images/gameday/mugshots/mlb/{{player.player_id}}.jpg" />
   </div>
   <div class="col-xs-10">
     <div class="row removeMargins">
@@ -14,9 +16,11 @@
 </div>
 <b>Bench</b>
 <div class="row" ng-repeat="player in benchPlayers">
-  <div class="col-xs-2">
-    <img class="team-logo" src="http://mlb.mlb.com/images/logos/42x50/{{player.team_file_code}}.png" />
-    <img class="player-picture" src="http://mlb.mlb.com/images/gameday/mugshots/mlb/{{player.player_id}}.jpg" />
+  <div class="col-xs-1">
+    <img class="img-responsive" src="http://mlb.mlb.com/images/logos/42x50/{{player.team_file_code}}.png" />
+        </div>
+     <div class="col-xs-1">
+    <img class="img-responsive" src="http://mlb.mlb.com/images/gameday/mugshots/mlb/{{player.player_id}}.jpg" />
   </div>
   <div class="col-xs-10">
     <div class="row removeMargins">
