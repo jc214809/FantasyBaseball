@@ -1,15 +1,15 @@
 body {
-    font-size: 25px !important;
+    /*font-size: 25px !important;*/
 }
 
 .removeMargins {
-    margin-right: 0px !important;
-    margin-left: 0px !important;
+    /*margin-right: 0px !important;*/
+    /*margin-left: 0px !important;*/
 }
 
 .no-pad {
-    padding-right: 0px !important;
-    padding-left: 0px !important;
+    /*padding-right: 0px !important;*/
+    /*padding-left: 0px !important;*/
 }
 
 .player-picture {
@@ -24,5 +24,5 @@ body {
 }
 
 .col-md-2 {
-    width: 13.19% !important;
+    /*width: 13.19% !important;*/
 }
