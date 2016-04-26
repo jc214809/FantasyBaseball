@@ -14,7 +14,8 @@
    angular.module('fantasyBaseball', [
        'ngRoute',
        'fantasyBaseball.scoreboard',
-       'fantasyBaseball.weeklyScoreBoard'
+       'fantasyBaseball.weeklyScoreBoard',
+       'fantasyBaseball.lineup'
      ])
      .config(function myAppConfig($routeProvider, $httpProvider, $locationProvider) {
        $routeProvider
