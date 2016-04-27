@@ -57,7 +57,7 @@
                 break;
               }
             }
-             $scope.getLineups();
+            $scope.getLineups();
             $scope.$apply();
           }
         });
@@ -77,7 +77,7 @@
                 if (player.slot_val != 'Bn' && player.slot_val != 'DL' && player.slot_val != 'PS') {
                   $scope.awayStartingPlayers.push(player);
                 }
-                if (player.slot_val == 'Bn') {
+                if (player.slot_val == 'Bn' && player.position != 'P') {
                   $scope.awayBenchPlayers.push(player);
                 }
               });
@@ -99,7 +99,7 @@
                 if (player.slot_val != 'Bn' && player.slot_val != 'DL' && player.slot_val != 'PS') {
                   $scope.homeStartingPlayers.push(player);
                 }
-                if (player.slot_val == 'Bn') {
+                if (player.slot_val == 'Bn' && player.position != 'P') {
                   $scope.homeBenchPlayers.push(player);
                 }
               });
@@ -107,10 +107,10 @@
             }
           });
         };
-               
+
         $scope.allGames = [];
         $scope.gameURLs = [];
-        $scope.scoreBoard = 'http://gd2.mlb.com/components/game/mlb/year_' + "2016" + '/month_' + "04" + '/day_' + "25" + '/master_scoreboard.json';
+        $scope.scoreBoard = 'http://gd2.mlb.com/components/game/mlb/year_' + "2016" + '/month_' + "04" + '/day_' + "27" + '/master_scoreboard.json';
         $http.get($scope.scoreBoard).success(function(data) {
           $scope.eachGame = data.data.games.game;
           angular.forEach($scope.eachGame, function(game) {

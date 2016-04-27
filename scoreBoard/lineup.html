@@ -1,31 +1,37 @@
-<b>Starters</b>
-<div class="row" ng-repeat="player in startingPlayers">
-  <div class="col-xs-1">
-    <img class="img-responsive" src="http://mlb.mlb.com/images/logos/42x50/{{player.team_file_code}}.png" />
+<div class="lineup"><b>Starters</b>
+  <div class="row" ng-repeat="player in startingPlayers">
+    <div class="col-xs-1 player-row player-row">
+      <img class="team-logo removeMargins" src="http://mlb.mlb.com/images/logos/42x50/{{player.team_file_code}}.png" />
     </div>
-     <div class="col-xs-1">
-    <img class="img-responsive" src="http://mlb.mlb.com/images/gameday/mugshots/mlb/{{player.player_id}}.jpg" />
+    <div class="col-xs-1 player-row removeLeftPad">
+      <img class="player-picture removeMargins" src="http://mlb.mlb.com/images/gameday/mugshots/mlb/{{player.player_id}}.jpg" />
+    </div>
+    <div class="col-xs-10 player-row removeLeftPad">
+      <div class="row removeMargins">
+        <div class="col-xs-8 no-pad">{{player.player_name}}, {{player.slot}}</div>
+        <div class="col-xs-offset-4 no-pad">Points:{{getHittersScore(player.player_id)}}</div>
+      </div>
+      <div class="row removeMargins">
+        <div class="col-xs-12">{{hittingStats(player.player_id)}}</div>
+      </div>
+    </div>
   </div>
-  <div class="col-xs-10">
-    <div class="row removeMargins">
-      <div class="col-xs-8 no-pad">{{player.player_name}}, {{player.slot}}</div>
-      <div class="col-xs-offset-4 no-pad">Points:{{getHittersScore(player.player_id)}}</div>
+  <b>Bench</b>
+  <div class="row" ng-repeat="player in benchPlayers">
+    <div class="col-xs-1 player-row player-row">
+      <img class="team-logo removeMargins" src="http://mlb.mlb.com/images/logos/42x50/{{player.team_file_code}}.png" />
     </div>
-    <div class="row removeMargins">{{hittingStats(player.player_id)}}</div>
+    <div class="col-xs-1 player-row removeLeftPad">
+      <img class="player-picture removeMargins" src="http://mlb.mlb.com/images/gameday/mugshots/mlb/{{player.player_id}}.jpg" />
+    </div>
+    <div class="col-xs-10 player-row removeLeftPad">
+      <div class="row removeMargins">
+        <div class="col-xs-8 no-pad">{{player.player_name}}, {{player.slot}}</div>
+        <div class="col-xs-offset-4 no-pad">Points:{{getHittersScore(player.player_id)}}</div>
+      </div>
+      <div class="row removeMargins">
+        <div class="col-xs-12">{{hittingStats(player.player_id)}}</div>
+      </div>
+    </div>
   </div>
 </div>
-<b>Bench</b>
-<div class="row" ng-repeat="player in benchPlayers">
-  <div class="col-xs-1">
-    <img class="img-responsive" src="http://mlb.mlb.com/images/logos/42x50/{{player.team_file_code}}.png" />
-        </div>
-     <div class="col-xs-1">
-    <img class="img-responsive" src="http://mlb.mlb.com/images/gameday/mugshots/mlb/{{player.player_id}}.jpg" />
-  </div>
-  <div class="col-xs-10">
-    <div class="row removeMargins">
-      <div class="col-xs-8 no-pad">{{player.player_name}}, {{player.slot}}</div>
-      <div class="col-xs-offset-4 no-pad">Points:{{getHittersScore(player.player_id)}}</div>
-    </div>
-    <div class="row removeMargins">{{hittingStats(player.player_id)}}</div>
-  </div>

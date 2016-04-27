@@ -1,28 +1,36 @@
-body {
-    /*font-size: 25px !important;*/
+.lineup .removeMargins {
+  font-size: 20px;
 }
 
-.removeMargins {
-    /*margin-right: 0px !important;*/
-    /*margin-left: 0px !important;*/
+.lineup .removeMargins {
+  margin-right: 0px;
+  margin-left: 0px;
 }
 
-.no-pad {
-    /*padding-right: 0px !important;*/
-    /*padding-left: 0px !important;*/
+.lineup .no-pad {
+  padding-right: 0px;
+  padding-left: 0px;
 }
 
-.player-picture {
-    width: 62px;
-    height: 74px;
-    float: right;
+.lineup .player-picture {
+  width: 62px;
+  height: 74px;
+  float: right;
+}
+
+.lineup .player-row {
+  padding-right: 0px;
+}
+
+.lineup .removeLeftPad {
+  padding-left: 0px
 }
 
 .team-logo {
-    width: 62px;
-    height: 74px;
+  width: 62px;
+  height: 74px;
 }
 
 .col-md-2 {
-    /*width: 13.19% !important;*/
+  /*width: 13.19% !important;*/
 }
