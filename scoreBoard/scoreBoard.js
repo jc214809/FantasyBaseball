@@ -161,12 +161,12 @@
             $q.all([$scope.game]).then(function(gameData) {
               angular.forEach(gameData[0].data.data.boxscore.batting[0].batter, function(eachBatter) {
                 $scope.allGames.push(eachBatter);
-              });delete myObject.regex;
+              });
               angular.forEach(gameData[0].data.data.boxscore.batting[1].batter, function(eachBatter) {
                 $scope.allGames.push(eachBatter);
               });
               angular.forEach(gameData[0].data.data.boxscore.pitching[1], function(eachBatter) {
-                //delete eachBatter.pitcher; 
+                delete eachBatter.pitcher; 
                 $scope.allPitchingStaffs.push(eachBatter);
               });
             });
