@@ -44,10 +44,16 @@
     float: right;
   }
   .team-logo {
-    display: none;
+    width: 30px;
+    height: auto;
+    /*float: right;*/
+    /*display: none;*/
   }
   .player-section {
-    padding-left: 5px;
+    padding-left: 30px;
+  }
+  .lineup .col-xs-1 {
+    padding-left: 2px;
   }
 }
 
@@ -67,6 +73,9 @@
     /*display: none;*/
   }
   .player-section {
-    padding-left: 5px;
+    padding-left: 30px;
+  }
+  .lineup .col-xs-1 {
+    padding-left: 2px;
   }
 }
