@@ -167,7 +167,7 @@
               });
               angular.forEach(gameData[0].data.data.boxscore.pitching[0], function(eachBatter) {
                 $scope.matchup = gameData[0].data.data.boxscore;
-                if($scope.matchup.status_ind ='F'){
+                if($scope.matchup.status_ind =='F'){
                    if($scope.matchup.linescore.home_team_runs < $scope.matchup.linescore.away_team_runs){
                     eachBatter['win'] = '1';
                     eachBatter['loss'] = '0';
@@ -184,7 +184,7 @@
               });
               angular.forEach(gameData[0].data.data.boxscore.pitching[1], function(eachBatter) {
                                   $scope.matchup = gameData[0].data.data.boxscore;
-                if($scope.matchup.status_ind ='F'){
+                if($scope.matchup.status_ind =='F'){
                    if($scope.matchup.linescore.home_team_runs > $scope.matchup.linescore.away_team_runs){
                     eachBatter['win'] = '1';
                     eachBatter['loss'] = '0';
