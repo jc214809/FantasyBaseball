@@ -31,6 +31,13 @@
   height: 74px;
 }
 
+.team-name {
+  font-size: 25px;
+  color: #0000FF;
+  /*text-align: center;*/
+  /*vertical-align: center;*/
+}
+
 .col-md-2 {
   /*width: 13.19% !important;*/
 }

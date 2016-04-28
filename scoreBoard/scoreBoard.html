@@ -16,7 +16,7 @@ $(window).resize(checkWidth);
 </div>
 <div id="lineUps" class="row">
   <div class="team col-xs-6 player-section lineup">
-    <b>Starters</b>
+    <p class="team-name">{{awayTeam.team_name}}</p>
     <lineup players="awayStartingPlayers" allgames="allGames"></lineup>
     <staff staffs="awayPitchingStaff" allGames="allGames"></staff>
     <b>Bench</b>
@@ -24,7 +24,7 @@ $(window).resize(checkWidth);
     <staff staffs="awayBenchPitchingStaffs" allGames="allGames"></staff>
   </div>
   <div class="team col-xs-6 player-section lineup">
-    <b>Starters</b>
+    <p class="team-name">{{homeTeam.team_name}}</p>
     <lineup players="homeStartingPlayers" allgames="allGames"></lineup>
     <staff staffs="homePitchingStaff" allGames="allGames"></staff>
     <b>Bench</b>
