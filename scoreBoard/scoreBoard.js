@@ -166,6 +166,7 @@
                 $scope.allGames.push(eachBatter);
               });
               angular.forEach(gameData[0].data.data.boxscore.pitching[1], function(eachBatter) {
+                  eachBatter['pitcher'] = [];
                 delete eachBatter['pitcher']; 
                 $scope.allPitchingStaffs.push(eachBatter);
               });
