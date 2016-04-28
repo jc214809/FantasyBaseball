@@ -149,7 +149,7 @@
 
         $scope.allGames = [];
         $scope.gameURLs = [];
-        $scope.scoreBoard = 'http://gd2.mlb.com/components/game/mlb/year_' + "2016" + '/month_' + "04" + '/day_' + "27" + '/master_scoreboard.json';
+        $scope.scoreBoard = 'http://gd2.mlb.com/components/game/mlb/year_' + "2016" + '/month_' + "04" + '/day_' + "28" + '/master_scoreboard.json';
         $http.get($scope.scoreBoard).success(function(data) {
           $scope.eachGame = data.data.games.game;
           angular.forEach($scope.eachGame, function(game) {
