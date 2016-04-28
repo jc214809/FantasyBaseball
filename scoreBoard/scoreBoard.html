@@ -21,10 +21,11 @@ $(window).resize(checkWidth);
     <staff staffs="awayPitchingStaff" allGames="allGames"></staff>
     <button type="button" ng-click="toggleBench('awayBench')">{{buttonText.awayBench}}</button>
     </br>
-    <div id="awayBench" style="display: none;">
+   <details>
+  <summary>Bench</summary>
       <lineup players="awayBenchPlayers" allgames="allGames"></lineup>
       <staff staffs="awayBenchPitchingStaffs" allGames="allGames"></staff>
-    </div>
+   </details>
   </div>
   <div class="team col-xs-6 player-section lineup">
     <p class="team-name">{{homeTeam.team_name}}</p>
