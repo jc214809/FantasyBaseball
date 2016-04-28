@@ -166,10 +166,34 @@
                 $scope.allGames.push(eachBatter);
               });
               angular.forEach(gameData[0].data.data.boxscore.pitching[0], function(eachBatter) {
-                eachBatter['teamID'] = gameData[0].data.data.boxscore.away_id;
+                $scope.matchup = gameData[0].data.data.boxscore;
+                if($scope.matchup.status_ind ='F'){
+                   if($scope.matchup.linescore.home_team_runs < $scope.matchup.linescore.away_team_runs){
+                    eachBatter['win'] = '1';
+                    eachBatter['loss'] = '0';
+                   }else{
+                    eachBatter['win'] = '0';
+                    eachBatter['loss'] = '1';
+                }else{
+                    eachBatter['win'] = '0';
+                    eachBatter['loss'] = '0';
+                }
+                eachBatter['teamID'] = $scope.matchup.away_id;
                 $scope.allPitchingStaffs.push(eachBatter);
               });
               angular.forEach(gameData[0].data.data.boxscore.pitching[1], function(eachBatter) {
+                                  $scope.matchup = gameData[0].data.data.boxscore;
+                if($scope.matchup.status_ind ='F'){
+                   if($scope.matchup.linescore.home_team_runs > $scope.matchup.linescore.away_team_runs){
+                    eachBatter['win'] = '1';
+                    eachBatter['loss'] = '0';
+                   }else{
+                    eachBatter['win'] = '0';
+                    eachBatter['loss'] = '1';
+                }else{
+                    eachBatter['win'] = '0';
+                    eachBatter['loss'] = '0';
+                }
                 eachBatter['teamID'] = gameData[0].data.data.boxscore.home_id;
                 $scope.allPitchingStaffs.push(eachBatter);
               });
