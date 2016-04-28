@@ -1,9 +1,9 @@
 <div class="row" ng-repeat="staff in staffs">
   <div class="col-xs-1 player-row player-row">
-    <img class="team-logo removeMargins" src="http://mlb.mlb.com/images/logos/42x50/la.png" />
+    <img class="team-logo removeMargins" src="http://mlb.mlb.com/images/logos/42x50/{{staff.team_file_code}}.png" />
   </div>
   <div class="col-xs-1 player-row removeLeftPad">
-    <img class="player-picture removeMargins" src="http://mlb.mlb.com/mlb/fantasy/wsfb/images/mugshots/41x49/la_staff_41x49.jpg" />
+    <img class="player-picture removeMargins" src="http://mlb.mlb.com/mlb/fantasy/wsfb/images/mugshots/41x49/{{staff.team_file_code}}_staff_41x49.jpg" />
   </div>
   <div class="col-xs-10 player-row removeLeftPad">
     <div class="row removeMargins">
