@@ -3,6 +3,18 @@
   <div ng-include="'weeklyScoreboard/weeklyScoreBoard.html'"></div>
 </div>
 <div class="row">
-  <lineup class="col-xs-6 player-section" starters="awayStartingPlayers" bench="awayBenchPlayers" allgames="allGames"></lineup>
-  <lineup class="col-xs-6 player-section" starters="homeStartingPlayers" bench="homeBenchPlayers" allgames="allGames"></lineup>
+  <div class="col-xs-6 player-section lineup">
+    <lineup players="awayStartingPlayers" allgames="allGames"></lineup>
+    <staff staffs="awayPitchingStaff" allGames="allGames"></staff>
+    <b>Bench</b>
+    <lineup players="awayBenchPlayers" allgames="allGames"></lineup>
+    <staff staffs="awayBenchPitchingStaffs" allGames="allGames"></staff>
+  </div>
+  <div class="col-xs-6 player-section lineup">
+    <lineup players="homeStartingPlayers" allgames="allGames"></lineup>
+    <staff staffs="homePitchingStaff" allGames="allGames"></staff>
+    <b>Bench</b>
+    <lineup players="homeBenchPlayers" allgames="allGames"></lineup>
+    <staff staffs="homeBenchPitchingStaffs" allGames="allGames"></staff>
+  </div>
 </div>

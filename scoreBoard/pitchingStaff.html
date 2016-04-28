@@ -1,0 +1,17 @@
+<div class="row" ng-repeat="staff in staffs">
+  <div class="col-xs-1 player-row player-row">
+    <img class="team-logo removeMargins" src="http://mlb.mlb.com/images/logos/42x50/la.png" />
+  </div>
+  <div class="col-xs-1 player-row removeLeftPad">
+    <img class="player-picture removeMargins" src="http://mlb.mlb.com/mlb/fantasy/wsfb/images/mugshots/41x49/la_staff_41x49.jpg" />
+  </div>
+  <div class="col-xs-10 player-row removeLeftPad">
+    <div class="row removeMargins">
+      <div class="col-xs-8 no-pad">{{staff.player_name}}, {{player.position}}</div>
+      <div class="col-xs-offset-4 no-pad">Points:13</div>
+    </div>
+    <div class="row removeMargins">
+      <div class="col-xs-12">1 IP</div>
+    </div>
+  </div>
+</div>

@@ -15,7 +15,7 @@
        'ngRoute',
        'fantasyBaseball.scoreboard',
        'fantasyBaseball.weeklyScoreBoard',
-       'fantasyBaseball.lineup'
+       'fantasyBaseball.lineup', 'fantasyBaseball.pitchingStaff'
      ])
      .config(function myAppConfig($routeProvider, $httpProvider, $locationProvider) {
        $routeProvider
@@ -30,7 +30,7 @@
            pageTitle: 'weeklyScoreBoard'
          });
      })
-     .controller('AppCtrl', function AppCtrl($scope, $location) {
+     .controller('AppCtrl', function AppCtrl($scope, $location, $http) {
        $scope.periodId = weekOfYear(new Date) - 3;
        $scope.teamID = 85827;
        $scope.leagueID = 9518;

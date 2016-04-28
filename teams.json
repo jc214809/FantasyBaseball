@@ -1,0 +1,473 @@
+{
+  "teams": {
+    "team": [{
+      "clubname": "Angels",
+      "displaycity": "LA Angels",
+      "location": "Los Angeles",
+      "league": "al",
+      "zone": "pt",
+      "primary_link": "ba0021",
+      "bg": "ba0021",
+      "team_id": "108",
+      "teamcode": [{
+        "type": "current",
+        "value": "laa"
+      }, {
+        "type": "display",
+        "value": "laa"
+      }, {
+        "type": "file",
+        "value": "ana"
+      }, {
+        "type": "alt",
+        "value": "ana"
+      }, {
+        "type": "db",
+        "value": "ana"
+      }]
+    }, {
+      "clubname": "Diamondbacks",
+      "location": "Arizona",
+      "league": "nl",
+      "zone": "pt",
+      "primary_link": "a71930",
+      "bg": "a71930",
+      "team_id": "109",
+      "teamcode": {
+        "type": "current",
+        "value": "ari"
+      }
+    }, {
+      "clubname": "Braves",
+      "location": "Atlanta",
+      "league": "nl",
+      "zone": "et",
+      "primary_link": "af0039",
+      "bg": "0f437c",
+      "team_id": "144",
+      "teamcode": {
+        "type": "current",
+        "value": "atl"
+      }
+    }, {
+      "clubname": "Orioles",
+      "location": "Baltimore",
+      "league": "al",
+      "zone": "et",
+      "primary_link": "d05301",
+      "bg": "000000",
+      "team_id": "110",
+      "teamcode": {
+        "type": "current",
+        "value": "bal"
+      }
+    }, {
+      "clubname": "Red Sox",
+      "location": "Boston",
+      "league": "al",
+      "zone": "et",
+      "primary_link": "ba313c",
+      "bg": "ba313c",
+      "team_id": "111",
+      "teamcode": {
+        "type": "current",
+        "value": "bos"
+      }
+    }, {
+      "clubname": "Cubs",
+      "displaycity": "Chi Cubs",
+      "location": "Chicago",
+      "league": "nl",
+      "zone": "ct",
+      "primary_link": "ba313c",
+      "bg": "0e3386",
+      "team_id": "112",
+      "teamcode": [{
+        "type": "current",
+        "value": "chc"
+      }, {
+        "type": "db",
+        "value": "chn"
+      }]
+    }, {
+      "clubname": "Reds",
+      "location": "Cincinnati",
+      "league": "nl",
+      "zone": "et",
+      "primary_link": "c6011f",
+      "bg": "c6011f",
+      "team_id": "113",
+      "teamcode": {
+        "type": "current",
+        "value": "cin"
+      }
+    }, {
+      "clubname": "Indians",
+      "location": "Cleveland",
+      "league": "al",
+      "zone": "et",
+      "primary_link": "003366",
+      "bg": "990000",
+      "team_id": "114",
+      "teamcode": {
+        "type": "current",
+        "value": "cle"
+      }
+    }, {
+      "clubname": "Rockies",
+      "location": "Colorado",
+      "league": "nl",
+      "zone": "mt",
+      "primary_link": "342474",
+      "bg": "000000",
+      "team_id": "115",
+      "teamcode": {
+        "type": "current",
+        "value": "col"
+      }
+    }, {
+      "clubname": "White Sox",
+      "displaycity": "Chi White Sox",
+      "location": "Chicago",
+      "league": "al",
+      "zone": "ct",
+      "primary_link": "cc3333",
+      "bg": "000000",
+      "team_id": "145",
+      "teamcode": [{
+        "type": "current",
+        "value": "cws"
+      }, {
+        "type": "db",
+        "value": "cha"
+      }]
+    }, {
+      "clubname": "Tigers",
+      "location": "Detroit",
+      "league": "al",
+      "zone": "et",
+      "primary_link": "003366",
+      "bg": "003366",
+      "team_id": "116",
+      "teamcode": {
+        "type": "current",
+        "value": "det"
+      }
+    }, {
+      "clubname": "Marlins",
+      "location": "Miami",
+      "league": "nl",
+      "zone": "et",
+      "primary_link": "005c5c",
+      "bg": "000000",
+      "team_id": "146",
+      "teamcode": [{
+        "type": "current",
+        "value": "mia"
+      }, {
+        "type": "db",
+        "value": "mia"
+      }]
+    }, {
+      "clubname": "Astros",
+      "location": "Houston",
+      "league": "nl",
+      "zone": "ct",
+      "primary_link": "002D62",
+      "bg": "002D62",
+      "team_id": "117",
+      "teamcode": {
+        "type": "current",
+        "value": "hou"
+      }
+    }, {
+      "clubname": "Royals",
+      "location": "Kansas City",
+      "league": "al",
+      "zone": "ct",
+      "primary_link": "181ea5",
+      "bg": "181ea5",
+      "team_id": "118",
+      "teamcode": [{
+        "type": "current",
+        "value": "kc"
+      }, {
+        "type": "db",
+        "value": "kca"
+      }]
+    }, {
+      "clubname": "Dodgers",
+      "displaycity": "LA Dodgers",
+      "location": "Los Angeles",
+      "league": "nl",
+      "zone": "pt",
+      "primary_link": "0f3e6f",
+      "bg": "083c6b",
+      "team_id": "119",
+      "teamcode": [{
+        "type": "current",
+        "value": "lad"
+      }, {
+        "type": "display",
+        "value": "lad"
+      }, {
+        "type": "file",
+        "value": "la"
+      }, {
+        "type": "alt",
+        "value": "la"
+      }, {
+        "type": "db",
+        "value": "lan"
+      }]
+    }, {
+      "clubname": "Brewers",
+      "location": "Milwaukee",
+      "league": "nl",
+      "zone": "ct",
+      "primary_link": "0a2351",
+      "bg": "0a2351",
+      "team_id": "158",
+      "teamcode": {
+        "type": "current",
+        "value": "mil"
+      }
+    }, {
+      "clubname": "Twins",
+      "location": "Minnesota",
+      "league": "al",
+      "zone": "ct",
+      "primary_link": "042462",
+      "bg": "042462",
+      "team_id": "142",
+      "teamcode": {
+        "type": "current",
+        "value": "min"
+      }
+    }, {
+      "clubname": "Mets",
+      "displaycity": "NY Mets",
+      "location": "New York",
+      "league": "nl",
+      "zone": "et",
+      "primary_link": "ff5910",
+      "bg": "003581",
+      "team_id": "121",
+      "teamcode": [{
+        "type": "current",
+        "value": "nym"
+      }, {
+        "type": "db",
+        "value": "nyn"
+      }]
+    }, {
+      "clubname": "Yankees",
+      "displaycity": "NY Yankees",
+      "location": "New York",
+      "league": "al",
+      "zone": "et",
+      "primary_link": "27458d",
+      "bg": "132448",
+      "team_id": "147",
+      "teamcode": [{
+        "type": "current",
+        "value": "nyy"
+      }, {
+        "type": "db",
+        "value": "nya"
+      }]
+    }, {
+      "clubname": "Athletics",
+      "location": "Oakland",
+      "league": "al",
+      "zone": "pt",
+      "primary_link": "003831",
+      "bg": "003831",
+      "team_id": "133",
+      "teamcode": {
+        "type": "current",
+        "value": "oak"
+      }
+    }, {
+      "clubname": "Phillies",
+      "location": "Philadelphia",
+      "league": "nl",
+      "zone": "et",
+      "primary_link": "284898",
+      "bg": "e81828",
+      "team_id": "143",
+      "teamcode": {
+        "type": "current",
+        "value": "phi"
+      }
+    }, {
+      "clubname": "Pirates",
+      "location": "Pittsburgh",
+      "league": "nl",
+      "zone": "et",
+      "primary_link": "cc0033",
+      "bg": "000000",
+      "team_id": "134",
+      "teamcode": {
+        "type": "current",
+        "value": "pit"
+      }
+    }, {
+      "clubname": "Padres",
+      "location": "San Diego",
+      "league": "nl",
+      "zone": "pt",
+      "primary_link": "000066",
+      "bg": "000066",
+      "team_id": "135",
+      "teamcode": [{
+        "type": "current",
+        "value": "sd"
+      }, {
+        "type": "db",
+        "value": "sdn"
+      }]
+    }, {
+      "clubname": "Mariners",
+      "location": "Seattle",
+      "league": "al",
+      "zone": "pt",
+      "primary_link": "0c2c56",
+      "bg": "0c2c56",
+      "team_id": "136",
+      "teamcode": {
+        "type": "current",
+        "value": "sea"
+      }
+    }, {
+      "clubname": "Giants",
+      "location": "San Francisco",
+      "league": "nl",
+      "zone": "pt",
+      "primary_link": "862612",
+      "bg": "000000",
+      "team_id": "137",
+      "teamcode": [{
+        "type": "current",
+        "value": "sf"
+      }, {
+        "type": "db",
+        "value": "sfn"
+      }]
+    }, {
+      "clubname": "Cardinals",
+      "location": "St. Louis",
+      "league": "nl",
+      "zone": "ct",
+      "primary_link": "04437d",
+      "bg": "c41e3a",
+      "team_id": "138",
+      "teamcode": [{
+        "type": "current",
+        "value": "stl"
+      }, {
+        "type": "file",
+        "value": "stl"
+      }, {
+        "type": "alt",
+        "value": "stn"
+      }, {
+        "type": "db",
+        "value": "sln"
+      }]
+    }, {
+      "clubname": "Rays",
+      "location": "Tampa Bay",
+      "league": "al",
+      "zone": "et",
+      "primary_link": "1a1446",
+      "bg": "1a1446",
+      "team_id": "139",
+      "teamcode": [{
+        "type": "current",
+        "value": "tb"
+      }, {
+        "type": "db",
+        "value": "tba"
+      }]
+    }, {
+      "clubname": "Rangers",
+      "location": "Texas",
+      "league": "al",
+      "zone": "ct",
+      "primary_link": "003278",
+      "bg": "003278",
+      "team_id": "140",
+      "teamcode": {
+        "type": "current",
+        "value": "tex"
+      }
+    }, {
+      "clubname": "Blue Jays",
+      "location": "Toronto",
+      "league": "al",
+      "zone": "et",
+      "primary_link": "003399",
+      "bg": "003399",
+      "team_id": "141",
+      "teamcode": {
+        "type": "current",
+        "value": "tor"
+      }
+    }, {
+      "clubname": "Nationals",
+      "location": "Washington",
+      "league": "nl",
+      "zone": "et",
+      "primary_link": "11225b",
+      "bg": "11225b",
+      "team_id": "120",
+      "teamcode": [{
+        "type": "current",
+        "value": "wsh"
+      }, {
+        "type": "display",
+        "value": "wsh"
+      }, {
+        "type": "file",
+        "value": "was"
+      }, {
+        "type": "db",
+        "value": "was"
+      }, {
+        "type": "alt",
+        "value": "mon"
+      }]
+    }, {
+      "clubname": "World Futures",
+      "teamcode": {
+        "type": "current",
+        "value": "wft"
+      }
+    }, {
+      "clubname": "U.S. Futures",
+      "teamcode": {
+        "type": "current",
+        "value": "uft"
+      }
+    }, {
+      "clubname": "National League All-Stars",
+      "teamcode": [{
+        "type": "alt",
+        "value": "nl"
+      }, {
+        "type": "current",
+        "value": "nas"
+      }]
+    }, {
+      "clubname": "American League All-Stars",
+      "teamcode": [{
+        "type": "alt",
+        "value": "al"
+      }, {
+        "type": "current",
+        "value": "aas"
+      }]
+    }]
+  }
+}

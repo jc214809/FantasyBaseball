@@ -1,13 +1,24 @@
-    angular.module('fantasyBaseball.scoreboard', ['fantasyBaseball.weeklyScoreBoard', 'fantasyBaseball.lineup']).directive('lineup', function() {
+    angular.module('fantasyBaseball.scoreboard', ['fantasyBaseball.weeklyScoreBoard', 'fantasyBaseball.lineup', 'fantasyBaseball.pitchingStaff'])
+      .directive('lineup', function() {
         return {
           restrict: 'E',
           controller: 'lineupCtrl',
           scope: {
-            startingPlayers: '=starters',
-            benchPlayers: '=bench',
+            players: '=players',
             allGames: '=allgames'
           },
           templateUrl: 'scoreBoard/lineup.html'
+        };
+      })
+      .directive('staff', function() {
+        return {
+          restrict: 'E',
+          controller: 'pitchingStaffCtrl',
+          scope: {
+            staffs: '=staffs',
+            allGames: '=allgames'
+          },
+          templateUrl: 'scoreBoard/pitchingStaff.html'
         };
       })
       .controller('ScoreBoardCtrl', function ScoreboardController($scope, $http, $q) {
@@ -70,15 +81,24 @@
               alert("Joel Error");
             },
             success: function(data) {
+              $scope.teamFlagAway = "away";
+              $scope.teamFlagHome = "home";
               $scope.awayStartingPlayers = [];
               $scope.awayBenchPlayers = [];
-              $scope.pitchingStaff = 'lan';
+              $scope.awayPitchingStaff = [];
+              $scope.awayBenchPitchingStaffs = [];
               angular.forEach(data.fb_team_lineup.queryResults.row, function(player) {
                 if (player.slot_val != 'Bn' && player.slot_val != 'DL' && player.slot_val != 'PS') {
                   $scope.awayStartingPlayers.push(player);
                 }
                 if (player.slot_val == 'Bn' && player.position != 'P') {
                   $scope.awayBenchPlayers.push(player);
+                }
+                if (player.slot_val == 'PS') {
+                  $scope.awayPitchingStaff.push(player);
+                }
+                if (player.slot_val == 'Bn' && player.position == 'P') {
+                  $scope.awayBenchPitchingStaffs.push(player);
                 }
               });
               $scope.$apply();
@@ -94,13 +114,20 @@
             success: function(data) {
               $scope.homeStartingPlayers = [];
               $scope.homeBenchPlayers = [];
-              $scope.pitchingStaff = 'lan';
+              $scope.homePitchingStaff = [];
+              $scope.homeBenchPitchingStaffs = [];
               angular.forEach(data.fb_team_lineup.queryResults.row, function(player) {
                 if (player.slot_val != 'Bn' && player.slot_val != 'DL' && player.slot_val != 'PS') {
                   $scope.homeStartingPlayers.push(player);
                 }
                 if (player.slot_val == 'Bn' && player.position != 'P') {
                   $scope.homeBenchPlayers.push(player);
+                }
+                if (player.slot_val == 'PS') {
+                  $scope.homePitchingStaff.push(player);
+                }
+                if (player.slot_val == 'Bn' && player.position == 'P') {
+                  $scope.homeBenchPitchingStaffs.push(player);
                 }
               });
               $scope.$apply();
