@@ -174,6 +174,7 @@
                    }else{
                     eachBatter['win'] = '0';
                     eachBatter['loss'] = '1';
+                   }
                 }else{
                     eachBatter['win'] = '0';
                     eachBatter['loss'] = '0';
@@ -190,6 +191,7 @@
                    }else{
                     eachBatter['win'] = '0';
                     eachBatter['loss'] = '1';
+                   }
                 }else{
                     eachBatter['win'] = '0';
                     eachBatter['loss'] = '0';
