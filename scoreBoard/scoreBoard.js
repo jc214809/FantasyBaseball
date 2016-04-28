@@ -165,9 +165,12 @@
               angular.forEach(gameData[0].data.data.boxscore.batting[1].batter, function(eachBatter) {
                 $scope.allGames.push(eachBatter);
               });
+              angular.forEach(gameData[0].data.data.boxscore.pitching[0], function(eachBatter) {
+                eachBatter['teamID'] = gameData[0].data.data.boxscore.away_id;
+                $scope.allPitchingStaffs.push(eachBatter);
+              });
               angular.forEach(gameData[0].data.data.boxscore.pitching[1], function(eachBatter) {
-                eachBatter['Joel'] = 'Joel';
-                //delete eachBatter['pitcher']; 
+                eachBatter['teamID'] = gameData[0].data.data.boxscore.home_id;
                 $scope.allPitchingStaffs.push(eachBatter);
               });
             });
