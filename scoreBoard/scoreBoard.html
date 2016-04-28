@@ -1,16 +1,30 @@
-<!--  -->
+<script type="text/javascript">
+function checkWidth() {
+  if ($(window).width() > 739) {
+    $('.team').addClass('col-xs-6');
+    $('#lineUps').addClass('row');
+  } else {
+    $('.team').removeClass('col-xs-6');
+    $('#lineUps').removeClass('row');
+  }
+}
+checkWidth();
+$(window).resize(checkWidth);
+</script>
 <div ng-controller="weeklyScoreBoardCtrl">
   <div ng-include="'weeklyScoreboard/weeklyScoreBoard.html'"></div>
 </div>
-<div class="row">
-  <div class="col-xs-6 player-section lineup">
+<div id="lineUps" class="row">
+  <div class="team col-xs-6 player-section lineup">
+    <b>Starters</b>
     <lineup players="awayStartingPlayers" allgames="allGames"></lineup>
     <staff staffs="awayPitchingStaff" allGames="allGames"></staff>
     <b>Bench</b>
     <lineup players="awayBenchPlayers" allgames="allGames"></lineup>
     <staff staffs="awayBenchPitchingStaffs" allGames="allGames"></staff>
   </div>
-  <div class="col-xs-6 player-section lineup">
+  <div class="team col-xs-6 player-section lineup">
+    <b>Starters</b>
     <lineup players="homeStartingPlayers" allgames="allGames"></lineup>
     <staff staffs="homePitchingStaff" allGames="allGames"></staff>
     <b>Bench</b>

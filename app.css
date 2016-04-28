@@ -1,21 +1,37 @@
 .player-section {
   padding-left: 20px;
 }
+
+
 /* Bootstrap Media Query Breakpoints
 
-/* Custom, iPhone Retina */ 
+/* Custom, iPhone Retina */
+
+
 /*@media only screen and (min-width : 320px) {...}*/
 
-/* Extra Small Devices, Phones equivalent to class xs */ 
+
+/* Extra Small Devices, Phones equivalent to class xs */
+
+
 /*@media only screen and (min-width : 480px) {...}*/
 
+
 /* Small Devices, Tablets equivalent to class sm */
+
+
 /*@media only screen and (min-width : 768px) {...}*/
 
+
 /* Medium Devices, Desktops equivalent to class md */
+
+
 /*@media only screen and (min-width : 992px) {...}*/
 
+
 /* Large Devices, Wide Screens equivalent to class lg */
+
+
 /*@media only screen and (min-width : 1200px) {...}*/
 
 @media screen and (max-width: 768px) {
@@ -34,14 +50,17 @@
 
 @media screen and (max-width: 568px) {
   .lineup .removeMargins {
-    font-size: 8.5px;
+    font-size: 12px;
   }
   .lineup .player-picture {
-    width: 25px;
+    width: 30px;
     height: auto;
     float: right;
   }
   .team-logo {
-    display: none;
+    width: 30px;
+    height: auto;
+    /*float: right;*/
+    /*display: none;*/
   }
 }
