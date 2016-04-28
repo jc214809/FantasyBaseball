@@ -83,22 +83,51 @@ angular.module('fantasyBaseball.weeklyScoreBoard', [])
     };
     $scope.weeklyScoreBoardJson = function(scoringData) {
       $scope.weeklyScores = ['{ "monday": "0" , "tuesday": "0", "wednesday": "0", "thursday": "0", "friday": "0", "saturday": "0", "sunday": "0", "total": "0"}'];
+      var today = new Date();
       var obj = JSON.parse($scope.weeklyScores);
       for (var i = 0; i < scoringData.length; i++) {
         if (scoringData[i].scoring_day == 2) {
-          obj.monday = scoringData[i].total_points;
+          if (today.getDay() == 1 && $scope.periodId == 14) {
+            obj.monday = 100;
+          } else {
+            obj.monday = scoringData[i].total_points;
+          }
         } else if (scoringData[i].scoring_day == 3) {
-          obj.tuesday = scoringData[i].total_points;
+          if (today.getDay() == 2 && $scope.periodId == 14) {
+            obj.tuesday = 100;
+          } else {
+            obj.tuesday = scoringData[i].total_points;
+          }
         } else if (scoringData[i].scoring_day == 4) {
-          obj.wednesday = scoringData[i].total_points;
+          if (today.getDay() == 3 && $scope.periodId == 14) {
+            obj.wednesday = 100;
+          } else {
+            obj.wednesday = scoringData[i].total_points;
+          }
         } else if (scoringData[i].scoring_day == 5) {
-          obj.thursday = scoringData[i].total_points;
+          if (today.getDay() == 4 && $scope.periodId == 14) {
+            obj.thursday = 100;
+          } else {
+            obj.thursday = scoringData[i].total_points;
+          }
         } else if (scoringData[i].scoring_day == 6) {
-          obj.friday = scoringData[i].total_points;
+          if (today.getDay() == 5 && $scope.periodId == 14) {
+            obj.friday = 100;
+          } else {
+            obj.friday = scoringData[i].total_points;
+          }
         } else if (scoringData[i].scoring_day == 7) {
-          obj.saturday = scoringData[i].total_points;
+          if (today.getDay() == 6 && $scope.periodId == 14) {
+            obj.saturday = 100;
+          } else {
+            obj.saturday = scoringData[i].total_points;
+          }
         } else {
-          obj.sunday = scoringData[i].total_points;
+          if (today.getDay() == 0 && $scope.periodId == 14) {
+            obj.sunday = 100;
+          } else {
+            obj.sunday = scoringData[i].total_points;
+          }
         }
       }
       return obj;
