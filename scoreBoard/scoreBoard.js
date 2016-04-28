@@ -22,17 +22,18 @@
         };
       })
       .controller('ScoreBoardCtrl', function ScoreboardController($scope, $http, $q) {
-        $scope.buttonText = [];
-        $scope.buttonText.homeBench = "Show Bench";
-        $scope.buttonText.awayBench = "Show Bench";
-        $scope.toggleBench = function(id) {
-          $("#" + id).toggle();
-          if ($scope.buttonText.id == "Show Bench") {
-            $scope.buttonText.id = "Hide Bench";
-          } else {
-            $scope.buttonText.id = "Show Bench";
-          }
-        };
+        // $scope.buttonText = [];
+        // $scope.buttonText.homeBench = "Show Bench";
+        // $scope.buttonText.awayBench = "Show Bench";
+        // $scope.toggleBench = function(id) {
+        //   $("#" + id).toggle();
+        //   if ($scope.buttonText.id == "Show Bench") {
+        //     $scope.buttonText.id = "Hide Bench";
+        //   } else {
+        //     $scope.buttonText.id = "Show Bench";
+        //   }
+        // };
+
         $.ajax({
           url: 'http://www.mlb.com/fantasylookup/json/named.fb_index_schedule.bam?league_id=' + $scope.leagueID,
           type: 'GET',
