@@ -11,9 +11,10 @@ function checkWidth() {
 checkWidth();
 $(window).resize(checkWidth);
 </script>
-<div ng-controller="weeklyScoreBoardCtrl">
-  <div ng-include="'weeklyScoreboard/weeklyScoreBoard.html'"></div>
-</div>
+<!--<div ng-controller="weeklyScoreBoardCtrl">-->
+<!--  <div ng-include="'weeklyScoreboard/weeklyScoreBoard.html'"></div>-->
+<!--</div>-->
+<scores awaystarters="awayStartingPlayers" homestarters="homeStartingPlayers" awaystaff="awayPitchingStaff" homestaff="homeBenchPitchingStaffs"></scores>
 <div id="lineUps" class="row">
   <div class="team col-xs-6 player-section lineup">
     <p class="team-name">{{awayTeam.team_name}}</p>
