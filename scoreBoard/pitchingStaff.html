@@ -8,10 +8,10 @@
   <div class="col-xs-10 player-row removeLeftPad">
     <div class="row removeMargins">
       <div class="col-xs-8 no-pad">{{staff.player_name}}, {{staff.position}}</div>
-      <div class="col-xs-offset-4 no-pad">Points:13</div>
+      <div class="col-xs-offset-4 no-pad">Points:{{getPitchingStaffScore(staff.player_id)}}</div>
     </div>
     <div class="row removeMargins">
-      <div class="col-xs-12">1 IP</div>
+      <div class="col-xs-12">{{getPitchingStatLine(staff.player_id)}}</div>
     </div>
   </div>
 </div>
