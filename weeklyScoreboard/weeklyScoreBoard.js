@@ -1,5 +1,8 @@
 angular.module('fantasyBaseball.weeklyScoreBoard', [])
   .controller('weeklyScoreBoardCtrl', function weeklyScoreBoardController($scope, $http, $q) {
+           $scope.periodId = weekOfYear(new Date) - 3;
+       $scope.teamID = 85827;
+       $scope.leagueID = 9518;
     $scope.schedule = [];
     $scope.matchUpIds = [];
     $scope.opponentsSchedule = [];
