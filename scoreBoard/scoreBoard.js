@@ -26,8 +26,10 @@
           restrict: 'E',
           controller: 'weeklyScoreBoardCtrl',
           scope: {
-            awayStartingPlayers: '=starters',
-            awayPitchingStaff: '=staff'
+            awayStartingPlayers: '=awaystarters',
+            awayPitchingStaff: '=awaystaff',
+            homeStartingPlayers: '=homestarters',
+            homePitchingStaff: '=homestaff'
           },
           templateUrl: 'weeklyScoreBoard/weeklyScoreBoard.html'
         };
