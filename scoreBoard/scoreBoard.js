@@ -31,7 +31,7 @@
             homeStartingPlayers: '=homestarters',
             homePitchingStaff: '=homestaff'
           },
-          templateUrl: 'weeklyScoreBoard/weeklyScoreBoard.html'
+          templateUrl: 'weeklyScoreboard/weeklyScoreBoard.html'
         };
       })
       .controller('ScoreBoardCtrl', function ScoreboardController($scope, $http, $q) {
