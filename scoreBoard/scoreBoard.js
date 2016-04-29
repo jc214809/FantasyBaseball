@@ -24,6 +24,7 @@
      .directive('scores', function() {
         return {
           restrict: 'E',
+           scope: true,
           controller: 'weeklyScoreBoardCtrl',
           scope: {
             awayStartingPlayers: '=awaystarters',
