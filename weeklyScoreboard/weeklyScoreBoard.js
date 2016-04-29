@@ -10,7 +10,7 @@ angular.module('fantasyBaseball.weeklyScoreBoard', [])
       type: 'GET',
       dataType: 'json',
       error: function() {
-        alert("Error");
+        alert("Schedule Error");
       },
       success: function(data) {
         $scope.masterSchedule = data.fb_index_schedule.queryResults;
@@ -58,7 +58,7 @@ angular.module('fantasyBaseball.weeklyScoreBoard', [])
         type: 'GET',
         dataType: 'json',
         error: function() {
-          alert("Error");
+          alert("MatchUp Error");
         },
 
         success: function(data) {
