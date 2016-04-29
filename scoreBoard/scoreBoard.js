@@ -26,12 +26,12 @@
           restrict: 'E',
            scope: false,
           controller: 'weeklyScoreBoardCtrl',
-          scope: {
-            awayStartingPlayers: '=awaystarters',
-            awayPitchingStaff: '=awaystaff',
-            homeStartingPlayers: '=homestarters',
-            homePitchingStaff: '=homestaff'
-          },
+        //   scope: {
+        //     awayStartingPlayers: '=awaystarters',
+        //     awayPitchingStaff: '=awaystaff',
+        //     homeStartingPlayers: '=homestarters',
+        //     homePitchingStaff: '=homestaff'
+        //   },
           templateUrl: 'weeklyScoreboard/weeklyScoreBoard.html'
         };
       })
