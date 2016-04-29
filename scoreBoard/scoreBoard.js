@@ -21,6 +21,17 @@
           templateUrl: 'scoreBoard/pitchingStaff.html'
         };
       })
+     .directive('scores', function() {
+        return {
+          restrict: 'E',
+          controller: 'weeklyScoreBoardCtrl',
+          scope: {
+            awayStartingPlayers: '=starters',
+            awayPitchingStaff: '=staff'
+          },
+          templateUrl: 'weeklyScoreBoard/weeklyScoreBoard.html'
+        };
+      })
       .controller('ScoreBoardCtrl', function ScoreboardController($scope, $http, $q) {
         $.ajax({
           url: 'http://www.mlb.com/fantasylookup/json/named.fb_index_schedule.bam?league_id=' + $scope.leagueID,
