@@ -50,9 +50,9 @@
       .controller('ScoreBoardCtrl', function ScoreboardController($scope, $http, $q, $timeout, poollingFactory) {
         poollingFactory.callFnOnInterval(function() {
           //$scope.allGames = [];
-          $scope.allGames2 = [];
-          $scope.allPitchingStaffs = [];
-          $scope.gameURLs = [];
+          // $scope.allGames2 = [];
+          // $scope.allPitchingStaffs = [];
+          $scope.battersToAdd = [];
           $scope.scoreBoard = 'http://gd2.mlb.com/components/game/mlb/year_' + "2016" + '/month_' + "04" + '/day_' + "30" + '/master_scoreboard.json';
           $http.get($scope.scoreBoard).success(function(data) {
             $scope.eachGame = data.data.games.game;
@@ -67,6 +67,8 @@
                   for (var i = 0; i < $scope.allGames.length; ++i) {
                     if ($scope.allGames[i].id === eachBatter.id) {
                       $scope.allGames[i] = eachBatter;
+                    } else {
+                      $scope.battersToAdd.push(eachBatter);
                     }
                   }
                   //}
@@ -76,10 +78,13 @@
                   for (var i = 0; i < $scope.allGames.length; ++i) {
                     if ($scope.allGames[i].id === eachBatter.id) {
                       $scope.allGames[i] = eachBatter;
+                    } else {
+                      $scope.battersToAdd.push(eachBatter);
                     }
                   }
                   //}
                 });
+                $scope.allGames.concat($scope.battersToAdd);
                 angular.forEach(gameData[0].data.data.boxscore.pitching, function(eachBatter) {
                   $scope.matchup = gameData[0].data.data.boxscore;
                   delete eachBatter.pitcher;
@@ -248,7 +253,6 @@
         };
         $scope.getStats = function() {
           $scope.allGames = [];
-          $scope.allGames2 = [];
           $scope.allPitchingStaffs = [];
           $scope.gameURLs = [];
           $scope.scoreBoard = 'http://gd2.mlb.com/components/game/mlb/year_' + "2016" + '/month_' + "04" + '/day_' + "30" + '/master_scoreboard.json';
@@ -262,12 +266,12 @@
               $q.all([$scope.game]).then(function(gameData) {
                 angular.forEach(gameData[0].data.data.boxscore.batting[0].batter, function(eachBatter) {
                   //if ($scope.homeBattersPlayerIds.indexOf(eachBatter.id) > -1 || $scope.awayBattersPlayerIds.indexOf(eachBatter.id) > -1) {
-                  $scope.allGames2.push(eachBatter);
+                  $scope.allGames.push(eachBatter);
                   //}
                 });
                 angular.forEach(gameData[0].data.data.boxscore.batting[1].batter, function(eachBatter) {
                   //if ($scope.homeBattersPlayerIds.indexOf(eachBatter.id) > -1 || $scope.awayBattersPlayerIds.indexOf(eachBatter.id) > -1) {
-                  $scope.allGames2.push(eachBatter);
+                  $scope.allGames.push(eachBatter);
                   //}
                 });
                 angular.forEach(gameData[0].data.data.boxscore.pitching, function(eachBatter) {
@@ -308,6 +312,5 @@
               });
             });
           });
-          $scope.allGames = $scope.allGames2;
         };
       });
