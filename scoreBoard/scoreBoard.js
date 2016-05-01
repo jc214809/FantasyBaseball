@@ -5,7 +5,10 @@
           controller: 'lineupCtrl',
           scope: {
             players: '=players',
-            allGames: '=allgames'
+            allGames: '=allgames',
+            playersUpToBat: '=up',
+            playersOnDeck: '=deck',
+            playersInTheHole: '=hole'
           },
           templateUrl: 'scoreBoard/lineup.html'
         };
@@ -52,19 +55,26 @@
           //$scope.allGames = [];
           // $scope.allGames2 = [];
           // $scope.allPitchingStaffs = [];
+          $scope.playersUpToBatUpdated = [];
+          $scope.playersOnDeckUpdated = [];
+          $scope.playersInTheHoleUpdated = [];
           $scope.battersToAdd = [];
           $scope.staffsToAdd = [];
           $scope.scoreBoard = 'http://gd2.mlb.com/components/game/mlb/year_' + "2016" + '/month_' + "04" + '/day_' + "30" + '/master_scoreboard.json';
           $http.get($scope.scoreBoard).success(function(data) {
             $scope.eachGame = data.data.games.game;
             angular.forEach($scope.eachGame, function(game) {
+              if (game.hasOwnProperty('inhole')) {
+                $scope.playersUpToBatUpdated.push(game.batter.id);
+                $scope.playersOnDeckUpdated.push(game.ondeck.id);
+                $scope.playersInTheHoleUpdated.push(game.inhole.id);
+              };
               $scope.gameURLs.push('http://gd2.mlb.com' + game.game_data_directory + "/boxscore.json");
             });
             angular.forEach($scope.gameURLs, function(games) {
               $scope.game = $http.get(games);
               $q.all([$scope.game]).then(function(gameData) {
                 angular.forEach(gameData[0].data.data.boxscore.batting[0].batter, function(eachBatter) {
-                  //if ($scope.homeBattersPlayerIds.indexOf(eachBatter.id) > -1 || $scope.awayBattersPlayerIds.indexOf(eachBatter.id) > -1) {
                   for (var i = 0; i < $scope.allGames.length; ++i) {
                     if ($scope.allGames[i].id === eachBatter.id) {
                       $scope.allGames[i] = eachBatter;
@@ -72,8 +82,13 @@
                       $scope.battersToAdd.push(eachBatter);
                     }
                   }
-                  //}
                 });
+                $scope.playersUpToBat = [];
+                $scope.playersUpToBat = $scope.playersUpToBatUpdated;
+                $scope.playersOnDeck = [];
+                $scope.playersOnDeck = $scope.playersOnDeckUpdated;
+                $scope.playersInTheHole = [];
+                $scope.playersInTheHole = $scope.playersInTheHoleUpdated;
                 angular.forEach(gameData[0].data.data.boxscore.batting[1].batter, function(eachBatter) {
                   //if ($scope.homeBattersPlayerIds.indexOf(eachBatter.id) > -1 || $scope.awayBattersPlayerIds.indexOf(eachBatter.id) > -1) {
                   for (var i = 0; i < $scope.allGames.length; ++i) {
@@ -277,10 +292,18 @@
           $scope.allGames = [];
           $scope.allPitchingStaffs = [];
           $scope.gameURLs = [];
+          $scope.playersUpToBat = [];
+          $scope.playersOnDeck = [];
+          $scope.playersInTheHole = [];
           $scope.scoreBoard = 'http://gd2.mlb.com/components/game/mlb/year_' + "2016" + '/month_' + "04" + '/day_' + "30" + '/master_scoreboard.json';
           $http.get($scope.scoreBoard).success(function(data) {
             $scope.eachGame = data.data.games.game;
             angular.forEach($scope.eachGame, function(game) {
+              if (game.hasOwnProperty('inhole')) {
+                $scope.playersUpToBat.push(game.batter.id);
+                $scope.playersOnDeck.push(game.ondeck.id);
+                $scope.playersInTheHole.push(game.inhole.id);
+              }
               $scope.gameURLs.push('http://gd2.mlb.com' + game.game_data_directory + "/boxscore.json");
             });
             angular.forEach($scope.gameURLs, function(games) {

@@ -38,6 +38,14 @@
   /*vertical-align: center;*/
 }
 
-.col-md-2 {
-  /*width: 13.19% !important;*/
+.at-bat {
+  background-color: green;
+}
+
+.on-deck {
+  background-color: yellow;
+}
+
+.in-hole {
+  background-color: red;
 }

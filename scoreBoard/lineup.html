@@ -1,19 +1,28 @@
-<div class="row" ng-repeat="player in players">
-  <div class="col-xs-1 player-row player-row">
-    <img class="team-logo removeMargins" src="http://mlb.mlb.com/images/logos/42x50/{{player.team_file_code}}.png" />
-  </div>
-  <div class="col-xs-1 player-row removeLeftPad">
-    <img class="player-picture removeMargins" src="http://mlb.mlb.com/images/gameday/mugshots/mlb/{{player.player_id}}.jpg" />
-  </div>
-  <div class="col-xs-10 player-row removeLeftPad">
-    <div class="row removeMargins">
-      <div class="col-xs-8 no-pad">{{player.player_name}}, {{player.slot}}</div>
-      <div class="col-xs-offset-4 no-pad">Points:
-        <span ng-attr-id="{{player.player_id}}">{{getHittersScore(player.player_id)}}</span>
-      </div>
+<div ng-repeat="player in players">
+  <div class="row" ng-class="{ 'at-bat' : playersUpToBat.indexOf(player.player_id) != -1, 'on-deck' : playersOnDeck.indexOf(player.player_id) != -1, 'in-hole' : playersInTheHole.indexOf(player.player_id) != -1}">
+    <div class=" col-xs-1 player-row player-row ">
+      <img class="team-logo removeMargins " src="http://mlb.mlb.com/images/logos/42x50/{{player.team_file_code}}.png " />
     </div>
-    <div class="row removeMargins">
-      <div class="col-xs-12">{{hittingStats(player.player_id)}}</div>
+    <div class="col-xs-1 player-row removeLeftPad ">
+      <img class="player-picture removeMargins " src="http://mlb.mlb.com/images/gameday/mugshots/mlb/{{player.player_id}}.jpg " />
+    </div>
+    <div class="col-xs-10 player-row removeLeftPad ">
+      <div class="row removeMargins ">
+        <div class="col-xs-8 no-pad ">{{player.player_name}}, {{player.slot}}</div>
+        <div class="col-xs-offset-4 no-pad ">Points:
+          <span ng-attr-id="{{player.player_id}} ">{{getHittersScore(player.player_id)}}</span>
+        </div>
+      </div>
+      <div class="row removeMargins ">
+        <div class="col-xs-12 ">{{hittingStats(player.player_id)}}</div>
+      </div>
     </div>
   </div>
 </div>
+<!-- UP:{{playersUpToBat}}
+</br>
+ 
+Deck:{{playersOnDeck}}
+</br>
+Hole:{{playersInTheHole}}
+ -->
