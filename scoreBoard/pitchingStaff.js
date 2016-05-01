@@ -19,10 +19,10 @@ angular.module('fantasyBaseball.pitchingStaff', [])
             var inning = parseInt(x.out) / 3;
             inning = inning.toString();
             var index = inning.indexOf('.');
-            if (inning.charAt(index + 1) == 3) {
-              $scope.pitchingStatLine += ' ' + inning.charAt(index - 1) + '.1' + ' IP ,';
+            if (inning.charAt(index + 1) == 3) {;
+              $scope.pitchingStatLine += ' ' + inning.slice(0, inning.indexOf(".")) + '.1' + ' IP ,';
             } else if (inning.charAt(index + 1) == 6) {
-              $scope.pitchingStatLine += ' ' + inning.charAt(index - 1) + '.2' + ' IP ,';
+              $scope.pitchingStatLine += ' ' + inning.slice(0, inning.indexOf(".")) + '.2' + ' IP ,';
             } else {
               $scope.pitchingStatLine += ' ' + inning + ' IP ,';
             }
@@ -39,7 +39,7 @@ angular.module('fantasyBaseball.pitchingStaff', [])
           if (x.so != 0) {
             $scope.pitchingStatLine += ' ' + x.so + ' K ,';
           };
-          if (x.r == 0 && x.status == 'F') {
+          if (x.r == 0 && (x.status == 'F' || x.status == 'O')) {
             $scope.pitchingStatLine += ' 1 SHO ,';
           };
 
