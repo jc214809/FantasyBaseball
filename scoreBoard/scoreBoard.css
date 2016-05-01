@@ -49,3 +49,7 @@
 .in-hole {
   background-color: red;
 }
+
+.points {
+  float: right;
+}
