@@ -52,9 +52,6 @@
       })
       .controller('ScoreBoardCtrl', function ScoreboardController($scope, $http, $q, $timeout, poollingFactory) {
         poollingFactory.callFnOnInterval(function() {
-          //$scope.allGames = [];
-          // $scope.allGames2 = [];
-          // $scope.allPitchingStaffs = [];
           $scope.playersUpToBatUpdated = [];
           $scope.playersOnDeckUpdated = [];
           $scope.playersInTheHoleUpdated = [];
@@ -99,16 +96,18 @@
                     }
                   }
                 });
-                console.log($scope.matchup.status_ind);
+
                 $scope.allGames.concat($scope.battersToAdd);
                 angular.forEach(gameData[0].data.data.boxscore.pitching, function(eachStaff) {
                   $scope.matchup = gameData[0].data.data.boxscore;
-                  eachStaff.status = $scope.matchup.status_ind;
+                  console.log($scope.matchup.away_fname + ' vs. ' + $scope.matchup.home_fname + ' ' + $scope.matchup.status_ind);
                   delete eachStaff.pitcher;
                   if (eachStaff.team_flag == 'away') {
-                    for (var i = 0; i < $scope.allPitchingStaffs.length; ++i) {
-                      eachStaff.teamID = $scope.matchup.away_id;
-                      if ($scope.allPitchingStaffs[i].teamID === eachStaff.teamID) {
+                    //for (var i = 0; i < $scope.allPitchingStaffs.length; ++i) {
+                    eachStaff.teamID = $scope.matchup.away_id;
+                    $scope.check = $scope.checkForStaff(eachStaff.teamID);
+                    if ($scope.check > -1) {
+                      if ($scope.allPitchingStaffs[$scope.check].teamID == eachStaff.teamID) {
                         if ($scope.matchup.status_ind == 'F' || $scope.matchup.status_ind == 'O') {
                           if ($scope.matchup.linescore.home_team_runs < $scope.matchup.linescore.away_team_runs) {
                             eachStaff.win = '1';
@@ -117,46 +116,62 @@
                             eachStaff.win = '0';
                             eachStaff.loss = '1';
                           }
-                          $scope.allPitchingStaffs[i] = eachStaff;
+                          eachStaff.status = $scope.matchup.status_ind;
+                          $scope.allPitchingStaffs[$scope.check] = eachStaff;
                         } else {
+                          //alert("Here Away");
                           eachStaff.win = '0';
                           eachStaff.loss = '0';
-                          $scope.allPitchingStaffs[i] = eachStaff;
+                          eachStaff.status = $scope.matchup.status_ind;
+                          $scope.allPitchingStaffs[$scope.check] = eachStaff;
                         }
-                      } else {
-                        eachStaff.win = '0';
-                        eachStaff.loss = '0';
-                        $scope.staffsToAdd.push(eachStaff);
                       }
+                    } else {
+                      //alert("Here1");
+                      eachStaff.win = '0';
+                      eachStaff.loss = '0';
+                      eachStaff.status = $scope.matchup.status_ind;
+                      $scope.staffsToAdd.push(eachStaff);
                     }
+                    //}
                   } else {
                     for (var i = 0; i < $scope.allPitchingStaffs.length; ++i) {
                       eachStaff.teamID = $scope.matchup.home_id;
-                      if ($scope.allPitchingStaffs[i].teamID === eachStaff.teamID) {
-                        if ($scope.matchup.status_ind == 'F' || $scope.matchup.status_ind == 'O') {
-                          if ($scope.matchup.linescore.home_team_runs > $scope.matchup.linescore.away_team_runs) {
-                            eachStaff.win = '1';
-                            eachStaff.loss = '0';
-                          } else {
-                            eachStaff.win = '0';
-                            eachStaff.loss = '1';
+                      $scope.check = $scope.checkForStaff(eachStaff.teamID);
+                      if ($scope.check > -1) {
+                        if ($scope.allPitchingStaffs[$scope.check].teamID == eachStaff.teamID) {
+                          if ($scope.allPitchingStaffs[i].teamID == eachStaff.teamID) {
+                            if ($scope.matchup.status_ind == 'F' || $scope.matchup.status_ind == 'O') {
+                              if ($scope.matchup.linescore.home_team_runs > $scope.matchup.linescore.away_team_runs) {
+                                eachStaff.win = '1';
+                                eachStaff.loss = '0';
+                              } else {
+                                eachStaff.win = '0';
+                                eachStaff.loss = '1';
+                              }
+                              eachStaff.status = $scope.matchup.status_ind;
+                              $scope.allPitchingStaffs[i] = eachStaff;
+                            } else {
+                              //alert("Here Home");
+                              eachStaff.win = '0';
+                              eachStaff.loss = '0';
+                              eachStaff.status = $scope.matchup.status_ind;
+                              $scope.allPitchingStaffs[i] = eachStaff;
+                            }
                           }
-                          $scope.allPitchingStaffs[i] = eachStaff;
-                        } else {
-                          eachStaff.win = '0';
-                          eachStaff.loss = '0';
-                          $scope.allPitchingStaffs[i] = eachStaff;
                         }
                       } else {
+                        //alert("Here2" + $scope.allPitchingStaffs[i].teamID + ' ' + eachStaff.teamID);
                         eachStaff.win = '0';
                         eachStaff.loss = '0';
+                        eachStaff.status = $scope.matchup.status_ind;
                         $scope.staffsToAdd.push(eachStaff);
                       }
                     }
                   }
-                  $scope.allPitchingStaffs.concat($scope.staffsToAdd);
                   //$scope.allPitchingStaffs.push(eachStaff);
                 });
+                $scope.allPitchingStaffs.concat($scope.staffsToAdd);
               });
             });
           });
@@ -212,6 +227,15 @@
             $scope.$apply();
           }
         });
+        $scope.checkForStaff = function(id) {
+          //var JSONObject = { "animals": [{ name: "cat" }, { name: "dog" }] };
+          for (i = 0; i < $scope.allPitchingStaffs.length; i++) {
+            if ($scope.allPitchingStaffs[i].teamID == id) {
+              return i;
+            }
+          }
+          return -1;
+        };
         $scope.getLineups = function() {
           $.ajax({
             url: 'http://www.mlb.com/fantasylookup/json/named.fb_team_lineup.bam?period_id=' + $scope.periodId + '&team_id=' + $scope.awayTeam.team_id,
