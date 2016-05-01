@@ -102,7 +102,7 @@
                 });
                 $scope.allGames.concat($scope.battersToAdd);
                 angular.forEach(gameData[0].data.data.boxscore.pitching, function(eachStaff) {
-                  $scope.matchup = gameData[0].data.data.eachStaff.status;
+                  $scope.matchup = gameData[0].data.data.boxscore;
                   eachStaff.status = $scope.matchup.status_ind;
                   delete eachStaff.pitcher;
                   if (eachStaff.team_flag == 'away') {
