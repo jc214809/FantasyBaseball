@@ -7,13 +7,13 @@
   </div>
   <div class="col-xs-10 player-row removeLeftPad">
     <div class="row removeMargins">
-      <div class="col-xs-10 no-pad">{{staff.player_name}}, {{staff.position}}</div>
-      <div class="no-pad">Points:
-        <span ng-attr-id="{{staff.player_id}}">{{getPitchingStaffScore(staff.player_id)}}</span>
+      <div class="col-xs-9 no-pad">{{staff.player_name}}, {{staff.position}}</div>
+      <div class="no-pad points">Points:{{getPitchingStaffScore(staff.player_id)}}
+        <!-- <span ng-attr-id="{{staff.player_id}}"></span> -->
       </div>
     </div>
     <div class="row removeMargins">
-      <div class="col-xs-12">{{getPitchingStatLine(staff.player_id)}}</div>
+      <div class="col-xs-11">{{getPitchingStatLine(staff.player_id)}}</div>
     </div>
   </div>
 </div>

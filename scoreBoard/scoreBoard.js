@@ -102,14 +102,14 @@
                 });
                 $scope.allGames.concat($scope.battersToAdd);
                 angular.forEach(gameData[0].data.data.boxscore.pitching, function(eachStaff) {
-                  $scope.matchup = gameData[0].data.data.boxscore;
+                  $scope.matchup = gameData[0].data.data.eachStaff.status;
                   eachStaff.status = $scope.matchup.status_ind;
                   delete eachStaff.pitcher;
                   if (eachStaff.team_flag == 'away') {
                     for (var i = 0; i < $scope.allPitchingStaffs.length; ++i) {
                       eachStaff.teamID = $scope.matchup.away_id;
                       if ($scope.allPitchingStaffs[i].teamID === eachStaff.teamID) {
-                        if ($scope.matchup.status_ind == 'F' || $scope.matchup.status_ind == 'O') {
+                        if (eachStaff.status == 'F' || eachStaff.status == 'O') {
                           if ($scope.matchup.linescore.home_team_runs < $scope.matchup.linescore.away_team_runs) {
                             eachStaff.win = '1';
                             eachStaff.loss = '0';
@@ -133,7 +133,7 @@
                     for (var i = 0; i < $scope.allPitchingStaffs.length; ++i) {
                       eachStaff.teamID = $scope.matchup.home_id;
                       if ($scope.allPitchingStaffs[i].teamID === eachStaff.teamID) {
-                        if ($scope.matchup.status_ind == 'F' || $scope.matchup.status_ind == 'O') {
+                        if (eachStaff.status == 'F' || eachStaff.status == 'O') {
                           if ($scope.matchup.linescore.home_team_runs > $scope.matchup.linescore.away_team_runs) {
                             eachStaff.win = '1';
                             eachStaff.loss = '0';
