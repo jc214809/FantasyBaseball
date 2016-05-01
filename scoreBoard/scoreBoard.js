@@ -60,6 +60,7 @@
           $scope.playersInTheHoleUpdated = [];
           $scope.battersToAdd = [];
           $scope.staffsToAdd = [];
+          $scope.gameURLs = [];
           $scope.scoreBoard = 'http://gd2.mlb.com/components/game/mlb/year_' + "2016" + '/month_' + "04" + '/day_' + "30" + '/master_scoreboard.json';
           $http.get($scope.scoreBoard).success(function(data) {
             $scope.eachGame = data.data.games.game;
@@ -90,7 +91,6 @@
                 $scope.playersInTheHole = [];
                 $scope.playersInTheHole = $scope.playersInTheHoleUpdated;
                 angular.forEach(gameData[0].data.data.boxscore.batting[1].batter, function(eachBatter) {
-                  //if ($scope.homeBattersPlayerIds.indexOf(eachBatter.id) > -1 || $scope.awayBattersPlayerIds.indexOf(eachBatter.id) > -1) {
                   for (var i = 0; i < $scope.allGames.length; ++i) {
                     if ($scope.allGames[i].id === eachBatter.id) {
                       $scope.allGames[i] = eachBatter;
@@ -98,8 +98,8 @@
                       $scope.battersToAdd.push(eachBatter);
                     }
                   }
-                  //}
                 });
+                console.log($scope.matchup.status_ind);
                 $scope.allGames.concat($scope.battersToAdd);
                 angular.forEach(gameData[0].data.data.boxscore.pitching, function(eachStaff) {
                   $scope.matchup = gameData[0].data.data.boxscore;
@@ -109,7 +109,7 @@
                     for (var i = 0; i < $scope.allPitchingStaffs.length; ++i) {
                       eachStaff.teamID = $scope.matchup.away_id;
                       if ($scope.allPitchingStaffs[i].teamID === eachStaff.teamID) {
-                        if (eachStaff.status == 'F' || eachStaff.status == 'O') {
+                        if ($scope.matchup.status_ind == 'F' || $scope.matchup.status_ind == 'O') {
                           if ($scope.matchup.linescore.home_team_runs < $scope.matchup.linescore.away_team_runs) {
                             eachStaff.win = '1';
                             eachStaff.loss = '0';
@@ -133,7 +133,7 @@
                     for (var i = 0; i < $scope.allPitchingStaffs.length; ++i) {
                       eachStaff.teamID = $scope.matchup.home_id;
                       if ($scope.allPitchingStaffs[i].teamID === eachStaff.teamID) {
-                        if (eachStaff.status == 'F' || eachStaff.status == 'O') {
+                        if ($scope.matchup.status_ind == 'F' || $scope.matchup.status_ind == 'O') {
                           if ($scope.matchup.linescore.home_team_runs > $scope.matchup.linescore.away_team_runs) {
                             eachStaff.win = '1';
                             eachStaff.loss = '0';
