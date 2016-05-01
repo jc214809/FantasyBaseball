@@ -103,7 +103,6 @@
                   console.log($scope.matchup.away_fname + ' vs. ' + $scope.matchup.home_fname + ' ' + $scope.matchup.status_ind);
                   delete eachStaff.pitcher;
                   if (eachStaff.team_flag == 'away') {
-                    //for (var i = 0; i < $scope.allPitchingStaffs.length; ++i) {
                     eachStaff.teamID = $scope.matchup.away_id;
                     $scope.check = $scope.checkForStaff(eachStaff.teamID);
                     if ($scope.check > -1) {
@@ -119,7 +118,6 @@
                           eachStaff.status = $scope.matchup.status_ind;
                           $scope.allPitchingStaffs[$scope.check] = eachStaff;
                         } else {
-                          //alert("Here Away");
                           eachStaff.win = '0';
                           eachStaff.loss = '0';
                           eachStaff.status = $scope.matchup.status_ind;
@@ -127,13 +125,11 @@
                         }
                       }
                     } else {
-                      //alert("Here1");
                       eachStaff.win = '0';
                       eachStaff.loss = '0';
                       eachStaff.status = $scope.matchup.status_ind;
                       $scope.staffsToAdd.push(eachStaff);
                     }
-                    //}
                   } else {
                     for (var i = 0; i < $scope.allPitchingStaffs.length; ++i) {
                       eachStaff.teamID = $scope.matchup.home_id;
@@ -152,7 +148,6 @@
                               eachStaff.status = $scope.matchup.status_ind;
                               $scope.allPitchingStaffs[i] = eachStaff;
                             } else {
-                              //alert("Here Home");
                               eachStaff.win = '0';
                               eachStaff.loss = '0';
                               eachStaff.status = $scope.matchup.status_ind;
@@ -161,7 +156,6 @@
                           }
                         }
                       } else {
-                        //alert("Here2" + $scope.allPitchingStaffs[i].teamID + ' ' + eachStaff.teamID);
                         eachStaff.win = '0';
                         eachStaff.loss = '0';
                         eachStaff.status = $scope.matchup.status_ind;
@@ -169,13 +163,11 @@
                       }
                     }
                   }
-                  //$scope.allPitchingStaffs.push(eachStaff);
                 });
                 $scope.allPitchingStaffs.concat($scope.staffsToAdd);
               });
             });
           });
-          //$scope.allGames = $scope.allGames2;
         });
         $.ajax({
           url: 'http://www.mlb.com/fantasylookup/json/named.fb_index_schedule.bam?league_id=' + $scope.leagueID,
@@ -228,7 +220,6 @@
           }
         });
         $scope.checkForStaff = function(id) {
-          //var JSONObject = { "animals": [{ name: "cat" }, { name: "dog" }] };
           for (i = 0; i < $scope.allPitchingStaffs.length; i++) {
             if ($scope.allPitchingStaffs[i].teamID == id) {
               return i;
