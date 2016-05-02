@@ -190,7 +190,7 @@
           type: 'GET',
           dataType: 'json',
           error: function() {
-            alert("Error");
+            alert("Error getting Schedule data. Cors-Anywhere may be down.");
           },
           success: function(data) {
             $scope.schedule = [];
@@ -249,7 +249,7 @@
             type: 'GET',
             dataType: 'json',
             error: function() {
-              alert("Joel Error");
+              alert("Error getting Lineup for the away team. Cors-Anywhere may be down.");
             },
             success: function(data) {
               $scope.teamFlagAway = "away";
@@ -287,7 +287,7 @@
             type: 'GET',
             dataType: 'json',
             error: function() {
-              alert("Joel Error");
+              alert("Error getting Lineup for the home team. Cors-Anywhere may be down.");
             },
             success: function(data) {
               $scope.homeStartingPlayers = [];
