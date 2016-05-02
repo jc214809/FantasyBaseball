@@ -40,14 +40,11 @@
       .directive('status', function() {
         return {
           restrict: 'E',
-          scope: false,
+          //scope: false,
           //controller: 'weeklyScoreBoardCtrl',
-          // scope: {
-          //   gameStatus: '=awaystarters',
-          //   awayPitchingStaff: '=awaystaff',
-          //   homeStartingPlayers: '=homestarters',
-          //   homePitchingStaff: '=homestaff'
-          // },
+          scope: {
+            gameStatus: '=status'
+          },
           template: "<img width='40px' src='../FantasyBaseball/images/pictures/Final.jpg' />"
         };
       })
@@ -72,7 +69,7 @@
           $scope.battersToAdd = [];
           $scope.staffsToAdd = [];
           $scope.gameURLs = [];
-          $scope.scoreBoard = 'http://gd2.mlb.com/components/game/mlb/year_' + "2016" + '/month_' + "05" + '/day_' + "01" + '/master_scoreboard.json';
+          $scope.scoreBoard = 'http://gd2.mlb.com/components/game/mlb/year_' + "2016" + '/month_' + "05" + '/day_' + "02" + '/master_scoreboard.json';
           $http.get($scope.scoreBoard).success(function(data) {
             $scope.eachGame = data.data.games.game;
             angular.forEach($scope.eachGame, function(game) {
@@ -329,7 +326,7 @@
           $scope.playersUpToBat = [];
           $scope.playersOnDeck = [];
           $scope.playersInTheHole = [];
-          $scope.scoreBoard = 'http://gd2.mlb.com/components/game/mlb/year_' + "2016" + '/month_' + "05" + '/day_' + "01" + '/master_scoreboard.json';
+          $scope.scoreBoard = 'http://gd2.mlb.com/components/game/mlb/year_' + "2016" + '/month_' + "05" + '/day_' + "02" + '/master_scoreboard.json';
           $http.get($scope.scoreBoard).success(function(data) {
             $scope.eachGame = data.data.games.game;
             angular.forEach($scope.eachGame, function(game) {
