@@ -8,7 +8,8 @@
             allGames: '=allgames',
             playersUpToBat: '=up',
             playersOnDeck: '=deck',
-            playersInTheHole: '=hole'
+            playersInTheHole: '=hole',
+            allGamesDetails: '=details'
           },
           templateUrl: 'scoreBoard/lineup.html'
         };
@@ -35,17 +36,6 @@
             homePitchingStaff: '=homestaff'
           },
           templateUrl: 'weeklyScoreboard/weeklyScoreBoard.html'
-        };
-      })
-      .directive('status', function() {
-        return {
-          restrict: 'E',
-          //scope: false,
-          //controller: 'weeklyScoreBoardCtrl',
-          scope: {
-            gameStatus: '=status'
-          },
-          template: "<img width='40px' src='../FantasyBaseball/images/pictures/Final.jpg' />"
         };
       })
       .factory("poollingFactory", function($timeout) {
@@ -78,7 +68,30 @@
                 $scope.playersOnDeckUpdated.push(game.ondeck.id);
                 $scope.playersInTheHoleUpdated.push(game.inhole.id);
               };
-              $scope.gameURLs.push('http://gd2.mlb.com' + game.game_data_directory + "/boxscore.json");
+              for (var i = 0; i < $scope.allGamesDetails.length; i++) {
+                if ($scope.allGamesDetails[i].gameId == game.game_pk) {
+                  $scope.gamesDetails = [];
+                  $scope.gamesDetails.status = game.status.ind;
+                  $scope.gamesDetails.inning = game.status.inning;
+                  $scope.gamesDetails.inningState = game.status.inning_state;
+                  $scope.gamesDetails.gameId = game.game_pk;
+                  $scope.gamesDetails.homeTeamFileCode = game.home_file_code;
+                  $scope.gamesDetails.awayTeamFileCode = game.away_file_code;
+                  $scope.gamesDetails.homeTeamAbb = game.home_name_abbrev;
+                  $scope.gamesDetails.awayTeamAbb = game.away_name_abbrev;
+                  //$scope.gamesDetails.homeScore = game.linescore.r.home;
+                  //$scope.gamesDetails.awayScore = game.linescore.r.away;
+                  $scope.gamesDetails.balls = game.status.b;
+                  $scope.gamesDetails.strikes = game.status.s;
+                  $scope.gamesDetails.outs = game.status.o;
+                  $scope.gamesDetails.doubleheader = game.double_header_sw;
+                  $scope.gamesDetails.gameTime = game.time;
+                  $scope.allGamesDetails[i] = $scope.gamesDetails;
+                }
+              }
+              //$scope.allGamesDetails.push($scope.gamesDetails);
+
+              $scope.gameURLs.push('http://gd2.mlb.om' + game.game_data_directory + "/boxscore.json");
             });
             angular.forEach($scope.gameURLs, function(games) {
               $scope.game = $http.get(games);
@@ -326,6 +339,7 @@
           $scope.playersUpToBat = [];
           $scope.playersOnDeck = [];
           $scope.playersInTheHole = [];
+          $scope.allGamesDetails = [];
           $scope.scoreBoard = 'http://gd2.mlb.com/components/game/mlb/year_' + "2016" + '/month_' + "05" + '/day_' + "02" + '/master_scoreboard.json';
           $http.get($scope.scoreBoard).success(function(data) {
             $scope.eachGame = data.data.games.game;
@@ -335,6 +349,23 @@
                 $scope.playersOnDeck.push(game.ondeck.id);
                 $scope.playersInTheHole.push(game.inhole.id);
               }
+              $scope.gamesDetails = [];
+              $scope.gamesDetails.status = game.status.ind;
+              $scope.gamesDetails.inning = game.status.inning;
+              $scope.gamesDetails.inningState = game.status.inning_state;
+              $scope.gamesDetails.gameId = game.game_pk;
+              $scope.gamesDetails.homeTeamFileCode = game.home_file_code;
+              $scope.gamesDetails.awayTeamFileCode = game.away_file_code;
+              $scope.gamesDetails.homeTeamAbb = game.home_name_abbrev;
+              $scope.gamesDetails.awayTeamAbb = game.away_name_abbrev;
+              //$scope.gamesDetails.homeScore = game.linescore.r.home;
+              //$scope.gamesDetails.awayScore = game.linescore.r.away;
+              $scope.gamesDetails.balls = game.status.b;
+              $scope.gamesDetails.strikes = game.status.s;
+              $scope.gamesDetails.outs = game.status.o;
+              $scope.gamesDetails.doubleheader = game.double_header_sw;
+              $scope.gamesDetails.gameTime = game.time;
+              $scope.allGamesDetails.push($scope.gamesDetails);
               $scope.gameURLs.push('http://gd2.mlb.com' + game.game_data_directory + "/boxscore.json");
             });
             angular.forEach($scope.gameURLs, function(games) {

@@ -1,5 +1,32 @@
 angular.module('fantasyBaseball.lineup', [])
+  .directive('status', function() {
+    return {
+      restrict: 'E',
+      controller: 'lineupCtrl',
+      scope: {
+        allGamesDetails: '=details'
+      },
+      templateUrl: "scoreBoard/status.html"
+    };
+  })
   .controller('lineupCtrl', function lineupController($scope, $http, $q) {
+    $scope.gameStatus = function(gameID) {
+      for (var i = 0; i < $scope.allGames.length; i++) {
+        if ($scope.allGames[i].id == gameID) {
+          $scope.gameStatus = $scope.allGames[i].status;
+        }
+      }
+    };
+    $scope.getGameDetails = function(teamFileCode) {
+      for (i = 0; i < $scope.allGamesDetails.length; i++) {
+        if ($scope.allGamesDetails[i].homeTeamFileCode == teamFileCode || $scope.allGamesDetails[i].awayTeamFileCode == teamFileCode) {
+          $scope.currentGame = $scope.allGamesDetails[i];
+          break;
+        } else {
+          $scope.currentGame = [];
+        }
+      }
+    };
     $scope.hittingStats = function(playerID) {
       //$scope.allGames = allGames;
       for (var i = 0; i < $scope.allGames.length; i++) {
