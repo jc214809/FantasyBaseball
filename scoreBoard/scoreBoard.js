@@ -20,7 +20,8 @@
           controller: 'pitchingStaffCtrl',
           scope: {
             staffs: '=staffs',
-            allPitchingStaffs: '=allpitchingstaffs'
+            allPitchingStaffs: '=allpitchingstaffs',
+            allGamesDetails: '=details'
           },
           templateUrl: 'scoreBoard/pitchingStaff.html'
         };

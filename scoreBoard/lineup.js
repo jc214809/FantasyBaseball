@@ -2,11 +2,7 @@ angular.module('fantasyBaseball.lineup', [])
   .directive('status', function() {
     return {
       restrict: 'E',
-      //scope: false,
       controller: 'lineupCtrl',
-      // scope: {
-      //   currentGame: '=details'
-      // },
       templateUrl: "scoreBoard/status.html"
     };
   })
