@@ -80,8 +80,10 @@
                   $scope.gamesDetails.awayTeamFileCode = game.away_file_code;
                   $scope.gamesDetails.homeTeamAbb = game.home_name_abbrev;
                   $scope.gamesDetails.awayTeamAbb = game.away_name_abbrev;
-                  //$scope.gamesDetails.homeScore = game.linescore.r.home;
-                  //$scope.gamesDetails.awayScore = game.linescore.r.away;
+                  if (game.status.ind != 'S' && game.status.ind != 'P') {
+                    $scope.gamesDetails.homeScore = game.linescore.r.home;
+                    $scope.gamesDetails.awayScore = game.linescore.r.away;
+                  }
                   $scope.gamesDetails.balls = game.status.b;
                   $scope.gamesDetails.strikes = game.status.s;
                   $scope.gamesDetails.outs = game.status.o;
@@ -359,8 +361,10 @@
               $scope.gamesDetails.awayTeamFileCode = game.away_file_code;
               $scope.gamesDetails.homeTeamAbb = game.home_name_abbrev;
               $scope.gamesDetails.awayTeamAbb = game.away_name_abbrev;
-              //$scope.gamesDetails.homeScore = game.linescore.r.home;
-              //$scope.gamesDetails.awayScore = game.linescore.r.away;
+              if (game.status.ind != 'S' && game.status.ind != 'P') {
+                $scope.gamesDetails.homeScore = game.linescore.r.home;
+                $scope.gamesDetails.awayScore = game.linescore.r.away;
+              }
               $scope.gamesDetails.balls = game.status.b;
               $scope.gamesDetails.strikes = game.status.s;
               $scope.gamesDetails.outs = game.status.o;
