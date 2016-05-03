@@ -3,10 +3,10 @@ angular.module('fantasyBaseball.lineup', [])
     return {
       restrict: 'E',
       //scope: false,
-      //controller: 'lineupCtrl',
-      scope: {
-        currentGame: '=details'
-      },
+      controller: 'lineupCtrl',
+      // scope: {
+      //   currentGame: '=details'
+      // },
       templateUrl: "scoreBoard/status.html"
     };
   })

@@ -1,4 +1,5 @@
 <div class="row" ng-repeat="staff in staffs">
+  {{getGameDetails(staff.team_file_code)}}
   <div class="col-xs-1 player-row player-row">
     <img class="team-logo removeMargins" src="http://mlb.mlb.com/images/logos/42x50/{{staff.team_file_code}}.png" />
   </div>
@@ -7,10 +8,10 @@
   </div>
   <div class="col-xs-10 player-row removeLeftPad">
     <div class="row removeMargins">
-      <div class="col-xs-9 no-pad">{{staff.player_name}}, {{staff.position}}</div>
-      <div class="no-pad points">Points:{{getPitchingStaffScore(staff.player_id)}}
-        <!-- <span ng-attr-id="{{staff.player_id}}"></span> -->
+      <div class="col-xs-9 no-pad">{{staff.player_name}}, {{staff.position}}
+        <status></status>
       </div>
+      <div class="no-pad points">Points:{{getPitchingStaffScore(staff.player_id)}}</div>
     </div>
     <div class="row removeMargins">
       <div class="col-xs-11">{{getPitchingStatLine(staff.player_id)}}</div>
