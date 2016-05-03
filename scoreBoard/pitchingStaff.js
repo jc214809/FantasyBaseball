@@ -17,14 +17,14 @@ angular.module('fantasyBaseball.pitchingStaff', [])
           };
           if (x.out != 0) {
             var inning = parseInt(x.out) / 3;
-            inning = inning.toString();
-            var index = inning.indexOf('.');
-            if (inning.charAt(index + 1) == 3) {;
-              $scope.pitchingStatLine += ' ' + inning.slice(0, inning.indexOf(".")) + '.1' + ' IP ,';
-            } else if (inning.charAt(index + 1) == 6) {
-              $scope.pitchingStatLine += ' ' + inning.slice(0, inning.indexOf(".")) + '.2' + ' IP ,';
+            var inningString = inning.toString();
+            var index = inningString.indexOf('.');
+            if (inningString.charAt(index + 1) == 3) {;
+              $scope.pitchingStatLine += ' ' + inningString.slice(0, inningString.indexOf(".")) + '.1' + ' IP ,';
+            } else if (inningString.charAt(index + 1) == 6) {
+              $scope.pitchingStatLine += ' ' + inningString.slice(0, inningString.indexOf(".")) + '.2' + ' IP ,';
             } else {
-              $scope.pitchingStatLine += ' ' + inning + ' IP ,';
+              $scope.pitchingStatLine += ' ' + inningString + ' IP ,';
             }
           };
           if (x.h != 0) {
