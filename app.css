@@ -5,6 +5,13 @@
 
 .status-icon {
   width: 40px;
+  vertical-align: middle;
+}
+
+.pregame-info {
+  font-size: 7px;
+  color: orange;
+  vertical-align: middle;
 }
 
 
@@ -63,6 +70,12 @@
   }
   .status-icon {
     width: 35px;
+    vertical-align: middle;
+  }
+  .pregame-info {
+    font-size: 9px;
+    color: orange;
+    vertical-align: middle;
   }
 }
 
@@ -90,5 +103,11 @@
   }
   .status-icon {
     width: 30px;
+    vertical-align: middle;
+  }
+  .pregame-info {
+    font-size: 8px;
+    color: orange;
+    vertical-align: middle;
   }
 }

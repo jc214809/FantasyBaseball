@@ -60,7 +60,7 @@
           $scope.battersToAdd = [];
           $scope.staffsToAdd = [];
           $scope.gameURLs = [];
-          $scope.scoreBoard = 'http://gd2.mlb.com/components/game/mlb/year_' + "2016" + '/month_' + "05" + '/day_' + "02" + '/master_scoreboard.json';
+          $scope.scoreBoard = 'http://gd2.mlb.com/components/game/mlb/year_' + "2016" + '/month_' + "05" + '/day_' + "03" + '/master_scoreboard.json';
           $http.get($scope.scoreBoard).success(function(data) {
             $scope.eachGame = data.data.games.game;
             angular.forEach($scope.eachGame, function(game) {
@@ -86,7 +86,7 @@
                   $scope.gamesDetails.strikes = game.status.s;
                   $scope.gamesDetails.outs = game.status.o;
                   $scope.gamesDetails.doubleheader = game.double_header_sw;
-                  $scope.gamesDetails.gameTime = game.time;
+                  $scope.gamesDetails.gameTime = game.time + ' ' + game.ampm;
                   $scope.allGamesDetails[i] = $scope.gamesDetails;
                 }
               }
@@ -341,7 +341,7 @@
           $scope.playersOnDeck = [];
           $scope.playersInTheHole = [];
           $scope.allGamesDetails = [];
-          $scope.scoreBoard = 'http://gd2.mlb.com/components/game/mlb/year_' + "2016" + '/month_' + "05" + '/day_' + "02" + '/master_scoreboard.json';
+          $scope.scoreBoard = 'http://gd2.mlb.com/components/game/mlb/year_' + "2016" + '/month_' + "05" + '/day_' + "03" + '/master_scoreboard.json';
           $http.get($scope.scoreBoard).success(function(data) {
             $scope.eachGame = data.data.games.game;
             angular.forEach($scope.eachGame, function(game) {
@@ -365,7 +365,7 @@
               $scope.gamesDetails.strikes = game.status.s;
               $scope.gamesDetails.outs = game.status.o;
               $scope.gamesDetails.doubleheader = game.double_header_sw;
-              $scope.gamesDetails.gameTime = game.time;
+              $scope.gamesDetails.gameTime = game.time + ' ' + game.ampm;
               $scope.allGamesDetails.push($scope.gamesDetails);
               $scope.gameURLs.push('http://gd2.mlb.com' + game.game_data_directory + "/boxscore.json");
             });
