@@ -1,9 +1,5 @@
 angular.module('fantasyBaseball.pitchingStaff', [])
   .controller('pitchingStaffCtrl', function pitchingStaffController($scope, $http) {
-    $scope.teamsJSON = null;
-    $http.get('../FantasyBaseball/teams.json').success(function(data) {
-      $scope.teamsJSON = data;
-    });
     $scope.getPitchingStatLine = function(teamId) {
       for (var i = 0; i < $scope.allPitchingStaffs.length; i++) {
         if ($scope.allPitchingStaffs[i].teamID == teamId) {
@@ -114,16 +110,5 @@ angular.module('fantasyBaseball.pitchingStaff', [])
         }
       };
       return 0;
-    };
-    $scope.getTeamAbrev = function(teamId) {
-      for (var i = 0; i < $scope.teamsJSON.length; i++) {
-        if ($scope.teamsJSON[i].team_id = teamId) {
-          // if ($scope.teamsJSON[i].teamcode.length > 1) {
-
-          // }
-
-          return $scope.teamsJSON[i].teamcode.value;
-        }
-      };
     };
   });
