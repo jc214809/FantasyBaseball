@@ -36,6 +36,32 @@ angular.module('fantasyBaseball.lineup', [])
           return 'B';
       }
     }
+    $.ajax({
+      url: 'http://www.mlb.com/fantasylookup/json/named.wsfb_news_injury.bam',
+      type: 'GET',
+      dataType: 'json',
+      error: function() {
+        console.log("Could not retreive injury data");
+      },
+      success: function(data) {
+        $scope.allInjuryInfo = [];
+        angular.forEach(data.wsfb_news_injury.queryResults.row, function(player) {
+          $scope.allInjuryInfo.push(player);
+        });
+      }
+    });
+    $scope.injuryDetails = function(playerID) {
+      $scope.injuryInfo = null;
+      $scope.injuryUpdate = null;
+      for (var i = 0; i < $scope.allInjuryInfo.length; i++) {
+        if ($scope.allInjuryInfo[i].player_id == playerID) {
+          $scope.injuryInfo = $scope.allInjuryInfo[i].due_back + ": " + $scope.allInjuryInfo[i].injury_desc;
+          $scope.injuryUpdate = $scope.allInjuryInfo[i].injury_update;
+          return true;
+        }
+      }
+      return false;
+    }
     $scope.hittingStats = function(playerID) {
       //$scope.allGames = allGames;
       for (var i = 0; i < $scope.allGames.length; i++) {
