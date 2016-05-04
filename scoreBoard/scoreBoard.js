@@ -134,7 +134,7 @@
                 $scope.allGames.concat($scope.battersToAdd);
                 angular.forEach(gameData[0].data.data.boxscore.pitching, function(eachStaff) {
                   $scope.matchup = gameData[0].data.data.boxscore;
-                  console.log($scope.matchup.away_fname + ' vs. ' + $scope.matchup.home_fname + ' ' + $scope.matchup.status_ind);
+                  //console.log($scope.matchup.away_fname + ' vs. ' + $scope.matchup.home_fname + ' ' + $scope.matchup.status_ind);
                   delete eachStaff.pitcher;
                   if (eachStaff.team_flag == 'away') {
                     eachStaff.teamID = $scope.matchup.away_id;
@@ -142,7 +142,8 @@
                     if ($scope.check > -1) {
                       if ($scope.allPitchingStaffs[$scope.check].teamID == eachStaff.teamID) {
                         if ($scope.matchup.status_ind == 'F' || $scope.matchup.status_ind == 'O') {
-                          if ($scope.matchup.linescore.home_team_runs < $scope.matchup.linescore.away_team_runs) {
+                          console.log($scope.matchup.away_fname + ' vs. ' + $scope.matchup.home_fname + ' ' + $scope.matchup.status_ind + ' ' + (parseInt($scope.matchup.linescore.home_team_runs) < parseInt($scope.matchup.linescore.away_team_runs)))
+                          if (parseInt($scope.matchup.linescore.home_team_runs) < parseInt($scope.matchup.linescore.away_team_runs)) {
                             eachStaff.win = '1';
                             eachStaff.loss = '0';
                           } else {
@@ -172,7 +173,7 @@
                         if ($scope.allPitchingStaffs[$scope.check].teamID == eachStaff.teamID) {
                           if ($scope.allPitchingStaffs[i].teamID == eachStaff.teamID) {
                             if ($scope.matchup.status_ind == 'F' || $scope.matchup.status_ind == 'O') {
-                              if ($scope.matchup.linescore.home_team_runs > $scope.matchup.linescore.away_team_runs) {
+                              if (parseInt($scope.matchup.linescore.home_team_runs) > parseInt($scope.matchup.linescore.away_team_runs)) {
                                 eachStaff.win = '1';
                                 eachStaff.loss = '0';
                               } else {
@@ -394,7 +395,7 @@
                   if (eachBatter.team_flag == 'away') {
                     eachBatter.teamID = $scope.matchup.away_id;
                     if ($scope.matchup.status_ind == 'F' || $scope.matchup.status_ind == 'O') {
-                      if ($scope.matchup.linescore.home_team_runs < $scope.matchup.linescore.away_team_runs) {
+                      if (parseInt($scope.matchup.linescore.home_team_runs) < parseInt($scope.matchup.linescore.away_team_runs)) {
                         eachBatter.win = '1';
                         eachBatter.loss = '0';
                       } else {
@@ -408,7 +409,7 @@
                   } else {
                     eachBatter.teamID = $scope.matchup.home_id;
                     if ($scope.matchup.status_ind == 'F' || $scope.matchup.status_ind == 'O') {
-                      if ($scope.matchup.linescore.home_team_runs > $scope.matchup.linescore.away_team_runs) {
+                      if (parseInt($scope.matchup.linescore.home_team_runs) > parseInt($scope.matchup.linescore.away_team_runs)) {
                         eachBatter.win = '1';
                         eachBatter.loss = '0';
                       } else {
