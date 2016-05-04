@@ -142,7 +142,7 @@
                     if ($scope.check > -1) {
                       if ($scope.allPitchingStaffs[$scope.check].teamID == eachStaff.teamID) {
                         if ($scope.matchup.status_ind == 'F' || $scope.matchup.status_ind == 'O') {
-                          console.log($scope.matchup.away_fname + ' vs. ' + $scope.matchup.home_fname + ' ' + $scope.matchup.status_ind + ' ' + (parseInt($scope.matchup.linescore.home_team_runs) < parseInt($scope.matchup.linescore.away_team_runs)))
+                          // console.log($scope.matchup.away_fname + ' vs. ' + $scope.matchup.home_fname + ' ' + $scope.matchup.status_ind + ' ' + (parseInt($scope.matchup.linescore.home_team_runs) < parseInt($scope.matchup.linescore.away_team_runs)))
                           if (parseInt($scope.matchup.linescore.home_team_runs) < parseInt($scope.matchup.linescore.away_team_runs)) {
                             eachStaff.win = '1';
                             eachStaff.loss = '0';

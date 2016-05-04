@@ -138,11 +138,9 @@ angular.module('fantasyBaseball.weeklyScoreBoard', [])
     $scope.todaysTotal = function(starters, staff) {
       $scope.total = 0;
       for (var i = 0; i < starters.length; i++) {
-        console.log($('#' + starters[i].player_id).val());
         $scope.total += parseInt($('#' + starters[i].player_id).text());
       };
       for (var i = 0; i < staff.length; i++) {
-        console.log($('#' + starters[i].player_id).val());
         $scope.total += parseInt($('#' + staff[i].player_id).text());
       };
       return $scope.total;
