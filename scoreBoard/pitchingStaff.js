@@ -15,7 +15,7 @@ angular.module('fantasyBaseball.pitchingStaff', [])
             var inning = parseInt(x.out) / 3;
             var inningString = inning.toString();
             var index = inningString.indexOf('.');
-            if (inningString.charAt(index + 1) == 3) {;
+            if (inningString.charAt(index + 1) == 3) {
               $scope.pitchingStatLine += ' ' + inningString.slice(0, inningString.indexOf(".")) + '.1' + ' IP ,';
             } else if (inningString.charAt(index + 1) == 6) {
               $scope.pitchingStatLine += ' ' + inningString.slice(0, inningString.indexOf(".")) + '.2' + ' IP ,';
