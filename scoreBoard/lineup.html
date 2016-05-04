@@ -13,7 +13,7 @@
           <div>
             <b class="player-details">{{player.player_name}}, {{player.slot}}</b>
             <status></status>
-            <img src="..\FantasyBaseball\images\pictures\Injury.jpg" class="injury-symbol" ng-if="injuryDetails(player.player_id)" title="{{injuryInfo}}" ng-click="alert({{injuryUpdate}});">
+            <img src="..\FantasyBaseball\images\pictures\Injury.jpg" class="injury-symbol" ng-if="injuryDetails(player.player_id)" title="{{injuryInfo}}" ng-click="getInjuryUpdate(player.player_id)">
           </div>
         </div>
         <div class="no-pad points">Points:{{getHittersScore(player.player_id)}}

@@ -52,15 +52,21 @@ angular.module('fantasyBaseball.lineup', [])
     });
     $scope.injuryDetails = function(playerID) {
       $scope.injuryInfo = null;
-      $scope.injuryUpdate = null;
       for (var i = 0; i < $scope.allInjuryInfo.length; i++) {
         if ($scope.allInjuryInfo[i].player_id == playerID) {
           $scope.injuryInfo = $scope.allInjuryInfo[i].due_back + ": " + $scope.allInjuryInfo[i].injury_desc;
-          $scope.injuryUpdate = $scope.allInjuryInfo[i].injury_update;
           return true;
         }
       }
       return false;
+    }
+    $scope.getInjuryUpdate = function(playerID) {
+      for (var i = 0; i < $scope.allInjuryInfo.length; i++) {
+        if ($scope.allInjuryInfo[i].player_id == playerID) {
+          alert($scope.allInjuryInfo[i].injury_update);
+          break;
+        }
+      }
     }
     $scope.hittingStats = function(playerID) {
       //$scope.allGames = allGames;
