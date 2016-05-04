@@ -1,8 +1,8 @@
 angular.module('fantasyBaseball.weeklyScoreBoard', [])
   .controller('weeklyScoreBoardCtrl', function weeklyScoreBoardController($scope, $http, $q) {
-           $scope.periodId = weekOfYear(new Date) - 3;
-       $scope.teamID = 85827;
-       $scope.leagueID = 9518;
+    $scope.periodId = weekOfYear(new Date) - 3;
+    $scope.teamID = 85827;
+    $scope.leagueID = 9518;
     $scope.schedule = [];
     $scope.matchUpIds = [];
     $scope.opponentsSchedule = [];
@@ -51,7 +51,6 @@ angular.module('fantasyBaseball.weeklyScoreBoard', [])
             break;
           }
         }
-        $scope.matchupScores();
         $scope.$apply();
       }
     });
@@ -75,65 +74,78 @@ angular.module('fantasyBaseball.weeklyScoreBoard', [])
               $scope.homeScoreData.push($scope.masterScoreData[i]);
             }
           }
-          $scope.awayScores = $scope.weeklyScoreBoardJson($scope.awayScoreData);
+          $scope.awayScores = $scope.weeklyScoreBoardJson($scope.awayScoreData, $scope.awayStartingPlayers, $scope.awayPitchingStaff);
           var awayTotal = $scope.weeklyTotal($scope.awayScores);
           $scope.awayScores.total = awayTotal;
-          $scope.homeScores = $scope.weeklyScoreBoardJson($scope.homeScoreData);
+          $scope.homeScores = $scope.weeklyScoreBoardJson($scope.homeScoreData, $scope.homeStartingPlayers, $scope.homePitchingStaff);
           var homeTotal = $scope.weeklyTotal($scope.homeScores);
           $scope.homeScores.total = homeTotal;
         }
       });
     };
-    $scope.weeklyScoreBoardJson = function(scoringData) {
+    $scope.weeklyScoreBoardJson = function(scoringData, starters, staff) {
       $scope.weeklyScores = ['{ "monday": "0" , "tuesday": "0", "wednesday": "0", "thursday": "0", "friday": "0", "saturday": "0", "sunday": "0", "total": "0"}'];
       var today = new Date();
       var obj = JSON.parse($scope.weeklyScores);
       for (var i = 0; i < scoringData.length; i++) {
         if (scoringData[i].scoring_day == 2) {
-          if (today.getDay() == 1 && $scope.periodId == 14) {
-            obj.monday = 100;
+          if (today.getDay() == 1 && $scope.periodId == $scope.periodId) {
+            obj.monday = $scope.todaysTotal(starters, staff);
           } else {
             obj.monday = scoringData[i].total_points;
           }
         } else if (scoringData[i].scoring_day == 3) {
-          if (today.getDay() == 2 && $scope.periodId == 14) {
-            obj.tuesday = 100;
+          if (today.getDay() == 2 && $scope.periodId == $scope.periodId) {
+            obj.tuesday = $scope.todaysTotal(starters, staff);
           } else {
             obj.tuesday = scoringData[i].total_points;
           }
         } else if (scoringData[i].scoring_day == 4) {
-          if (today.getDay() == 3 && $scope.periodId == 14) {
-            obj.wednesday = 100;
+          if (today.getDay() == 3 && $scope.periodId == $scope.periodId) {
+            obj.wednesday = $scope.todaysTotal(starters, staff);
           } else {
             obj.wednesday = scoringData[i].total_points;
           }
         } else if (scoringData[i].scoring_day == 5) {
-          if (today.getDay() == 4 && $scope.periodId == 14) {
-            obj.thursday = 100;
+          if (today.getDay() == 4 && $scope.periodId == $scope.periodId) {
+            obj.thursday = $scope.todaysTotal(starters, staff);
           } else {
             obj.thursday = scoringData[i].total_points;
           }
         } else if (scoringData[i].scoring_day == 6) {
-          if (today.getDay() == 5 && $scope.periodId == 14) {
-            obj.friday = 100;
+          if (today.getDay() == 5 && $scope.periodId == $scope.periodId) {
+            obj.friday = $scope.todaysTotal(starters, staff);
           } else {
             obj.friday = scoringData[i].total_points;
           }
         } else if (scoringData[i].scoring_day == 7) {
-          if (today.getDay() == 6 && $scope.periodId == 14) {
-            obj.saturday = 100;
+          if (today.getDay() == 6 && $scope.periodId == $scope.periodId) {
+            obj.saturday = $scope.todaysTotal(starters, staff);
           } else {
             obj.saturday = scoringData[i].total_points;
           }
         } else {
-          if (today.getDay() == 0 && $scope.periodId == 14) {
-            obj.sunday = 100;
+          if (today.getDay() == 0 && $scope.periodId == $scope.periodId) {
+            obj.sunday = $scope.todaysTotal(starters, staff);
           } else {
             obj.sunday = scoringData[i].total_points;
           }
         }
       }
       return obj;
+    };
+
+    $scope.todaysTotal = function(starters, staff) {
+      $scope.total = 0;
+      for (var i = 0; i < starters.length; i++) {
+        console.log($('#' + starters[i].player_id).val());
+        $scope.total += parseInt($('#' + starters[i].player_id).text());
+      };
+      for (var i = 0; i < staff.length; i++) {
+        console.log($('#' + starters[i].player_id).val());
+        $scope.total += parseInt($('#' + staff[i].player_id).text());
+      };
+      return $scope.total;
     };
 
     $scope.weeklyTotal = function(scores) {

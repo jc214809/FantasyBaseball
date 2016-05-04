@@ -1,11 +1,4 @@
 td,
 th {
-    text-align: center;
-}
-
-/*th {*/
-/*    width: 10px;*/
-/*}*/
-table {
-    max-width: 100%;
+  text-align: center;
 }
