@@ -1,7 +1,7 @@
 <b class="pregame-info" ng-if="currentGame.status == 'S' || currentGame.status == 'P'">{{currentGame.awayTeamAbb}} @ {{currentGame.homeTeamAbb}} {{currentGame.gameTime}}</b>
 <span class="game-info status-info" ng-if="currentGame.status == 'F' || currentGame.status == 'O' || currentGame.status == 'IR' || currentGame.status == 'I'|| currentGame.status == 'MA' || currentGame.status == 'PW'"> 
-<span class="game-info pregame-info">{{currentGame.awayTeamAbb}} {{currentGame.awayScore}} {{currentGame.homeTeamAbb}} {{currentGame.homeScore}}</span>
-<b class="pregame-info" ng-if="currentGame.status != 'F' && currentGame.status != 'O'  && currentGame.status != 'DR'">{{currentGame.inningState}} {{currentGame.inning}}</b>
+<b class="game-info">{{currentGame.awayTeamAbb}} {{currentGame.awayScore}} {{currentGame.homeTeamAbb}} {{currentGame.homeScore}}</b>
+<b class="game-info" ng-if="currentGame.status != 'F' && currentGame.status != 'O'  && currentGame.status != 'DR'">, {{getInningState(currentGame.inningState)}}{{currentGame.inning}}</b>
 </span>
 <img class="status-icon" ng-if="currentGame.status == 'F' || currentGame.status =='O'" src='..\FantasyBaseball\images\pictures\Final.jpg' />
 <img ng-if="currentGame.status == 'PW'" class="status-icon" src="..\FantasyBaseball\images\pictures\warmUp.jpg" />

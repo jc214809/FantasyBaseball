@@ -15,6 +15,13 @@
 }
 
 
+/*.player-details {
+  font-size: 20px;
+  color: #000099;
+}
+*/
+
+
 /* Bootstrap Media Query Breakpoints
 
 /* Custom, iPhone Retina */
@@ -77,6 +84,15 @@
     color: orange;
     vertical-align: middle;
   }
+  .game-info {
+    font-size: 9px;
+    /*color: red;*/
+    vertical-align: middle;
+  }
+  .player-details {
+    font-size: 11.5px;
+    color: #000099;
+  }
 }
 
 @media screen and (max-width: 568px) {
@@ -109,5 +125,14 @@
     font-size: 8px;
     color: orange;
     vertical-align: middle;
+  }
+  .game-info {
+    font-size: 8px;
+    /*color: blue;*/
+    vertical-align: middle;
+  }
+  .player-details {
+    font-size: 11.5px;
+    color: #000099;
   }
 }

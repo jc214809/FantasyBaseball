@@ -24,6 +24,18 @@ angular.module('fantasyBaseball.lineup', [])
         }
       }
     };
+    $scope.getInningState = function(inningState) {
+      switch (inningState.toLowerCase()) {
+        case 'top':
+          return 'T';
+        case 'middle':
+          return 'M';
+        case 'end':
+          return 'E';
+        default:
+          return 'B';
+      }
+    }
     $scope.hittingStats = function(playerID) {
       //$scope.allGames = allGames;
       for (var i = 0; i < $scope.allGames.length; i++) {
