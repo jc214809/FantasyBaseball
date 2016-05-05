@@ -1,6 +1,6 @@
    jQuery.ajaxPrefilter(function(options) {
      if (options.crossDomain && jQuery.support.cors) {
-       options.url = 'http://mlbfantasy.herokuapp.com/' + options.url;
+       options.url = 'http://jc214809.herokuapp.com/' + options.url;
      }
    });
 

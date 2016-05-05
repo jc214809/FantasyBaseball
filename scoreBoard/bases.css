@@ -1,0 +1,87 @@
+.circle {
+  position: relative;
+  font-size: 7px!important;
+  color: grey;
+  padding: 0px 0px 0px 0px;
+}
+
+.activeBall {
+  color: green;
+}
+
+.activeStrike {
+  color: red;
+}
+
+.activeOut {
+  color: blue;
+}
+
+.strike {
+  top: -9px;
+  right: 40px;
+}
+
+.out {
+  top: 0px;
+  right: 70px;
+}
+
+.ball {
+  top: -18px;
+}
+
+.ass .base {
+  position: relative;
+  width: 8px;
+  height: 8px;
+  color: grey;
+  -webkit-border-radius: 1px;
+  -webkit-background-clip: padding-box;
+  -moz-border-radius: 1px;
+  -moz-background-clip: padding;
+  border-radius: 1px;
+  background-clip: padding-box;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+  filter: progid: DXImageTransform.Microsoft.BasicImage(rotation=5)
+}
+
+.ass .base.first {
+  top: 0Spx;
+  left: -3px;
+}
+
+.ass .base.second {
+  top: -12px;
+}
+
+.ass .base.third {
+  top: 0px;
+  left: 3px
+}
+
+.ass .bases_container {
+  margin: 0 auto;
+  width: 39px;
+  height: 32px
+}
+
+.ass .base.active {
+  color: #fbbb00;
+}
+
+.ass .base.active.fantasyplayer {
+  color: #bcf000;
+}
+
+@media screen and (max-width: 568px) {
+  .ass .base {
+    position: relative;
+    width: 6px;
+    height: 6px;
+  }
+}
