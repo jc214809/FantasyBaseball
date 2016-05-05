@@ -111,7 +111,7 @@
                 angular.forEach(gameData[0].data.data.boxscore.batting[0].batter, function(eachBatter) {
                   for (var i = 0; i < $scope.allGames.length; ++i) {
                     eachBatter.gameID = $scope.matchup.game_pk;
-                    eachBatter.status = $scope.matchup.status_ind;
+                    eachBatter.teamID = $scope.matchup.away_id;
                     if ($scope.allGames[i].id === eachBatter.id) {
                       $scope.allGames[i] = eachBatter;
                     } else {
@@ -122,7 +122,7 @@
                 angular.forEach(gameData[0].data.data.boxscore.batting[1].batter, function(eachBatter) {
                   for (var i = 0; i < $scope.allGames.length; ++i) {
                     eachBatter.gameID = $scope.matchup.game_pk;
-                    eachBatter.status = $scope.matchup.status_ind;
+                    eachBatter.teamID = $scope.matchup.home_id;
                     if ($scope.allGames[i].id === eachBatter.id) {
                       $scope.allGames[i] = eachBatter;
                     } else {
@@ -382,13 +382,15 @@
                 $scope.matchup = gameData[0].data.data.boxscore;
                 angular.forEach(gameData[0].data.data.boxscore.batting[0].batter, function(eachBatter) {
                   eachBatter.gameID = $scope.matchup.game_pk;
-                  eachBatter.status = $scope.matchup.status_ind;
+                  eachBatter.teamID = $scope.matchup.away_id;
                   $scope.allGames.push(eachBatter);
+                  console.log(eachBatter);
                 });
                 angular.forEach(gameData[0].data.data.boxscore.batting[1].batter, function(eachBatter) {
                   eachBatter.gameID = $scope.matchup.game_pk;
-                  eachBatter.status = $scope.matchup.status_ind;
+                  eachBatter.teamID = $scope.matchup.home_id;
                   $scope.allGames.push(eachBatter);
+                  console.log(eachBatter);
                 });
                 angular.forEach(gameData[0].data.data.boxscore.pitching, function(eachBatter) {
                   delete eachBatter.pitcher;
