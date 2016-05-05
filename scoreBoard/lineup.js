@@ -7,6 +7,7 @@ angular.module('fantasyBaseball.lineup', [])
     };
   })
   .controller('lineupCtrl', function lineupController($scope, $http, $q) {
+    $scope.allInjuryInfo = [];
     $scope.gameStatus = function(gameID) {
       for (var i = 0; i < $scope.allGames.length; i++) {
         if ($scope.allGames[i].id == gameID) {
@@ -44,7 +45,7 @@ angular.module('fantasyBaseball.lineup', [])
         console.log("Could not retreive injury data");
       },
       success: function(data) {
-        $scope.allInjuryInfo = [];
+
         angular.forEach(data.wsfb_news_injury.queryResults.row, function(player) {
           $scope.allInjuryInfo.push(player);
         });
