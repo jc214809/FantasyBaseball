@@ -1,6 +1,6 @@
    jQuery.ajaxPrefilter(function(options) {
      if (options.crossDomain && jQuery.support.cors) {
-       options.url = 'http://jc214809.herokuapp.com/' + options.url;
+       options.url = 'http://cors-anytime.herokuapp.com/' + options.url;
      }
    });
 
