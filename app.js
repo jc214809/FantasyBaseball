@@ -1,11 +1,11 @@
    jQuery.ajaxPrefilter(function(options) {
      if (options.crossDomain && jQuery.support.cors) {
-        var today = new Date().getHours();
-if (today >= 7 && today <= 19) {
-   options.url = 'https://cors-anytime.herokuapp.com/' + options.url;
-} else {
-    options.url = 'https://cors-anytime.herokuapp.com/' + options.url;
-}
+       var today = new Date().getHours();
+       if (today >= 7 && today <= 19) {
+         options.url = 'https://mlbfantasy.herokuapp.com/' + options.url;
+       } else {
+         options.url = 'https://jc214809.herokuapp.com/' + options.url;
+       }
      }
    });
 
