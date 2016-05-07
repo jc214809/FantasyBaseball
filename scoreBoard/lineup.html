@@ -8,13 +8,13 @@
       <img class="player-picture removeMargins" src="http://mlb.mlb.com/images/gameday/mugshots/mlb/{{player.player_id}}.jpg" />
     </div>
     <div class="col-xs-10 player-row removeLeftPad">
-      <!--<div class="row removeMargins">-->
+      <div class="row removeMargins">
         <div class="col-xs-9 no-pad">
           <div>
             <b class="player-details">{{player.player_name}}, {{player.slot}}</b>
             <status></status>
             <img src="..\FantasyBaseball\images\pictures\Injury.jpg" class="injury-symbol" ng-if="injuryDetails(player.player_id)" title="{{injuryInfo}}" ng-click="getInjuryUpdate(player.player_id)">
-      <!--    </div>-->
+        </div>
         </div>
         <div class="no-pad points">Points:<span ng-attr-id="{{player.player_id}}">{{getHittersScore(player.player_id)}}</span>
         </div>
