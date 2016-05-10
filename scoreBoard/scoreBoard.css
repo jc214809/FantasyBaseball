@@ -14,7 +14,7 @@
 
 .lineup .player-picture {
   width: 62px;
-  height: 74px;
+  height: auto;
   float: right;
 }
 
