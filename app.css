@@ -148,4 +148,20 @@
     vertical-align: middle;
     width: 9px;
   }
+  .score-away-abb{
+    top: 0px;
+    left: 3px
+  }
+  /*.score-away-abb{*/
+  /*  top: 0px;*/
+  /*  left: 3px*/
+  /*}*/
+  /*.away-score{*/
+  /*  top: 0px;*/
+  /*  left: 3px*/
+  /*}*/
+  /*.home-score{*/
+  /*  top: 0px;*/
+  /*  left: 3px*/
+  /*}*/
 }
