@@ -16,7 +16,7 @@
             <img src="..\FantasyBaseball\images\pictures\Injury.jpg" class="injury-symbol" ng-if="injuryDetails(player.player_id)" title="{{injuryInfo}}" ng-click="getInjuryUpdate(player.player_id)">
           </div>
         </div>
-        <div class="no-pad points">Points:<span ng-attr-id="{{player.player_id}}">{{getHittersScore(player.player_id,player.gameId)}}</span>
+        <div class="no-pad points">Points:<span ng-attr-id="{{player.gameId}}{{player.player_id}}">{{getHittersScore(player.player_id,player.gameId)}}</span>
         </div>
       </div>
       <div class="row removeMargins">
