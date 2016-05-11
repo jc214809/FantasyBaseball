@@ -2,8 +2,8 @@
 <span class="game-info status-info" ng-if="currentGame.status == 'F' || currentGame.status == 'O' || currentGame.status == 'IR' || currentGame.status == 'I'|| currentGame.status == 'MA' || currentGame.status == 'PW'|| currentGame.status == 'NF'|| currentGame.status == 'MO'"> 
 
 
-<b class="score-away-abb">{{currentGame.awayTeamAbb}}</b><b class="away-score">{{currentGame.awayScore}}</b> 
-<b class="score-home-abb">{{currentGame.homeTeamAbb}}</b><b class="home-score">{{currentGame.homeScore}}</b>
+<b class="score-away-abb">{{currentGame.awayTeamAbb}}</b> <b class="away-score">{{currentGame.awayScore}}</b> 
+<b class="score-home-abb">{{currentGame.homeTeamAbb}}</b> <b class="home-score">{{currentGame.homeScore}}</b>
 
 
 <b class="game-info" ng-if="currentGame.status != 'F' && currentGame.status != 'O'  && currentGame.status != 'DR'">, {{getInningState(currentGame.inningState)}}{{currentGame.inning}} <!-- B:{{currentGame.balls}} S:{{currentGame.strikes}} O:{{currentGame.outs}}
