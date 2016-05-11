@@ -297,19 +297,19 @@
                 player.gameId = $scope.getGameDetails(player.team_file_code, player.game_time);
                 if (player.slot_val != 'Bn' && player.slot_val != 'DL' && player.slot_val != 'PS') {
                   $scope.awayStartingPlayers.push(player);
-                  $scope.awayBattersPlayerIds.push(player.player_id);
+                  $scope.awayBattersPlayerIds.push(player.gameId +player.player_id);
                 }
                 if (player.slot_val == 'Bn' && player.position != 'P') {
                   $scope.awayBenchPlayers.push(player);
-                  $scope.awayBattersPlayerIds.push(player.player_id);
+                  $scope.awayBattersPlayerIds.push(player.gameId +player.player_id);
                 }
                 if (player.slot_val == 'PS') {
                   $scope.awayPitchingStaff.push(player);
-                  $scope.awayStaffIds.push(player.player_id);
+                  $scope.awayStaffIds.push(player.gameId +player.player_id);
                 }
                 if (player.slot_val == 'Bn' && player.position == 'P') {
                   $scope.awayBenchPitchingStaffs.push(player);
-                  $scope.awayStaffIds.push(player.player_id);
+                  $scope.awayStaffIds.push(player.gameId +player.player_id);
                 }
                 console.log(player);
               });
