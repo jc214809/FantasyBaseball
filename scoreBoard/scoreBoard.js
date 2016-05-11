@@ -331,6 +331,7 @@
               $scope.homeBattersPlayerIds = [];
               $scope.homeStaffIds = [];
               angular.forEach(data.fb_team_lineup.queryResults.row, function(player) {
+                player.gameId = $scope.getGameDetails(player.team_file_code, player.game_time);
                 if (player.slot_val != 'Bn' && player.slot_val != 'DL' && player.slot_val != 'PS') {
                   $scope.homeStartingPlayers.push(player);
                   $scope.homeBattersPlayerIds.push(player.player_id);

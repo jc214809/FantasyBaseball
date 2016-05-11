@@ -1,5 +1,5 @@
 <div ng-repeat="player in players">
-  {{getGameDetails(player.team_file_code)}}
+  {{getGameDetails(player.gameId)}}
   <div class="row" ng-class="{ 'at-bat' : playersUpToBat.indexOf(player.player_id) != -1 && currentGame.status != 'P' && currentGame.status != 'F', 'on-deck' : playersOnDeck.indexOf(player.player_id) != -1 && currentGame.status != 'P' && currentGame.status != 'F', 'in-hole' : playersInTheHole.indexOf(player.player_id) != -1 && currentGame.status != 'P' && currentGame.status != 'F'}">
     <div class=" col-xs-1 player-row">
       <img class="team-logo removeMargins" src="http://mlb.mlb.com/images/logos/42x50/{{player.team_file_code}}.png" />
@@ -16,11 +16,11 @@
             <img src="..\FantasyBaseball\images\pictures\Injury.jpg" class="injury-symbol" ng-if="injuryDetails(player.player_id)" title="{{injuryInfo}}" ng-click="getInjuryUpdate(player.player_id)">
           </div>
         </div>
-        <div class="no-pad points">Points:<span ng-attr-id="{{player.player_id}}">{{getHittersScore(player.player_id)}}</span>
+        <div class="no-pad points">Points:<span ng-attr-id="{{player.player_id}}">{{getHittersScore(player.player_id,player.gameId)}}</span>
         </div>
       </div>
       <div class="row removeMargins">
-        <div class="col-xs-10 ">{{hittingStats(player.player_id)}}</div>
+        <div class="col-xs-10 ">{{hittingStats(player.player_id, player.gameId)}}</div>
       </div>
     </div>
   </div>

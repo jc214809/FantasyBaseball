@@ -15,9 +15,9 @@ angular.module('fantasyBaseball.lineup', [])
         }
       }
     };
-    $scope.getGameDetails = function(teamFileCode) {
+    $scope.getGameDetails = function(gameID) {
       for (i = 0; i < $scope.allGamesDetails.length; i++) {
-        if ($scope.allGamesDetails[i].homeTeamFileCode == teamFileCode || $scope.allGamesDetails[i].awayTeamFileCode == teamFileCode) {
+        if ($scope.allGamesDetails[i].gameId == gameID) {
           $scope.currentGame = $scope.allGamesDetails[i];
           break;
         } else {
@@ -69,10 +69,10 @@ angular.module('fantasyBaseball.lineup', [])
         }
       }
     }
-    $scope.hittingStats = function(playerID) {
+    $scope.hittingStats = function(playerID, gameID) {
       //$scope.allGames = allGames;
       for (var i = 0; i < $scope.allGames.length; i++) {
-        if ($scope.allGames[i].id == playerID) {
+        if ($scope.allGames[i].id == playerID && $scope.allGames[i].gameID == gameID) {
           $scope.hittingStatLine = $scope.allGames[i].h + ' - ' + $scope.allGames[i].ab + ' ,';
           if ($scope.allGames[i].d != 0) {
             $scope.hittingStatLine += ' ' + $scope.allGames[i].d + ' 2B ,';
@@ -103,9 +103,9 @@ angular.module('fantasyBaseball.lineup', [])
         }
       };
     };
-    $scope.getHittersScore = function(playerID) {
+    $scope.getHittersScore = function(playerID, gameID) {
       for (var i = 0; i < $scope.allGames.length; i++) {
-        if ($scope.allGames[i].id == playerID) {
+        if ($scope.allGames[i].id == playerID && $scope.allGames[i].gameID == gameID) {
           return ((((parseFloat($scope.allGames[i].h)) - (parseFloat($scope.allGames[i].d) + parseFloat($scope.allGames[i].t) + parseFloat($scope.allGames[i].hr))) * 1) + (parseFloat($scope.allGames[i].d) * 2) + (parseFloat($scope.allGames[i].t) * 3) + (parseFloat($scope.allGames[i].hr) * 4) + (parseFloat($scope.allGames[i].r) * 1) + (parseFloat($scope.allGames[i].rbi) * 1) + (parseFloat($scope.allGames[i].bb) * 1) + (parseFloat($scope.allGames[i].sb) * 2) + (parseFloat($scope.allGames[i].cs) * -1));
         }
       };
