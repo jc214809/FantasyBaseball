@@ -262,16 +262,17 @@
           }
           return -1;
         };
-        // $scope.getGameDetails = function(teamAbb, gameTime) {
-        //     for (var i = 0; i < $scope.eachGame.length; i++) {
-        //         if ($scope.eachGame[i].home_file_code == teamAbb || $scope.eachGame[i].away_file_code == teamAbb) {
-        //             if ($scope.eachGame[i].time + ' '
-        //                 $scope.eachGame[i].ampm == gameTime) {
-        //                 return $scope.eachGame[i].game_pk;
-        //             }
-        //         }
-        //     }
-        // };
+        $scope.getGameDetails = function(teamAbb, gameTime) {
+          for (var i = 0; i < $scope.eachGame.length; i++) {
+            if ($scope.eachGame[i].home_file_code == teamAbb || $scope.eachGame[i].away_file_code == teamAbb) {
+              $scope.fullGameTime = $scope.eachGame[i].time + " " + $scope.eachGame[i].ampm;
+              if ($scope.fullGameTime == gameTime) {
+                return $scope.eachGame[i].game_pk;
+              }
+            }
+          }
+        };
+
         $scope.getLineups = function() {
           $.ajax({
             url: 'http://www.mlb.com/fantasylookup/json/named.fb_team_lineup.bam?period_id=' + $scope.periodId + '&team_id=' + $scope.awayTeam.team_id,
@@ -291,9 +292,9 @@
               $scope.awayStaffIds = [];
               angular.forEach(data.fb_team_lineup.queryResults.row, function(player) {
                 //console.log("player " + JSON.stringify(player));
-                
+
                 //Set GameID here for each player
-               // player.gameId = $scope.getGameDetails(player.team_file_code,player.game_time);
+                player.gameId = $scope.getGameDetails(player.team_file_code, player.game_time);
                 if (player.slot_val != 'Bn' && player.slot_val != 'DL' && player.slot_val != 'PS') {
                   $scope.awayStartingPlayers.push(player);
                   $scope.awayBattersPlayerIds.push(player.player_id);
