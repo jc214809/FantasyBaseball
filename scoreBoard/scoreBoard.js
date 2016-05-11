@@ -293,7 +293,7 @@
                 //console.log("player " + JSON.stringify(player));
                 
                 //Set GameID here for each player
-                player.gameId = $scope.getGameDetails(player.team_file_code,player.game_time);
+               // player.gameId = $scope.getGameDetails(player.team_file_code,player.game_time);
                 if (player.slot_val != 'Bn' && player.slot_val != 'DL' && player.slot_val != 'PS') {
                   $scope.awayStartingPlayers.push(player);
                   $scope.awayBattersPlayerIds.push(player.player_id);
