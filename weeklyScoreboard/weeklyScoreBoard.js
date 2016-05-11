@@ -141,7 +141,7 @@ angular.module('fantasyBaseball.weeklyScoreBoard', [])
         $scope.total += parseInt($('#'+ starters[i].gameId + starters[i].player_id).text());
       };
       for (var i = 0; i < staff.length; i++) {
-        $scope.total += parseInt($('#'+ starters[i].gameId + staff[i].player_id).text());
+        $scope.total += parseInt($('#'+ staff[i].gameId + staff[i].player_id).text());
       };
       return $scope.total;
     };
