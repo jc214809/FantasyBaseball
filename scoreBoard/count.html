@@ -1,0 +1,12 @@
+<p ng-if="currentGame.status == 'I' || currentGame.status == 'DI'">
+  <i class="fa fa-circle circle ball" ng-class="{'activeBall' : getCurrentCount(player.gameId,'Ball')>= 1}"></i>
+  <i class="fa fa-circle circle ball" ng-class="{'activeBall' : getCurrentCount(player.gameId,'Ball')>= 2}"></i>
+  <i class="fa fa-circle circle ball" ng-class="{'activeBall' : getCurrentCount(player.gameId,'Ball')>= 3}"></i>
+  <i class="fa fa-circle circle ball" ng-class="{'activeBall' : getCurrentCount(player.gameId,'Ball')== 4}"></i>
+  <i class="fa fa-circle circle strike" ng-class="{'activeStrike' : getCurrentCount(player.gameId,'Strike')>= 1}"></i>
+  <i class="fa fa-circle circle strike" ng-class="{'activeStrike' : getCurrentCount(player.gameId,'Strike')>= 2}"></i>
+  <i class="fa fa-circle circle strike" ng-class="{'activeStrike' : getCurrentCount(player.gameId,'Strike')== 3}"></i>
+  <i class="fa fa-circle circle out" ng-class="{'activeOut' : getCurrentCount(player.gameId,'Out')>= 1}"></i>
+  <i class="fa fa-circle circle out" ng-class="{'activeOut' : getCurrentCount(player.gameId,'Out')>= 2}"></i>
+  <i class="fa fa-circle circle out" ng-class="{'activeOut' : getCurrentCount(player.gameId,'Out')== 3}"></i>
+</p>

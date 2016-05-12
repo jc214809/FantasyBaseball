@@ -36,7 +36,8 @@ angular.module('fantasyBaseball.lineup', [])
         default:
           return 'B';
       }
-    }
+    };
+
     $.ajax({
       url: 'http://www.mlb.com/fantasylookup/json/named.wsfb_news_injury.bam',
       type: 'GET',
@@ -51,6 +52,7 @@ angular.module('fantasyBaseball.lineup', [])
         });
       }
     });
+
     $scope.injuryDetails = function(playerID) {
       $scope.injuryInfo = null;
       for (var i = 0; i < $scope.allInjuryInfo.length; i++) {
@@ -60,7 +62,8 @@ angular.module('fantasyBaseball.lineup', [])
         }
       }
       return false;
-    }
+    };
+
     $scope.getInjuryUpdate = function(playerID) {
       for (var i = 0; i < $scope.allInjuryInfo.length; i++) {
         if ($scope.allInjuryInfo[i].player_id == playerID) {
@@ -68,7 +71,8 @@ angular.module('fantasyBaseball.lineup', [])
           break;
         }
       }
-    }
+    };
+
     $scope.hittingStats = function(playerID, gameID) {
       //$scope.allGames = allGames;
       for (var i = 0; i < $scope.allGames.length; i++) {
