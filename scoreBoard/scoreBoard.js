@@ -274,6 +274,7 @@
               //}
             }
           }
+           return 1;
         };
 
         $scope.getLineups = function() {
