@@ -112,7 +112,7 @@
                   for (var i = 0; i < $scope.allGames.length; ++i) {
                     eachBatter.gameID = $scope.matchup.game_pk;
                     eachBatter.teamID = $scope.matchup.away_id;
-                    if ($scope.allGames[i].id === eachBatter.id) {
+                    if ($scope.allGames[i].id == eachBatter.id && $scope.allGames[i].gameID == eachBatter.gameID) {
                       $scope.allGames[i] = eachBatter;
                     } else {
                       $scope.battersToAdd.push(eachBatter);
@@ -123,7 +123,7 @@
                   for (var i = 0; i < $scope.allGames.length; ++i) {
                     eachBatter.gameID = $scope.matchup.game_pk;
                     eachBatter.teamID = $scope.matchup.home_id;
-                    if ($scope.allGames[i].id === eachBatter.id) {
+                    if ($scope.allGames[i].id == eachBatter.id && $scope.allGames[i].gameID == eachBatter.gameID) {
                       $scope.allGames[i] = eachBatter;
                     } else {
                       $scope.battersToAdd.push(eachBatter);
@@ -141,6 +141,7 @@
                     $scope.check = $scope.checkForStaff(eachStaff.teamID);
                     if ($scope.check > -1) {
                       if ($scope.allPitchingStaffs[$scope.check].teamID == eachStaff.teamID) {
+                        eachStaff.gameID = $scope.matchup.game_pk;
                         if ($scope.matchup.status_ind == 'F' || $scope.matchup.status_ind == 'O') {
                           // console.log($scope.matchup.away_fname + ' vs. ' + $scope.matchup.home_fname + ' ' + $scope.matchup.status_ind + ' ' + (parseInt($scope.matchup.linescore.home_team_runs) < parseInt($scope.matchup.linescore.away_team_runs)))
                           if (parseInt($scope.matchup.linescore.home_team_runs) < parseInt($scope.matchup.linescore.away_team_runs)) {
@@ -150,7 +151,6 @@
                             eachStaff.win = '0';
                             eachStaff.loss = '1';
                           }
-                          eachStaff.gameID = $scope.matchup.game_pk;
                           eachStaff.status = $scope.matchup.status_ind;
                           $scope.allPitchingStaffs[$scope.check] = eachStaff;
                         } else {
