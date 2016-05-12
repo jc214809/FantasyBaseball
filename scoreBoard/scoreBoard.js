@@ -136,11 +136,12 @@
                   $scope.matchup = gameData[0].data.data.boxscore;
                   //console.log($scope.matchup.away_fname + ' vs. ' + $scope.matchup.home_fname + ' ' + $scope.matchup.status_ind);
                   delete eachStaff.pitcher;
+                  eachStaff.gameID = $scope.matchup.game_pk;
                   if (eachStaff.team_flag == 'away') {
                     eachStaff.teamID = $scope.matchup.away_id;
-                    $scope.check = $scope.checkForStaff(eachStaff.teamID);
+                    $scope.check = $scope.checkForStaff(eachStaff.teamID, $scope.matchup.game_pk);
                     if ($scope.check > -1) {
-                      if ($scope.allPitchingStaffs[$scope.check].teamID == eachStaff.teamID) {
+                      if ($scope.allPitchingStaffs[$scope.check].teamID == eachStaff.teamID && $scope.allPitchingStaffs[$scope.check].gameID == eachStaff.gameID) {
                         eachStaff.gameID = $scope.matchup.game_pk;
                         if ($scope.matchup.status_ind == 'F' || $scope.matchup.status_ind == 'O') {
                           // console.log($scope.matchup.away_fname + ' vs. ' + $scope.matchup.home_fname + ' ' + $scope.matchup.status_ind + ' ' + (parseInt($scope.matchup.linescore.home_team_runs) < parseInt($scope.matchup.linescore.away_team_runs)))
@@ -156,7 +157,6 @@
                         } else {
                           eachStaff.win = '0';
                           eachStaff.loss = '0';
-                          eachStaff.gameID = $scope.matchup.game_pk;
                           eachStaff.status = $scope.matchup.status_ind;
                           $scope.allPitchingStaffs[$scope.check] = eachStaff;
                         }
@@ -164,16 +164,15 @@
                     } else {
                       eachStaff.win = '0';
                       eachStaff.loss = '0';
-                      eachStaff.gameID = $scope.matchup.game_pk;
                       eachStaff.status = $scope.matchup.status_ind;
                       $scope.staffsToAdd.push(eachStaff);
                     }
                   } else {
                     for (var i = 0; i < $scope.allPitchingStaffs.length; ++i) {
                       eachStaff.teamID = $scope.matchup.home_id;
-                      $scope.check = $scope.checkForStaff(eachStaff.teamID);
+                      $scope.check = $scope.checkForStaff(eachStaff.teamID, $scope.matchup.game_pk);
                       if ($scope.check > -1) {
-                        if ($scope.allPitchingStaffs[$scope.check].teamID == eachStaff.teamID) {
+                        if ($scope.allPitchingStaffs[$scope.check].teamID == eachStaff.teamID && $scope.allPitchingStaffs[$scope.check].gameID == eachStaff.gameID) {
                           if ($scope.allPitchingStaffs[i].teamID == eachStaff.teamID) {
                             if ($scope.matchup.status_ind == 'F' || $scope.matchup.status_ind == 'O') {
                               if (parseInt($scope.matchup.linescore.home_team_runs) > parseInt($scope.matchup.linescore.away_team_runs)) {
@@ -257,9 +256,9 @@
             $scope.$apply();
           }
         });
-        $scope.checkForStaff = function(id) {
+        $scope.checkForStaff = function(id, gameID) {
           for (i = 0; i < $scope.allPitchingStaffs.length; i++) {
-            if ($scope.allPitchingStaffs[i].teamID == id) {
+            if ($scope.allPitchingStaffs[i].teamID == id && $scope.allPitchingStaffs[i].gameID == gameID) {
               return i;
             }
           }
