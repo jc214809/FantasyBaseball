@@ -1,6 +1,6 @@
 <div ng-repeat="player in players">
   {{getGameDetails(player.gameId)}}
-  <div class="row" ng-class="{ 'at-bat' : (playersUpToBat.indexOf(player.player_id) != -1 && currentGame.status != 'P' && currentGame.status != 'F'), 'on-deck' : (playersOnDeck.indexOf(player.player_id) != -1 && currentGame.status != 'P' && currentGame.status != 'F'), 'in-hole' : (playersInTheHole.indexOf(player.player_id) != -1 && currentGame.status != 'P' && currentGame.status != 'F'})">
+  <div class="row" ng-class="{ 'at-bat' : (playersUpToBat.indexOf(player.player_id) != -1 && currentGame.status != 'P' && currentGame.status != 'F'), 'on-deck' : (playersOnDeck.indexOf(player.player_id) != -1 && currentGame.status != 'P' && currentGame.status != 'F'), 'in-hole' : (playersInTheHole.indexOf(player.player_id) != -1 && currentGame.status != 'P' && currentGame.status != 'F')}">
     <div class=" col-xs-1 player-row">
       <img class="team-logo removeMargins" src="http://mlb.mlb.com/images/logos/42x50/{{player.team_file_code}}.png" />
     </div>
