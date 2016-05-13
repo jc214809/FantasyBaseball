@@ -278,6 +278,7 @@
         };
         $scope.createPlayerObject = function(player) {
           $scope.playerDetails = [];
+          $scope.allPlayerDetails = [];
           for (var i = 0; i < $scope.eachGame.length; i++) {
             if ($scope.eachGame[i].home_file_code == player.team_file_code || $scope.eachGame[i].away_file_code == player.team_file_code) {
               $scope.playerDetails.gameTime = $scope.eachGame[i].time + " " + $scope.eachGame[i].ampm;
@@ -286,13 +287,16 @@
           }
           $scope.playerDetails.player_name = player.player_name;
           $scope.playerDetails.slot = player.slot;
+          $scope.playerDetails.slot_val = player.slot_val;
           $scope.playerDetails.player_id = player.player_id
           $scope.playerDetails.team_file_code = player.team_file_code;
+          $scope.playerDetails.gameId = $scope.getGameDetails(player.team_file_code, player.game_time);
           // $scope.playerDetails.
           // $scope.playerDetails.
           // $scope.playerDetails.
           // $scope.playerDetails.\
-          return $scope.playerDetails;
+          $scope.allPlayerDetails.push($scope.playerDetails);
+          return $scope.allPlayerDetails;
         }
         $scope.getLineups = function() {
           $.ajax({
@@ -311,19 +315,20 @@
                 //create my own player object here
                 $scope.playerDetails = [];
                 $scope.playerDetails = $scope.createPlayerObject(player);
-                $scope.playerDetails.gameId = $scope.getGameDetails(player.team_file_code, player.game_time);
-                if (player.slot_val != 'Bn' && player.slot_val != 'DL' && player.slot_val != 'PS') {
-                  $scope.awayStartingPlayers.push($scope.playerDetails);
-                }
-                if (player.slot_val == 'Bn' && player.position != 'P') {
-                  $scope.awayBenchPlayers.push($scope.playerDetails);
-                }
-                if (player.slot_val == 'PS') {
-                  $scope.awayPitchingStaff.push($scope.playerDetails);
-                }
-                if (player.slot_val == 'Bn' && player.position == 'P') {
-                  $scope.awayBenchPitchingStaffs.push($scope.playerDetails);
-                }
+                angular.forEach($scope.playerDetails, function(playerToAdd) {
+                  if (playerToAdd.slot_val != 'Bn' && playerToAdd.slot_val != 'DL' && playerToAdd.slot_val != 'PS') {
+                    $scope.awayStartingPlayers.push(playerToAdd);
+                  }
+                  if (playerToAdd.slot_val == 'Bn' && playerToAdd.position != 'P') {
+                    $scope.awayBenchPlayers.push(playerToAdd);
+                  }
+                  if (playerToAdd.slot_val == 'PS') {
+                    $scope.awayPitchingStaff.push(playerToAdd);
+                  }
+                  if (playerToAdd.slot_val == 'Bn' && playerToAdd.position == 'P') {
+                    $scope.awayBenchPitchingStaffs.push(playerToAdd);
+                  }
+                });
               });
               $scope.$apply();
             }
@@ -343,19 +348,22 @@
               angular.forEach(data.fb_team_lineup.queryResults.row, function(player) {
                 $scope.playerDetails = [];
                 $scope.playerDetails = $scope.createPlayerObject(player);
-                $scope.playerDetails.gameId = $scope.getGameDetails(player.team_file_code, player.game_time);
-                if (player.slot_val != 'Bn' && player.slot_val != 'DL' && player.slot_val != 'PS') {
-                  $scope.homeStartingPlayers.push($scope.playerDetails);
-                }
-                if (player.slot_val == 'Bn' && player.position != 'P') {
-                  $scope.homeBenchPlayers.push($scope.playerDetails);
-                }
-                if (player.slot_val == 'PS') {
-                  $scope.homePitchingStaff.push($scope.playerDetails);
-                }
-                if (player.slot_val == 'Bn' && player.position == 'P') {
-                  $scope.homeBenchPitchingStaffs.push($scope.playerDetails);
-                }
+                $scope.playerDetails = [];
+                $scope.playerDetails = $scope.createPlayerObject(player);
+                angular.forEach($scope.playerDetails, function(playerToAdd) {
+                  if (playerToAdd.slot_val != 'Bn' && playerToAdd.slot_val != 'DL' && playerToAdd.slot_val != 'PS') {
+                    $scope.homeStartingPlayers.push(playerToAdd);
+                  }
+                  if (playerToAdd.slot_val == 'Bn' && playerToAdd.position != 'P') {
+                    $scope.homeBenchPlayers.push(playerToAdd);
+                  }
+                  if (playerToAdd.slot_val == 'PS') {
+                    $scope.homePitchingStaff.push(playerToAdd);
+                  }
+                  if (playerToAdd.slot_val == 'Bn' && playerToAdd.position == 'P') {
+                    $scope.homeBenchPitchingStaffs.push(playerToAdd);
+                  }
+                });
               });
               $scope.$apply();
             }
