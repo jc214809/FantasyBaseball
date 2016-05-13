@@ -62,7 +62,7 @@
           $scope.staffsToAdd = [];
           $scope.gameURLs = [];
           $scope.matchup = null;
-          $scope.scoreBoard = 'http://gd2.mlb.com/components/game/mlb/year_' + "2016" + '/month_' + "05" + '/day_' + "12" + '/master_scoreboard.json';
+          $scope.scoreBoard = 'http://gd2.mlb.com/components/game/mlb/year_' + "2016" + '/month_' + "05" + '/day_' + "13" + '/master_scoreboard.json';
           $http.get($scope.scoreBoard).success(function(data) {
             $scope.eachGame = data.data.games.game;
             angular.forEach($scope.eachGame, function(game) {
@@ -276,7 +276,14 @@
           }
            return 1;
         };
-
+        $scope.createPlayerObject = function(player) {
+          $scope.playerDetails = [];
+          for (var i = 0; i < $scope.eachGame.length; i++) {
+            if ($scope.eachGame[i].home_file_code == player.team_file_code || $scope.eachGame[i].away_file_code == player.team_file_code) {
+              $scope.playerDetails.gameTime = $scope.eachGame[i].time + " " + $scope.eachGame[i].ampm;
+            }
+          }
+        }
         $scope.getLineups = function() {
           $.ajax({
             url: 'http://www.mlb.com/fantasylookup/json/named.fb_team_lineup.bam?period_id=' + $scope.periodId + '&team_id=' + $scope.awayTeam.team_id,
@@ -297,7 +304,7 @@
               angular.forEach(data.fb_team_lineup.queryResults.row, function(player) {
                 //console.log("player " + JSON.stringify(player));
 
-                //Set GameID here for each player
+                //create my own player object here
                 player.gameId = $scope.getGameDetails(player.team_file_code, player.game_time);
                 if (player.slot_val != 'Bn' && player.slot_val != 'DL' && player.slot_val != 'PS') {
                   $scope.awayStartingPlayers.push(player);
@@ -315,7 +322,7 @@
                   $scope.awayBenchPitchingStaffs.push(player);
                   $scope.awayStaffIds.push(player.gameId + player.player_id);
                 }
-                console.log(player);
+                //console.log(player);
               });
               $scope.$apply();
             }
@@ -366,7 +373,7 @@
           $scope.playersOnDeck = [];
           $scope.playersInTheHole = [];
           $scope.allGamesDetails = [];
-          $scope.scoreBoard = 'http://gd2.mlb.com/components/game/mlb/year_' + "2016" + '/month_' + "05" + '/day_' + "12" + '/master_scoreboard.json';
+          $scope.scoreBoard = 'http://gd2.mlb.com/components/game/mlb/year_' + "2016" + '/month_' + "05" + '/day_' + "13" + '/master_scoreboard.json';
           $http.get($scope.scoreBoard).success(function(data) {
             $scope.eachGame = data.data.games.game;
             angular.forEach($scope.eachGame, function(game) {
