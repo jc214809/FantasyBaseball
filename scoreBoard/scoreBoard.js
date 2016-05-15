@@ -73,7 +73,7 @@
           $scope.staffsToAdd = [];
           $scope.gameURLs = [];
           $scope.matchup = null;
-          $scope.scoreBoard = 'http://gd2.mlb.com/components/game/mlb/year_' + "2016" + '/month_' + "05" + '/day_' + "14" + '/master_scoreboard.json';
+          $scope.scoreBoard = 'http://gd2.mlb.com/components/game/mlb/year_' + "2016" + '/month_' + "05" + '/day_' + "15" + '/master_scoreboard.json';
           $http.get($scope.scoreBoard).success(function(data) {
             $scope.eachGame = data.data.games.game;
             angular.forEach($scope.eachGame, function(game) {
@@ -424,7 +424,7 @@
         $scope.playersOnDeck = [];
         $scope.playersInTheHole = [];
         $scope.allGamesDetails = [];
-        $scope.scoreBoard = 'http://gd2.mlb.com/components/game/mlb/year_' + "2016" + '/month_' + "05" + '/day_' + "14" + '/master_scoreboard.json';
+        $scope.scoreBoard = 'http://gd2.mlb.com/components/game/mlb/year_' + "2016" + '/month_' + "05" + '/day_' + "15" + '/master_scoreboard.json';
         $http.get($scope.scoreBoard).success(function(data) {
           $scope.eachGame = data.data.games.game;
           angular.forEach($scope.eachGame, function(game) {
