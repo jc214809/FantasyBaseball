@@ -19,6 +19,80 @@
   width: 9px;
 }
 
+.score-away-abb {
+  top: 0px;
+  left: 20px;
+}
+
+.circle {
+  position: fixed;
+  font-size: 4px!important;
+  color: grey;
+  padding: 0px 0px 0px 0px;
+}
+
+.activeBall {
+  color: green;
+}
+
+.activeStrike {
+  color: red;
+}
+
+.activeOut {
+  color: blue;
+}
+
+.strike {
+  top: -3px;
+  right: 26px;
+}
+
+.out {
+  top: 1px;
+  right: 45px;
+}
+
+.ball {
+  top: -7px;
+}
+
+
+/*.score-away-abb{*/
+
+
+/*  top: 0px;*/
+
+
+/*  left: 3px;*/
+
+
+/*}*/
+
+
+/*.away-score{*/
+
+
+/*  top: 0px;*/
+
+
+/*  left: 3px;*/
+
+
+/*}*/
+
+
+/*.home-score{*/
+
+
+/*  top: 0px;*/
+
+
+/*  left: 3px;*/
+
+
+/*}*/
+
 
 /*.player-details {
   font-size: 20px;
@@ -102,6 +176,22 @@
     vertical-align: middle;
     width: 9px;
   }
+  .score-away-abb {
+    top: 0px;
+    left: 20px;
+  }
+  /*.score-away-abb{*/
+  /*  top: 0px;*/
+  /*  left: 3px;*/
+  /*}*/
+  /*.away-score{*/
+  /*  top: 0px;*/
+  /*  left: 3px;*/
+  /*}*/
+  /*.home-score{*/
+  /*  top: 0px;*/
+  /*  left: 3px;*/
+  /*}*/
 }
 
 @media screen and (max-width: 568px) {
@@ -110,12 +200,12 @@
   }
   .lineup .player-picture {
     width: 30px;
-    height: auto;
+    height: 36.281px;
     float: right;
   }
   .team-logo {
     width: 30px;
-    height: auto;
+    height: 36.281px;
     /*float: right;*/
     /*display: none;*/
   }
@@ -141,11 +231,27 @@
     vertical-align: middle;
   }
   .player-details {
-    font-size: 12px;
+    font-size: 11px;
     color: #000099;
   }
   .injury-symbol {
     vertical-align: middle;
     width: 9px;
   }
+  .score-away-abb {
+    top: 0px;
+    left: 20px;
+  }
+  /*.score-away-abb{*/
+  /*  top: 0px;*/
+  /*  left: 3px;*/
+  /*}*/
+  /*.away-score{*/
+  /*  top: 0px;*/
+  /*  left: 3px;*/
+  /*}*/
+  /*.home-score{*/
+  /*  top: 0px;*/
+  /*  left: 3px;*/
+  /*}*/
 }
