@@ -40,6 +40,17 @@
           templateUrl: 'weeklyScoreboard/weeklyScoreBoard.html'
         };
       })
+      .directive('playerstatus', function() {
+        return {
+          restrict: 'E',
+          controller: 'playerStatusCtrl',
+          scope: {
+            allGames: '=batters',
+            player: '=player'
+          },
+          templateUrl: 'scoreBoard/playerStatus.html'
+        };
+      })
       .factory("poollingFactory", function($timeout) {
         var timeIntervalInSec = 1;
 
@@ -283,6 +294,11 @@
           for (var i = 0; i < $scope.eachGame.length; i++) {
             if ($scope.eachGame[i].home_file_code == player.team_file_code || $scope.eachGame[i].away_file_code == player.team_file_code) {
               $scope.playerDetails.gameTime = $scope.eachGame[i].time + " " + $scope.eachGame[i].ampm;
+              if ($scope.eachGame[i].home_file_code == player.team_file_code) {
+                $scope.playerDetails.teamID = $scope.eachGame[i].home_team_id;
+              } else {
+                $scope.playerDetails.teamID = $scope.eachGame[i].away_team_id;
+              }
               if ($scope.eachGame[i].double_header_sw != 'N') {
                 doubleheader = true;
               }
@@ -310,6 +326,11 @@
                 $scope.playerDetailsSecondGame.position = player.position;
                 $scope.playerDetailsSecondGame.gameTime = $scope.eachGame[i].time + " " + $scope.eachGame[i].ampm;
                 $scope.playerDetailsSecondGame.gameId = $scope.getGameDetails($scope.playerDetailsSecondGame.team_file_code, $scope.playerDetailsSecondGame.gameTime);
+                if ($scope.eachGame[i].home_file_code == player.team_file_code) {
+                  $scope.playerDetailsSecondGame.teamID = $scope.eachGame[i].home_team_id;
+                } else {
+                  $scope.playerDetailsSecondGame.teamID = $scope.eachGame[i].away_team_id;
+                }
                 $scope.allPlayerDetails.push($scope.playerDetailsSecondGame);
                 break;
               }

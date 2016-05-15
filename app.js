@@ -34,7 +34,9 @@
        'ngRoute',
        'fantasyBaseball.scoreboard',
        'fantasyBaseball.weeklyScoreBoard',
-       'fantasyBaseball.lineup', 'fantasyBaseball.pitchingStaff'
+       'fantasyBaseball.lineup',
+       'fantasyBaseball.pitchingStaff',
+       'fantasyBaseball.playerStatus'
      ]) //, 'fantasyBaseball.count'
      .config(function myAppConfig($routeProvider, $httpProvider, $locationProvider) {
        $routeProvider
