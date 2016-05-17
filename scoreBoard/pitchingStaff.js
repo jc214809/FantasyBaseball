@@ -1,8 +1,8 @@
 angular.module('fantasyBaseball.pitchingStaff', [])
   .controller('pitchingStaffCtrl', function pitchingStaffController($scope, $http) {
-    $scope.getPitchingStatLine = function(teamId) {
+    $scope.getPitchingStatLine = function(teamId, gameID) {
       for (var i = 0; i < $scope.allPitchingStaffs.length; i++) {
-        if ($scope.allPitchingStaffs[i].teamID == teamId) {
+        if ($scope.allPitchingStaffs[i].teamID == teamId && $scope.allPitchingStaffs[i].gameID == gameID) {
           $scope.pitchingStatLine = '';
           var x = $scope.allPitchingStaffs[i];
           if (x.win > 0) {
@@ -46,9 +46,9 @@ angular.module('fantasyBaseball.pitchingStaff', [])
         }
       };
     };
-    $scope.getPitchingStaffScore = function(teamId) {
+    $scope.getPitchingStaffScore = function(teamId, gameID) {
       for (var i = 0; i < $scope.allPitchingStaffs.length; i++) {
-        if ($scope.allPitchingStaffs[i].teamID == teamId) {
+        if ($scope.allPitchingStaffs[i].teamID == teamId && $scope.allPitchingStaffs[i].gameID == gameID) {
           var pointsForHitsAndWalks = 0;
           var pointsForStrikeOuts = 0;
           var pointsForEarnedRuns = 0;
