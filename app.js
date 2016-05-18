@@ -55,8 +55,8 @@
        $scope.teamID = 85827;
        $scope.leagueID = 9518;
        //League Specific Variables above
-       var d = new Date();
-       var selectedDate = new Date(d);
+       var today = new Date();
+       var selectedDate = new Date(today);
        selectedDate.setDate(selectedDate.getDate());
 
        //$scope.setTheDate = function(pageLoad) {
