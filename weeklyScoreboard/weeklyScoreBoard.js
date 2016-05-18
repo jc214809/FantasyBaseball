@@ -1,6 +1,6 @@
 angular.module('fantasyBaseball.weeklyScoreBoard', [])
   .controller('weeklyScoreBoardCtrl', function weeklyScoreBoardController($scope, $http, $q) {
-    $scope.periodId = weekOfYear(new Date) - 3;
+    //$scope.periodId = weekOfYear(new Date) - 3;
     $scope.teamID = 85827;
     $scope.leagueID = 9518;
     $scope.schedule = [];
@@ -87,7 +87,7 @@ angular.module('fantasyBaseball.weeklyScoreBoard', [])
     };
     $scope.weeklyScoreBoardJson = function(scoringData, starters, staff) {
       $scope.weeklyScores = ['{ "monday": "0" , "tuesday": "0", "wednesday": "0", "thursday": "0", "friday": "0", "saturday": "0", "sunday": "0", "total": "0"}'];
-      var today = new Date();
+      var today = $scope.selectedDate;
       var obj = JSON.parse($scope.weeklyScores);
       for (var i = 0; i < scoringData.length; i++) {
         if (scoringData[i].scoring_day == 2) {

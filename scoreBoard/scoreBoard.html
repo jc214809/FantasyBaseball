@@ -14,7 +14,8 @@ $(window).resize(checkWidth);
 <!--<div ng-controller="weeklyScoreBoardCtrl">-->
 <!--  <div ng-include="'weeklyScoreboard/weeklyScoreBoard.html'"></div>-->
 <!--</div>-->
-<scores awaystarters="awayStartingPlayers" homestarters="homeStartingPlayers" awaystaff="awayPitchingStaff" homestaff="homePitchingStaff"></scores>
+<scores period="periodId" selecteddate="selectedDate" awaystarters="awayStartingPlayers" homestarters="homeStartingPlayers" awaystaff="awayPitchingStaff" homestaff="homePitchingStaff"></scores>
+<center>{{month}}/{{day}}/{{year}}</center>
 <div id="lineUps" class="row">
   <div class="team col-xs-6 player-section lineup">
     <p class="team-name">{{awayTeam.team_name}}</p>
