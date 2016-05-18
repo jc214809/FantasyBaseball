@@ -62,7 +62,7 @@
        //$scope.setTheDate = function(pageLoad) {
        //Goes back to previous day if between midnight and 11am
        var hourOfday = new Date().getHours();
-       if ((hourOfday >= 0 && hourOfday <= 11)) {
+       if ((hourOfday >= 0 && hourOfday <= 10)) {
          selectedDate.setDate(selectedDate.getDate() - 1);
        }
        $scope.periodId = weekOfYear(selectedDate) - 3;

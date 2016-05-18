@@ -69,6 +69,7 @@
       })
       .controller('ScoreBoardCtrl', function ScoreboardController($scope, $http, $q, $timeout, poollingFactory) {
         var today = new Date();
+        if ($scope.selectedDate != today || (today.getHours() >= 0 && today.getHours() <= 2)) {
           poollingFactory.callFnOnInterval(function() {
             $scope.playersUpToBatUpdated = [];
             $scope.playersOnDeckUpdated = [];
