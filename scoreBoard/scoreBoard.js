@@ -69,8 +69,8 @@
       })
       .controller('ScoreBoardCtrl', function ScoreboardController($scope, $http, $q, $timeout, poollingFactory) {
         var today = new Date();
-        if ($scope.selectedDate != today || (today.getHours() >= 0 && today.getHours() <= 2)) {
-          poollingFactory.callFnOnInterval(function() {
+        poollingFactory.callFnOnInterval(function() {
+          if ($scope.selectedDate != today || (today.getHours() >= 0 && today.getHours() <= 2)) {
             $scope.playersUpToBatUpdated = [];
             $scope.playersOnDeckUpdated = [];
             $scope.playersInTheHoleUpdated = [];
@@ -222,8 +222,8 @@
                 });
               });
             });
-          });
-        };
+          };
+        });
         $.ajax({
           url: 'http://www.mlb.com/fantasylookup/json/named.fb_index_schedule.bam?league_id=' + $scope.leagueID,
           type: 'GET',
