@@ -52,10 +52,32 @@
          });
      })
      .controller('AppCtrl', function AppCtrl($scope, $location, $http) {
-       $scope.periodId = weekOfYear(new Date) - 3;
        $scope.teamID = 85827;
        $scope.leagueID = 9518;
        //League Specific Variables above
+       var d = new Date();
+       var selectedDate = new Date(d);
+       selectedDate.setDate(selectedDate.getDate());
+
+       //$scope.setTheDate = function(pageLoad) {
+       //Goes back to previous day if between midnight and 11am
+       var hourOfday = new Date().getHours();
+       if ((hourOfday >= 0 && hourOfday <= 11)) {
+         selectedDate.setDate(selectedDate.getDate() - 1);
+       }
+       $scope.periodId = weekOfYear(selectedDate) - 3;
+       $scope.selectedDate = selectedDate;
+       $scope.day = selectedDate.getDate();
+       $scope.month = selectedDate.getMonth() + 1;
+       $scope.year = selectedDate.getFullYear();
+       if ($scope.day < 10) {
+         $scope.day = '0' + $scope.day;
+       }
+       if ($scope.month < 10) {
+         $scope.month = '0' + $scope.month;
+       }
+
+       //};
 
        $scope.$on('$routeChangeSuccess', function(e, nextRoute) {
          if (nextRoute.$$route && angular.isDefined(nextRoute.$$route.pageTitle)) {
