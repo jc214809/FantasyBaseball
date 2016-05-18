@@ -37,7 +37,9 @@
             homeStartingPlayers: '=homestarters',
             homePitchingStaff: '=homestaff',
             periodId: '=period',
-            selectedDate: '=selecteddate'
+            selectedDate: '=selecteddate',
+            homeTeam: '=home',
+            awayTeam: '=away'
           },
           templateUrl: 'weeklyScoreboard/weeklyScoreBoard.html'
         };
