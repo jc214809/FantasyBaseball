@@ -37,7 +37,9 @@
             homeStartingPlayers: '=homestarters',
             homePitchingStaff: '=homestaff',
             periodId: '=period',
-            selectedDate: '=selecteddate'
+            selectedDate: '=selecteddate',
+            homeTeam: '=home',
+            awayTeam: '=away'
           },
           templateUrl: 'weeklyScoreboard/weeklyScoreBoard.html'
         };
@@ -69,8 +71,8 @@
       })
       .controller('ScoreBoardCtrl', function ScoreboardController($scope, $http, $q, $timeout, poollingFactory) {
         var today = new Date();
-        if ($scope.selectedDate != today || (today.getHours() >= 0 && today.getHours() <= 2)) {
-          poollingFactory.callFnOnInterval(function() {
+        poollingFactory.callFnOnInterval(function() {
+          if ($scope.selectedDate != today || (today.getHours() >= 0 && today.getHours() <= 2)) {
             $scope.playersUpToBatUpdated = [];
             $scope.playersOnDeckUpdated = [];
             $scope.playersInTheHoleUpdated = [];
@@ -126,29 +128,28 @@
                 $q.all([$scope.game]).then(function(gameData) {
                   $scope.matchup = gameData[0].data.data.boxscore;
                   angular.forEach(gameData[0].data.data.boxscore.batting[0].batter, function(eachBatter) {
-                    for (var i = 0; i < $scope.allGames.length; ++i) {
-                      eachBatter.gameID = $scope.matchup.game_pk;
-                      eachBatter.teamID = $scope.matchup.away_id;
-                      if ($scope.allGames[i].id == eachBatter.id && $scope.allGames[i].gameID == eachBatter.gameID) {
-                        $scope.allGames[i] = eachBatter;
-                      } else {
-                        $scope.battersToAdd.push(eachBatter);
-                      }
+                    eachBatter.gameID = $scope.matchup.game_pk;
+                    eachBatter.teamID = $scope.matchup.away_id;
+                    $scope.check = $scope.checkForStaff(eachBatter.id, $scope.matchup.game_pk);
+                    if ($scope.check > -1) {
+                      $scope.allGames[$scope.check] = eachBatter;
+                    } else {
+                      $scope.battersToAdd.push(eachBatter);
                     }
                   });
                   angular.forEach(gameData[0].data.data.boxscore.batting[1].batter, function(eachBatter) {
-                    for (var i = 0; i < $scope.allGames.length; ++i) {
-                      eachBatter.gameID = $scope.matchup.game_pk;
-                      eachBatter.teamID = $scope.matchup.home_id;
-                      if ($scope.allGames[i].id == eachBatter.id && $scope.allGames[i].gameID == eachBatter.gameID) {
-                        $scope.allGames[i] = eachBatter;
-                      } else {
-                        $scope.battersToAdd.push(eachBatter);
-                      }
+                    eachBatter.gameID = $scope.matchup.game_pk;
+                    eachBatter.teamID = $scope.matchup.home_id;
+                    $scope.check = $scope.checkForStaff(eachBatter.id, $scope.matchup.game_pk);
+                    if ($scope.check > -1) {
+                      $scope.allGames[$scope.check] = eachBatter;
+                    } else {
+                      $scope.battersToAdd.push(eachBatter);
                     }
                   });
-
-                  $scope.allGames.concat($scope.battersToAdd);
+                  angular.forEach($scope.battersToAdd, function(eachNewBatter) {
+                    $scope.allGames.push(eachNewBatter);
+                  });
                   angular.forEach(gameData[0].data.data.boxscore.pitching, function(eachStaff) {
                     $scope.matchup = gameData[0].data.data.boxscore;
                     //console.log($scope.matchup.away_fname + ' vs. ' + $scope.matchup.home_fname + ' ' + $scope.matchup.status_ind);
@@ -218,12 +219,14 @@
                       //}
                     }
                   });
-                  $scope.allPitchingStaffs.concat($scope.staffsToAdd);
+                  angular.forEach($scope.staffsToAdd, function(eachNewStaff) {
+                    $scope.allPitchingStaffs.push(eachNewStaff);
+                  });
                 });
               });
             });
-          });
-        };
+          };
+        });
         $.ajax({
           url: 'http://www.mlb.com/fantasylookup/json/named.fb_index_schedule.bam?league_id=' + $scope.leagueID,
           type: 'GET',
@@ -277,6 +280,14 @@
         $scope.checkForStaff = function(id, gameID) {
           for (i = 0; i < $scope.allPitchingStaffs.length; i++) {
             if ($scope.allPitchingStaffs[i].teamID == id && $scope.allPitchingStaffs[i].gameID == gameID) {
+              return i;
+            }
+          }
+          return -1;
+        };
+        $scope.checkForHitter = function(id, gameID) {
+          for (i = 0; i < $scope.allGames.length; i++) {
+            if ($scope.allGames[i].teamID == id && $scope.allGames[i].gameID == gameID) {
               return i;
             }
           }

@@ -67,6 +67,7 @@
        }
        $scope.periodId = weekOfYear(selectedDate) - 3;
        $scope.selectedDate = selectedDate;
+       //$scope.selectedDate.setHours(0, 0, 0, 0, 0);
        $scope.day = selectedDate.getDate();
        $scope.month = selectedDate.getMonth() + 1;
        $scope.year = selectedDate.getFullYear();
