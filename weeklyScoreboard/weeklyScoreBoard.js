@@ -32,12 +32,14 @@ angular.module('fantasyBaseball.weeklyScoreBoard', [])
       });
     };
     $scope.getScores = function() {
-      $scope.awayScores = $scope.weeklyScoreBoardJson($scope.awayScoreData, $scope.awayStartingPlayers, $scope.awayPitchingStaff);
-      var awayTotal = $scope.weeklyTotal($scope.awayScores);
-      $scope.awayScores.total = awayTotal;
-      $scope.homeScores = $scope.weeklyScoreBoardJson($scope.homeScoreData, $scope.homeStartingPlayers, $scope.homePitchingStaff);
-      var homeTotal = $scope.weeklyTotal($scope.homeScores);
-      $scope.homeScores.total = homeTotal;
+      if ($scope.awayScoreData != undefined && $scope.homeScoreData != undefined) {
+        $scope.awayScores = $scope.weeklyScoreBoardJson($scope.awayScoreData, $scope.awayStartingPlayers, $scope.awayPitchingStaff);
+        var awayTotal = $scope.weeklyTotal($scope.awayScores);
+        $scope.awayScores.total = awayTotal;
+        $scope.homeScores = $scope.weeklyScoreBoardJson($scope.homeScoreData, $scope.homeStartingPlayers, $scope.homePitchingStaff);
+        var homeTotal = $scope.weeklyTotal($scope.homeScores);
+        $scope.homeScores.total = homeTotal;
+      }
     }
     $scope.weeklyScoreBoardJson = function(scoringData, starters, staff) {
       $scope.weeklyScores = ['{ "monday": "0" , "tuesday": "0", "wednesday": "0", "thursday": "0", "friday": "0", "saturday": "0", "sunday": "0", "total": "0"}'];
