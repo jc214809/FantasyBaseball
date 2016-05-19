@@ -130,7 +130,7 @@
                   angular.forEach(gameData[0].data.data.boxscore.batting[0].batter, function(eachBatter) {
                     eachBatter.gameID = $scope.matchup.game_pk;
                     eachBatter.teamID = $scope.matchup.away_id;
-                    $scope.check = $scope.checkForStaff(eachBatter.id, $scope.matchup.game_pk);
+                    $scope.check = $scope.checkForHitter(eachBatter.id, $scope.matchup.game_pk);
                     if ($scope.check > -1) {
                       $scope.allGames[$scope.check] = eachBatter;
                     } else {
@@ -140,7 +140,7 @@
                   angular.forEach(gameData[0].data.data.boxscore.batting[1].batter, function(eachBatter) {
                     eachBatter.gameID = $scope.matchup.game_pk;
                     eachBatter.teamID = $scope.matchup.home_id;
-                    $scope.check = $scope.checkForStaff(eachBatter.id, $scope.matchup.game_pk);
+                    $scope.check = $scope.checkForHitter(eachBatter.id, $scope.matchup.game_pk);
                     if ($scope.check > -1) {
                       $scope.allGames[$scope.check] = eachBatter;
                     } else {
@@ -287,7 +287,7 @@
         };
         $scope.checkForHitter = function(id, gameID) {
           for (i = 0; i < $scope.allGames.length; i++) {
-            if ($scope.allGames[i].teamID == id && $scope.allGames[i].gameID == gameID) {
+            if ($scope.allGames[i].id == id && $scope.allGames[i].gameID == gameID) {
               return i;
             }
           }
