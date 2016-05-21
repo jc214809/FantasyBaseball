@@ -56,10 +56,10 @@
         };
       })
       .factory("poollingFactory", function($timeout) {
-        var timeIntervalInSec = 1;
+        var timeIntervalInSec = 7;
 
         function callFnOnInterval(fn, timeInterval) {
-          var promise = $timeout(fn, 7000 * timeIntervalInSec);
+          var promise = $timeout(fn, 1000 * timeIntervalInSec);
           return promise.then(function() {
             callFnOnInterval(fn, timeInterval);
 
@@ -273,6 +273,7 @@
                 break;
               }
             }
+            $scope.getStats();
             $scope.getLineups();
             $scope.$apply();
           }
@@ -431,99 +432,98 @@
               $scope.$apply();
             }
           });
-          //$scope.getStats();
         };
-        //      $scope.getStats = function() {
-        $scope.allGames = [];
-        $scope.allPitchingStaffs = [];
-        $scope.gameURLs = [];
-        $scope.playersUpToBat = [];
-        $scope.playersOnDeck = [];
-        $scope.playersInTheHole = [];
-        $scope.allGamesDetails = [];
-        $scope.scoreBoard = 'http://gd2.mlb.com/components/game/mlb/year_' + $scope.year + '/month_' + $scope.month + '/day_' + $scope.day + '/master_scoreboard.json';
-        $http.get($scope.scoreBoard).success(function(data) {
-          $scope.eachGame = data.data.games.game;
-          angular.forEach($scope.eachGame, function(game) {
-            if (game.hasOwnProperty('inhole')) {
-              $scope.playersUpToBat.push(game.batter.id);
-              $scope.playersOnDeck.push(game.ondeck.id);
-              $scope.playersInTheHole.push(game.inhole.id);
-            }
-            $scope.gamesDetails = [];
-            $scope.gamesDetails.status = game.status.ind;
-            $scope.gamesDetails.inning = game.status.inning;
-            $scope.gamesDetails.inningState = game.status.inning_state;
-            $scope.gamesDetails.gameId = game.game_pk;
-            $scope.gamesDetails.homeTeamFileCode = game.home_file_code;
-            $scope.gamesDetails.awayTeamFileCode = game.away_file_code;
-            $scope.gamesDetails.homeTeamAbb = game.home_name_abbrev;
-            $scope.gamesDetails.awayTeamAbb = game.away_name_abbrev;
-            if (game.hasOwnProperty('linescore')) {
-              $scope.gamesDetails.homeScore = game.linescore.r.home;
-              $scope.gamesDetails.awayScore = game.linescore.r.away;
-            }
-            $scope.gamesDetails.balls = game.status.b;
-            $scope.gamesDetails.strikes = game.status.s;
-            $scope.gamesDetails.outs = game.status.o;
-            $scope.gamesDetails.doubleheader = game.double_header_sw;
-            $scope.gamesDetails.gameTime = game.time + ' ' + game.ampm;
-            $scope.allGamesDetails.push($scope.gamesDetails);
-            $scope.gameURLs.push('http://gd2.mlb.com' + game.game_data_directory + "/boxscore.json");
-          });
-          angular.forEach($scope.gameURLs, function(games) {
-            $scope.game = $http.get(games);
-            $q.all([$scope.game]).then(function(gameData) {
-              $scope.matchup = gameData[0].data.data.boxscore;
-              angular.forEach(gameData[0].data.data.boxscore.batting[0].batter, function(eachBatter) {
-                eachBatter.gameID = $scope.matchup.game_pk;
-                eachBatter.teamID = $scope.matchup.away_id;
-                $scope.allGames.push(eachBatter);
-                //console.log(eachBatter);
-              });
-              angular.forEach(gameData[0].data.data.boxscore.batting[1].batter, function(eachBatter) {
-                eachBatter.gameID = $scope.matchup.game_pk;
-                eachBatter.teamID = $scope.matchup.home_id;
-                $scope.allGames.push(eachBatter);
-                //console.log(eachBatter);
-              });
-              angular.forEach(gameData[0].data.data.boxscore.pitching, function(eachBatter) {
-                delete eachBatter.pitcher;
-                if (eachBatter.team_flag == 'away') {
+        $scope.getStats = function() {
+          $scope.allGames = [];
+          $scope.allPitchingStaffs = [];
+          $scope.gameURLs = [];
+          $scope.playersUpToBat = [];
+          $scope.playersOnDeck = [];
+          $scope.playersInTheHole = [];
+          $scope.allGamesDetails = [];
+          $scope.scoreBoard = 'http://gd2.mlb.com/components/game/mlb/year_' + $scope.year + '/month_' + $scope.month + '/day_' + $scope.day + '/master_scoreboard.json';
+          $http.get($scope.scoreBoard).success(function(data) {
+            $scope.eachGame = data.data.games.game;
+            angular.forEach($scope.eachGame, function(game) {
+              if (game.hasOwnProperty('inhole')) {
+                $scope.playersUpToBat.push(game.batter.id);
+                $scope.playersOnDeck.push(game.ondeck.id);
+                $scope.playersInTheHole.push(game.inhole.id);
+              }
+              $scope.gamesDetails = [];
+              $scope.gamesDetails.status = game.status.ind;
+              $scope.gamesDetails.inning = game.status.inning;
+              $scope.gamesDetails.inningState = game.status.inning_state;
+              $scope.gamesDetails.gameId = game.game_pk;
+              $scope.gamesDetails.homeTeamFileCode = game.home_file_code;
+              $scope.gamesDetails.awayTeamFileCode = game.away_file_code;
+              $scope.gamesDetails.homeTeamAbb = game.home_name_abbrev;
+              $scope.gamesDetails.awayTeamAbb = game.away_name_abbrev;
+              if (game.hasOwnProperty('linescore')) {
+                $scope.gamesDetails.homeScore = game.linescore.r.home;
+                $scope.gamesDetails.awayScore = game.linescore.r.away;
+              }
+              $scope.gamesDetails.balls = game.status.b;
+              $scope.gamesDetails.strikes = game.status.s;
+              $scope.gamesDetails.outs = game.status.o;
+              $scope.gamesDetails.doubleheader = game.double_header_sw;
+              $scope.gamesDetails.gameTime = game.time + ' ' + game.ampm;
+              $scope.allGamesDetails.push($scope.gamesDetails);
+              $scope.gameURLs.push('http://gd2.mlb.com' + game.game_data_directory + "/boxscore.json");
+            });
+            angular.forEach($scope.gameURLs, function(games) {
+              $scope.game = $http.get(games);
+              $q.all([$scope.game]).then(function(gameData) {
+                $scope.matchup = gameData[0].data.data.boxscore;
+                angular.forEach(gameData[0].data.data.boxscore.batting[0].batter, function(eachBatter) {
+                  eachBatter.gameID = $scope.matchup.game_pk;
                   eachBatter.teamID = $scope.matchup.away_id;
-                  if ($scope.matchup.status_ind == 'F' || $scope.matchup.status_ind == 'O') {
-                    if (parseInt($scope.matchup.linescore.home_team_runs) < parseInt($scope.matchup.linescore.away_team_runs)) {
-                      eachBatter.win = '1';
-                      eachBatter.loss = '0';
-                    } else {
-                      eachBatter.win = '0';
-                      eachBatter.loss = '1';
-                    }
-                  } else {
-                    eachBatter.win = '0';
-                    eachBatter.loss = '0';
-                  }
-                } else {
+                  $scope.allGames.push(eachBatter);
+                  //console.log(eachBatter);
+                });
+                angular.forEach(gameData[0].data.data.boxscore.batting[1].batter, function(eachBatter) {
+                  eachBatter.gameID = $scope.matchup.game_pk;
                   eachBatter.teamID = $scope.matchup.home_id;
-                  if ($scope.matchup.status_ind == 'F' || $scope.matchup.status_ind == 'O') {
-                    if (parseInt($scope.matchup.linescore.home_team_runs) > parseInt($scope.matchup.linescore.away_team_runs)) {
-                      eachBatter.win = '1';
-                      eachBatter.loss = '0';
+                  $scope.allGames.push(eachBatter);
+                  //console.log(eachBatter);
+                });
+                angular.forEach(gameData[0].data.data.boxscore.pitching, function(eachBatter) {
+                  delete eachBatter.pitcher;
+                  if (eachBatter.team_flag == 'away') {
+                    eachBatter.teamID = $scope.matchup.away_id;
+                    if ($scope.matchup.status_ind == 'F' || $scope.matchup.status_ind == 'O') {
+                      if (parseInt($scope.matchup.linescore.home_team_runs) < parseInt($scope.matchup.linescore.away_team_runs)) {
+                        eachBatter.win = '1';
+                        eachBatter.loss = '0';
+                      } else {
+                        eachBatter.win = '0';
+                        eachBatter.loss = '1';
+                      }
                     } else {
                       eachBatter.win = '0';
-                      eachBatter.loss = '1';
+                      eachBatter.loss = '0';
                     }
                   } else {
-                    eachBatter.win = '0';
-                    eachBatter.loss = '0';
+                    eachBatter.teamID = $scope.matchup.home_id;
+                    if ($scope.matchup.status_ind == 'F' || $scope.matchup.status_ind == 'O') {
+                      if (parseInt($scope.matchup.linescore.home_team_runs) > parseInt($scope.matchup.linescore.away_team_runs)) {
+                        eachBatter.win = '1';
+                        eachBatter.loss = '0';
+                      } else {
+                        eachBatter.win = '0';
+                        eachBatter.loss = '1';
+                      }
+                    } else {
+                      eachBatter.win = '0';
+                      eachBatter.loss = '0';
+                    }
                   }
-                }
-                eachBatter.gameID = $scope.matchup.game_pk;
-                eachBatter.status = $scope.matchup.status_ind;
-                $scope.allPitchingStaffs.push(eachBatter);
+                  eachBatter.gameID = $scope.matchup.game_pk;
+                  eachBatter.status = $scope.matchup.status_ind;
+                  $scope.allPitchingStaffs.push(eachBatter);
+                });
               });
             });
           });
-        });
-        //};
+        };
       });

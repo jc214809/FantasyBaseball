@@ -79,21 +79,23 @@
        }
 
        //};
-       $scope.changePeriodID = function() {
-         selectedDate.setDate(selectedDate.getDate() - 1);
-         $scope.periodId = weekOfYear(selectedDate) - 3;
-         $scope.selectedDate = selectedDate;
-         //$scope.selectedDate.setHours(0, 0, 0, 0, 0);
-         $scope.day = selectedDate.getDate();
-         $scope.month = selectedDate.getMonth() + 1;
-         $scope.year = selectedDate.getFullYear();
-         if ($scope.day < 10) {
-           $scope.day = '0' + $scope.day;
-         }
-         if ($scope.month < 10) {
-           $scope.month = '0' + $scope.month;
-         }
-       };
+       // $scope.changePeriodID = function() {
+       //   selectedDate.setDate(selectedDate.getDate() - 1);
+       //   $scope.periodId = weekOfYear(selectedDate) - 3;
+       //   $scope.selectedDate = selectedDate;
+       //   //$scope.selectedDate.setHours(0, 0, 0, 0, 0);
+       //   $scope.day = selectedDate.getDate();
+       //   $scope.month = selectedDate.getMonth() + 1;
+       //   $scope.year = selectedDate.getFullYear();
+       //   if ($scope.day < 10) {
+       //     $scope.day = '0' + $scope.day;
+       //   }
+       //   if ($scope.month < 10) {
+       //     $scope.month = '0' + $scope.month;
+       //   }
+       //   $scope.getStats();
+       // };
+
 
        $scope.$on('$routeChangeSuccess', function(e, nextRoute) {
          if (nextRoute.$$route && angular.isDefined(nextRoute.$$route.pageTitle)) {
