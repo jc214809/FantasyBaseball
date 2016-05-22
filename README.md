@@ -10,3 +10,5 @@ New Player images
 </code>
 
 keep the streak
+
+http://stackoverflow.com/questions/5229081/positionrelative-leaves-an-empty-space

@@ -11,6 +11,7 @@
       <div class="col-xs-9 no-pad">
         <b class="player-details">{{staff.player_name}}, {{staff.slot}}</b>
         <status></status>
+        <count details="currentGame" ng-if="currentGame.status == 'I' || currentGame.status == 'DI'"></count>
       </div>
       <div class="no-pad points">Points:<span ng-attr-id="{{staff.gameId}}{{staff.player_id}}">{{getPitchingStaffScore(staff.player_id, staff.gameId)}}</span></div>
     </div>
