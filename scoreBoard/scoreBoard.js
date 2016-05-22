@@ -55,6 +55,16 @@
           templateUrl: 'scoreBoard/playerStatus.html'
         };
       })
+      .directive('count', function() {
+        return {
+          restrict: 'E',
+          controller: 'countCtrl',
+          scope: {
+            currentGame: '=details'
+          },
+          templateUrl: 'scoreBoard/count.html'
+        };
+      })
       .factory("poollingFactory", function($timeout) {
         var timeIntervalInSec = 7;
 

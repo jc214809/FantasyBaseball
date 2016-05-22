@@ -25,7 +25,7 @@
 }
 
 .circle {
-  position: fixed;
+  position: relative;
   font-size: 4px!important;
   color: grey;
   padding: 0px 0px 0px 0px;
