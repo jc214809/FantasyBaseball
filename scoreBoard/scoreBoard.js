@@ -68,10 +68,11 @@
       .directive('bases', function() {
         return {
           restrict: 'E',
-          controller: 'lineupCtrl',
-          // scope: {
-          //   currentGame: '=details'
-          // },
+          controller: 'countCtrl',
+          scope: {
+            currentGame: '=details',
+            id: '=id'
+          },
           templateUrl: 'scoreBoard/bases.html'
         };
       })
@@ -120,6 +121,11 @@
                     $scope.gamesDetails.awayTeamFileCode = game.away_file_code;
                     $scope.gamesDetails.homeTeamAbb = game.home_name_abbrev;
                     $scope.gamesDetails.awayTeamAbb = game.away_name_abbrev;
+                    if (game.hasOwnProperty('runners_on_base')) {
+                      $scope.gamesDetails.runnerOnFirst = game.runners_on_base.hasOwnProperty('runner_on_1b') ? game.runners_on_base.runner_on_1b.id : null;
+                      $scope.gamesDetails.runnerOnSecond = game.runners_on_base.hasOwnProperty('runner_on_2b') ? game.runners_on_base.runner_on_2b.id : null;
+                      $scope.gamesDetails.runnerOnThird = game.runners_on_base.hasOwnProperty('runner_on_3b') ? game.runners_on_base.runner_on_3b.id : null;
+                    }
                     if (game.hasOwnProperty('linescore')) {
                       $scope.gamesDetails.homeScore = game.linescore.r.home;
                       $scope.gamesDetails.awayScore = game.linescore.r.away;
@@ -483,6 +489,11 @@
               $scope.gamesDetails.awayTeamFileCode = game.away_file_code;
               $scope.gamesDetails.homeTeamAbb = game.home_name_abbrev;
               $scope.gamesDetails.awayTeamAbb = game.away_name_abbrev;
+              if (game.hasOwnProperty('runners_on_base')) {
+                $scope.gamesDetails.runnerOnFirst = game.runners_on_base.hasOwnProperty('runner_on_1b') ? game.runners_on_base.runner_on_1b.id : null;
+                $scope.gamesDetails.runnerOnSecond = game.runners_on_base.hasOwnProperty('runner_on_2b') ? game.runners_on_base.runner_on_2b.id : null;
+                $scope.gamesDetails.runnerOnThird = game.runners_on_base.hasOwnProperty('runner_on_3b') ? game.runners_on_base.runner_on_3b.id : null;
+              }
               if (game.hasOwnProperty('linescore')) {
                 $scope.gamesDetails.homeScore = game.linescore.r.home;
                 $scope.gamesDetails.awayScore = game.linescore.r.away;
