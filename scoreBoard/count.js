@@ -22,34 +22,34 @@ angular.module('fantasyBaseball.count', [])
 
     $scope.getBaseRunners = function(baseParameter) {
       if (baseParameter == 'runner_on_1b') {
-        if ($scope.gamesDetails.runnerOnFirst != null) {
+        if ($scope.currentGame.runnerOnFirst != null) {
           return true;
         };
       };
       if (baseParameter == 'runner_on_2b') {
-        if ($scope.gamesDetails.runnerOnSecond != null) {
+        if ($scope.currentGame.runnerOnSecond != null) {
           return true;
         };
       };
       if (baseParameter == 'runner_on_3b') {
-        if ($scope.gamesDetails.runnerOnThird != null) {
+        if ($scope.currentGame.runnerOnThird != null) {
           return true;
         };
       };
     };
     $scope.isRunnerCurrentPlayer = function(playerID, baseParameter) {
       if (baseParameter == 'runner_on_1b') {
-        if ($scope.gamesDetails.runnerOnFirst != null && $scope.gamesDetails.runnerOnFirst == playerID) {
+        if ($scope.currentGame.runnerOnFirst != null && $scope.currentGame.runnerOnFirst == playerID) {
           return true;
         };
       };
       if (baseParameter == 'runner_on_2b') {
-        if ($scope.gamesDetails.runnerOnSecond != null && $scope.gamesDetails.runnerOnSecond == playerID) {
+        if ($scope.currentGame.runnerOnSecond != null && $scope.currentGame.runnerOnSecond == playerID) {
           return true;
         };
       };
       if (baseParameter == 'runner_on_3b') {
-        if ($scope.gamesDetails.runnerOnThird != null && $scope.gamesDetails.runnerOnThird == playerID) {
+        if ($scope.currentGame.runnerOnThird != null && $scope.currentGame.runnerOnThird == playerID) {
           return true;
         };
       };
