@@ -3,7 +3,7 @@ angular.module('fantasyBaseball.count', [])
     $scope.getCurrentCount = function(indicator) {
       //for (var i = $scope.eachGame.length - 1; i >= 0; i--) {
       //if (gameID == $scope.eachGame[i].game_pk) {
-      var inningState = $scope.currentGame.inningState;
+      var inningState = $scope.currentGame.inningState.toLowerCase();
       if (inningState == 'top' || inningState == 'bottom') {
         switch (indicator) {
           case "Ball":
