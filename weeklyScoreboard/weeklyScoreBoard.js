@@ -14,7 +14,7 @@ angular.module('fantasyBaseball.weeklyScoreBoard', [])
         type: 'GET',
         dataType: 'json',
         error: function() {
-          alert("MatchUp Error");
+          alert("Error getting weekly Score data. CORS-Anywhere may be down.");
         },
 
         success: function(data) {

@@ -2,7 +2,7 @@
   {{getGameDetails(player.gameId)}}
   <div class="row" ng-class="{ 'at-bat' : (playersUpToBat.indexOf(player.player_id) != -1 && currentGame.status != 'P' && currentGame.status != 'F'&& currentGame.status != 'S'), 'on-deck' : (playersOnDeck.indexOf(player.player_id) != -1 && currentGame.status != 'P' && currentGame.status != 'F'&& currentGame.status != 'S'), 'in-hole' : (playersInTheHole.indexOf(player.player_id) != -1 && currentGame.status != 'P' && currentGame.status != 'F'&& currentGame.status != 'S')}">
     <div class=" col-xs-1 player-row">
-      <img class="team-logo removeMargins" src="http://mlb.mlb.com/images/logos/42x50/{{player.team_file_code}}.png" />
+      <img class="team-logo removeMargins pull-right" src="http://mlb.mlb.com/images/logos/42x50/{{player.team_file_code}}.png" />
     </div>
     <div class="col-xs-1 player-row removeLeftPad">
       <img class="player-picture removeMargins" src="http://gdx.mlb.com/images/gameday/mugshots/mlb/{{player.player_id}}@2x.jpg" />
@@ -13,8 +13,9 @@
           <div>
             <b class="player-details">{{player.player_name}}, {{player.slot}}</b>
             <status></status>
+            <bases class="ass bases_container base margins" ng-if="currentGame.status == 'I' || currentGame.status == 'DI'"></bases>
             <playerstatus batters="allGames" player="player"></playerstatus>
-            <!-- <count eachgame="eachGame" player="player" details="currentGame"></count> -->
+            <count details="currentGame" ng-if="currentGame.status == 'I' || currentGame.status == 'DI'"></count>
             <img src="..\FantasyBaseball\images\pictures\Injury.jpg" class="injury-symbol" ng-if="injuryDetails(player.player_id)" title="{{injuryInfo}}" ng-click="getInjuryUpdate(player.player_id)">
           </div>
         </div>

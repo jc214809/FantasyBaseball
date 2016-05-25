@@ -55,6 +55,26 @@
           templateUrl: 'scoreBoard/playerStatus.html'
         };
       })
+      .directive('count', function() {
+        return {
+          restrict: 'E',
+          controller: 'countCtrl',
+          scope: {
+            currentGame: '=details'
+          },
+          templateUrl: 'scoreBoard/count.html'
+        };
+      })
+      .directive('bases', function() {
+        return {
+          restrict: 'E',
+          controller: 'lineupCtrl',
+          // scope: {
+          //   currentGame: '=details'
+          // },
+          templateUrl: 'scoreBoard/bases.html'
+        };
+      })
       .factory("poollingFactory", function($timeout) {
         var timeIntervalInSec = 7;
 
@@ -108,7 +128,11 @@
                     $scope.gamesDetails.strikes = game.status.s;
                     $scope.gamesDetails.outs = game.status.o;
                     $scope.gamesDetails.doubleheader = game.double_header_sw;
+                    // if (game.tbd_flag == 'Y' && game.double_header_sw == 'Y') {
                     $scope.gamesDetails.gameTime = game.time + ' ' + game.ampm;
+                    // } else {
+                    //   $scope.gamesDetails.gameTime = "Game 2";
+                    // }
                     $scope.allGamesDetails[i] = $scope.gamesDetails;
                   }
                 }
@@ -467,7 +491,11 @@
               $scope.gamesDetails.strikes = game.status.s;
               $scope.gamesDetails.outs = game.status.o;
               $scope.gamesDetails.doubleheader = game.double_header_sw;
+              // if (game.tbd_flag == 'Y' && game.double_header_sw == 'Y') {
               $scope.gamesDetails.gameTime = game.time + ' ' + game.ampm;
+              // } else {
+              //   $scope.gamesDetails.gameTime = "Game 2";
+              // }
               $scope.allGamesDetails.push($scope.gamesDetails);
               $scope.gameURLs.push('http://gd2.mlb.com' + game.game_data_directory + "/boxscore.json");
             });

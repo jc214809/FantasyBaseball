@@ -36,8 +36,9 @@
        'fantasyBaseball.weeklyScoreBoard',
        'fantasyBaseball.lineup',
        'fantasyBaseball.pitchingStaff',
-       'fantasyBaseball.playerStatus'
-     ]) //, 'fantasyBaseball.count'
+       'fantasyBaseball.playerStatus',
+       'fantasyBaseball.count'
+     ]) //
      .config(function myAppConfig($routeProvider, $httpProvider, $locationProvider) {
        $routeProvider
          .when('/', {
