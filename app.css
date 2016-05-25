@@ -32,15 +32,15 @@
 }
 
 .activeBall {
-  color: green;
+  color: #00FF00;
 }
 
 .activeStrike {
-  color: red;
+  color: #ff6666;
 }
 
 .activeOut {
-  color: blue;
+  color: #6699FF;
 }
 
 .strike {
