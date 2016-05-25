@@ -1,7 +1,7 @@
 <div class="row" ng-repeat="staff in staffs">
   {{getGameDetails(staff.gameId)}}
   <div class="col-xs-1 player-row player-row">
-    <img class="team-logo removeMargins" src="http://mlb.mlb.com/images/logos/42x50/{{staff.team_file_code}}.png" />
+    <img class="team-logo removeMargins pull-right" src="http://mlb.mlb.com/images/logos/42x50/{{staff.team_file_code}}.png" />
   </div>
   <div class="col-xs-1 player-row removeLeftPad">
     <img class="player-picture removeMargins" src="http://mlb.mlb.com/mlb/fantasy/wsfb/images/mugshots/41x49/{{staff.team_file_code}}_staff_41x49.jpg" />
@@ -11,6 +11,7 @@
       <div class="col-xs-9 no-pad">
         <b class="player-details">{{staff.player_name}}, {{staff.slot}}</b>
         <status></status>
+        <bases class="ass bases_container base margins" ng-if="currentGame.status == 'I' || currentGame.status == 'DI'"></bases>
         <count details="currentGame" ng-if="currentGame.status == 'I' || currentGame.status == 'DI'"></count>
       </div>
       <div class="no-pad points">Points:<span ng-attr-id="{{staff.gameId}}{{staff.player_id}}">{{getPitchingStaffScore(staff.player_id, staff.gameId)}}</span></div>

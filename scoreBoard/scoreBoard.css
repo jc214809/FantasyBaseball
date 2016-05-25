@@ -15,7 +15,7 @@
 .lineup .player-picture {
   width: 62px;
   height: auto;
-  float: right;
+  /*float: right;*/
 }
 
 .lineup .player-row {
