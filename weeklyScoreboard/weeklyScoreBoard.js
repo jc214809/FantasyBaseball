@@ -2,15 +2,9 @@ angular.module('fantasyBaseball.weeklyScoreBoard', [])
   .controller('weeklyScoreBoardCtrl', function weeklyScoreBoardController($scope, $http, $q) {
     $scope.awayScores = null;
     $scope.homeScores = null;
-    $scope.newPeriod = false;
-    if ($scope.periodId != $scope.passedPeriodId) {
-      $scope.passedPeriodId = $scope.periodId;
-      $scope.newPeriod = true;
-    }
-    if ($scope.awayTeam != undefined && $scope.homeTeam != undefined && $scope.newPeriod) {
-      $scope.newPeriod = false;
+    if ($scope.awayTeam != undefined && $scope.homeTeam != undefined) {
       $.ajax({
-        url: 'http://mlb.mlb.com/fantasylookup/json/named.fb_team_score_by_date.bam?away_team_id=' + $scope.awayTeam.team_id + '&home_team_id=' + $scope.homeTeam.team_id + '&period_id=' + $scope.passedPeriodId,
+        url: 'http://mlb.mlb.com/fantasylookup/json/named.fb_team_score_by_date.bam?away_team_id=' + $scope.awayTeam.team_id + '&home_team_id=' + $scope.homeTeam.team_id + '&period_id=' + $scope.periodId,
         type: 'GET',
         dataType: 'json',
         error: function() {
