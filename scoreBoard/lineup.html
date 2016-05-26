@@ -16,7 +16,6 @@
             <gamedata class="game-info status-info" ng-if="currentGame.status == 'F' || currentGame.status == 'O' || currentGame.status == 'IR' || currentGame.status == 'I'|| currentGame.status == 'MA' || currentGame.status == 'PW'|| currentGame.status == 'NF'|| currentGame.status == 'MO'"></gamedata>
             <bases details="currentGame" id="player.player_id" class="ass bases_container base margins" ng-if="currentGame.status == 'I' || currentGame.status == 'DI'"></bases>
             <count details="currentGame" ng-if="currentGame.status == 'I' || currentGame.status == 'DI'"></count>
-            &nbsp;
             <status></status>
             <playerstatus batters="allGames" player="player"></playerstatus>
             <img src="..\FantasyBaseball\images\pictures\Injury.jpg" class="injury-symbol" ng-if="injuryDetails(player.player_id)" title="{{injuryInfo}}" ng-click="getInjuryUpdate(player.player_id)">
