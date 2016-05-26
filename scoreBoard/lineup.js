@@ -1,11 +1,4 @@
 angular.module('fantasyBaseball.lineup', [])
-  .directive('status', function() {
-    return {
-      restrict: 'E',
-      controller: 'lineupCtrl',
-      templateUrl: "scoreBoard/status.html"
-    };
-  })
   .controller('lineupCtrl', function lineupController($scope, $http, $q) {
     $scope.allInjuryInfo = [];
     $scope.gameStatus = function(gameID) {

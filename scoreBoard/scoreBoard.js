@@ -76,6 +76,27 @@
           templateUrl: 'scoreBoard/bases.html'
         };
       })
+      .directive('status', function() {
+        return {
+          restrict: 'E',
+          controller: 'lineupCtrl',
+          templateUrl: "scoreBoard/status.html"
+        };
+      })
+      .directive('gamedata', function() {
+        return {
+          restrict: 'E',
+          controller: 'lineupCtrl',
+          templateUrl: 'scoreBoard/gameData.html'
+        };
+      })
+      .directive('pregamedata', function() {
+        return {
+          restrict: 'E',
+          controller: 'lineupCtrl',
+          templateUrl: 'scoreBoard/pregameData.html'
+        };
+      })
       .factory("poollingFactory", function($timeout) {
         var timeIntervalInSec = 7;
 
