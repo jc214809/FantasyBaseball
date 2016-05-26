@@ -1,10 +1,3 @@
-<b class="pregame-info" ng-if="currentGame.status == 'S' || currentGame.status == 'P'">{{currentGame.awayTeamAbb}} @ {{currentGame.homeTeamAbb}} {{currentGame.gameTime}}</b>
-<span class="game-info status-info" ng-if="currentGame.status == 'F' || currentGame.status == 'O' || currentGame.status == 'IR' || currentGame.status == 'I'|| currentGame.status == 'MA' || currentGame.status == 'PW'|| currentGame.status == 'NF'|| currentGame.status == 'MO'"> 
-
-
-<b class="score-away-abb">{{currentGame.awayTeamAbb}}</b><b class="away-score"> {{currentGame.awayScore}} </b><b class="score-home-abb">{{currentGame.homeTeamAbb}}</b><b class="home-score"> {{currentGame.homeScore}}</b><b class="game-info" ng-if="currentGame.status != 'F' && currentGame.status != 'O'  && currentGame.status != 'DR'">, {{getInningState(currentGame.inningState)}}{{currentGame.inning}}</b>
-
-</span>
 <img class="status-icon" ng-if="currentGame.status == 'F' || currentGame.status =='O'" src='..\FantasyBaseball\images\pictures\Final.jpg' />
 <img ng-if="currentGame.status == 'PW'" class="status-icon" src="..\FantasyBaseball\images\pictures\warmUp.jpg" />
 <blink ng-if="currentGame.status == 'DR'|| currentGame.status == 'PR'|| currentGame.status == 'DI' || currentGame.status == 'IR' || currentGame.status == 'MA'|| currentGame.status == 'MM'|| currentGame.status == 'DE'|| currentGame.status == 'NF'|| currentGame.status == 'MO'">
@@ -12,12 +5,3 @@
   <img ng-if="currentGame.status == 'IR'|| currentGame.status == 'PR'" class="status-icon" src="..\FantasyBaseball\images\pictures\Delay.jpg" />
   <img ng-if="currentGame.status == 'MA' || currentGame.status == 'MM' || currentGame.status == 'NF'|| currentGame.status == 'MO'" class="status-icon" src="..\FantasyBaseball\images\pictures\Challenge.jpg" />
 </blink>
-<!-- span>
-  <div class="row joel">
-    <div class="col-xs-1">CIN</div>
-  </div>
-  <div class="row joel">
-    <div class="col-xs-1">PIT</div>
-  </div>
-  </span>
-  -->

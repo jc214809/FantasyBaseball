@@ -12,11 +12,14 @@
         <div class="col-xs-9 no-pad">
           <div>
             <b class="player-details">{{player.player_name}}, {{player.slot}}</b>
-            <status></status>
-            <img src="..\FantasyBaseball\images\pictures\Injury.jpg" class="injury-symbol" ng-if="injuryDetails(player.player_id)" title="{{injuryInfo}}" ng-click="getInjuryUpdate(player.player_id)">
+            <pregamedata class="pregame-info" ng-if="currentGame.status == 'S' || currentGame.status == 'P'"></pregamedata>
+            <gamedata class="game-info status-info" ng-if="currentGame.status == 'F' || currentGame.status == 'O' || currentGame.status == 'IR' || currentGame.status == 'I'|| currentGame.status == 'MA' || currentGame.status == 'PW'|| currentGame.status == 'NF'|| currentGame.status == 'MO'"></gamedata>
             <bases details="currentGame" id="player.player_id" class="ass bases_container base margins" ng-if="currentGame.status == 'I' || currentGame.status == 'DI'"></bases>
-            <playerstatus batters="allGames" player="player"></playerstatus>
             <count details="currentGame" ng-if="currentGame.status == 'I' || currentGame.status == 'DI'"></count>
+            &nbsp;
+            <status></status>
+            <playerstatus batters="allGames" player="player"></playerstatus>
+            <img src="..\FantasyBaseball\images\pictures\Injury.jpg" class="injury-symbol" ng-if="injuryDetails(player.player_id)" title="{{injuryInfo}}" ng-click="getInjuryUpdate(player.player_id)">
           </div>
         </div>
         <div class="no-pad points">Points:<span ng-attr-id="{{player.gameId}}{{player.player_id}}">{{getHittersScore(player.player_id,player.gameId)}}</span>
