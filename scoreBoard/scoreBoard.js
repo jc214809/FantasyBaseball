@@ -10,7 +10,8 @@
             playersUpToBat: '=up',
             playersOnDeck: '=deck',
             playersInTheHole: '=hole',
-            allGamesDetails: '=details'
+            allGamesDetails: '=details',
+            allInjuryInfo: '=injuryinfo'
           },
           templateUrl: 'scoreBoard/lineup.html'
         };
@@ -324,6 +325,7 @@
                 break;
               }
             }
+            $scope.getInjuredPlayers();
             $scope.getStats();
             $scope.getLineups();
             $scope.$apply();
@@ -484,6 +486,22 @@
             }
           });
         };
+        $scope.getInjuredPlayers = function() {
+          $.ajax({
+            url: 'http://www.mlb.com/fantasylookup/json/named.wsfb_news_injury.bam',
+            type: 'GET',
+            dataType: 'json',
+            error: function() {
+              console.log("Could not retreive injury data");
+            },
+            success: function(data) {
+              $scope.allInjuryInfo = [];
+              angular.forEach(data.wsfb_news_injury.queryResults.row, function(player) {
+                $scope.allInjuryInfo.push(player);
+              });
+            }
+          });
+        }
         $scope.getStats = function() {
           $scope.allGames = [];
           $scope.allPitchingStaffs = [];
