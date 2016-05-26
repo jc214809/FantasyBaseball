@@ -26,32 +26,32 @@
 
 .circle {
   position: relative;
-  font-size: 3.5px!important;
+  font-size: 3.25px!important;
   color: grey;
   padding: 0px 0px 0px 0px;
 }
 
 .activeBall {
-  color: green;
+  color: #00FF00;
 }
 
 .activeStrike {
-  color: red;
+  color: #ff6666;
 }
 
 .activeOut {
-  color: blue;
+  color: #6699FF;
 }
 
 .strike {
   top: -3px;
-  right: 11px;
+  right: 10.5px;
   /*margin-right: -10px;*/
 }
 
 .out {
   top: 1px;
-  right: 16px;
+  right: 15px;
   /*margin-right: -10px;*/
 }
 
@@ -214,8 +214,8 @@
   }
   .player-section {
     position: relative;
-    padding-left: 13px;
-    padding-right: 13px;
+    padding-left: 8px;
+    padding-right: 8px;
   }
   .lineup .col-xs-1 {
     padding-left: 0px;
