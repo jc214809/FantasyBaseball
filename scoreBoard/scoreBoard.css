@@ -39,7 +39,7 @@
 }
 
 .at-bat {
-  background-color: green;
+  background-color: #00FF00;
 }
 
 .on-deck {
@@ -47,7 +47,7 @@
 }
 
 .in-hole {
-  background-color: red;
+  background-color: #ff6666;
 }
 
 .points {
