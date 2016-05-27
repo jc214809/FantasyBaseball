@@ -4,13 +4,12 @@ angular.module('fantasyBaseball.weeklyScoreBoard', [])
     $scope.homeScores = null;
     if ($scope.awayTeam != undefined && $scope.homeTeam != undefined) {
       $.ajax({
-        url: 'http://mlb.mlb.com/fantasylookup/json/named.fb_team_score_by_date.bam?away_team_id=' + $scope.awayTeam.team_id + '&home_team_id=' + $scope.homeTeam.team_id + '&period_id=' + $scope.periodId,
+        url: 'http://mlb.mlb.com/fantasylookup/json/named.fb_team_score_by_date.bam?away_team_id=' + $scope.awayTeam.team_id + '&home_team_id=' + $scope.homeTeam.team_id + '&period_id=' + $scope
         type: 'GET',
         dataType: 'json',
         error: function() {
           alert("Error getting weekly Score data. CORS-Anywhere may be down.");
         },
-
         success: function(data) {
           $scope.masterScoreData = data.fb_team_score_by_date.queryResults.row;
           $scope.awayScoreData = [];
