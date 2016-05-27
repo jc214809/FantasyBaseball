@@ -5,6 +5,7 @@ angular.module('fantasyBaseball.weeklyScoreBoard', [])
     if ($scope.awayTeam != undefined && $scope.homeTeam != undefined) {
       $.ajax({
         url: 'http://mlb.mlb.com/fantasylookup/json/named.fb_team_score_by_date.bam?away_team_id=' + $scope.awayTeam.team_id + '&home_team_id=' + $scope.homeTeam.team_id + '&period_id=' + $scope
+          .periodId,
         type: 'GET',
         dataType: 'json',
         error: function() {
