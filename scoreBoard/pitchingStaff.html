@@ -8,15 +8,15 @@
   </div>
   <div class="col-xs-10 player-row removeLeftPad">
     <div class="row removeMargins">
-      <div class="col-xs-9 no-pad">
+      <div class="col-xs-12 no-pad">
         <b class="player-details">{{staff.player_name}}, {{staff.slot}}</b>
         <pregamedata class="pregame-info" ng-if="currentGame.status == 'S' || currentGame.status == 'P'"></pregamedata>
         <gamedata class="game-info status-info" ng-if="currentGame.status == 'F' || currentGame.status == 'O' || currentGame.status == 'IR' || currentGame.status == 'I'|| currentGame.status == 'MA' || currentGame.status == 'PW'|| currentGame.status == 'NF'|| currentGame.status == 'MO'"></gamedata>
         <bases details="currentGame" id="staff.player_id" class="ass bases_container base margins" ng-if="currentGame.status == 'I' || currentGame.status == 'DI'"></bases>
         <count details="currentGame" ng-if="currentGame.status == 'I' || currentGame.status == 'DI'"></count>
         <status></status>
+        <div class="no-pad points pull-right">Points:<span ng-attr-id="{{staff.gameId}}{{staff.player_id}}">{{getPitchingStaffScore(staff.player_id, staff.gameId)}}</span></div>
       </div>
-      <div class="no-pad points">Points:<span ng-attr-id="{{staff.gameId}}{{staff.player_id}}">{{getPitchingStaffScore(staff.player_id, staff.gameId)}}</span></div>
     </div>
     <div class="row removeMargins">
       <div class="col-xs-11">{{getPitchingStatLine(staff.player_id, staff.gameId)}}</div>

@@ -26,7 +26,7 @@
 
 .circle {
   position: relative;
-  font-size: 3.25px!important;
+  font-size: 4px!important;
   color: grey;
   padding: 0px 0px 0px 0px;
 }
@@ -45,13 +45,13 @@
 
 .strike {
   top: -3px;
-  right: 10.5px;
+  right: 14px;
   /*margin-right: -10px;*/
 }
 
 .out {
   top: 1px;
-  right: 15px;
+  right: 21.25px;
   /*margin-right: -10px;*/
 }
 

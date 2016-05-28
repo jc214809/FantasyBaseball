@@ -169,12 +169,13 @@
                   }
                 }
                 //$scope.allGamesDetails.push($scope.gamesDetails);
-                var gameDatedTime = new Date(game.time_date + ' ' + game.ampm);
+                var gameDateTime = new Date(game.time_date + ' ' + game.ampm);
+                var gameDate = new Date(game.time_date + ' ' + game.ampm)
                 var status = game.status.ind;
                 //console.log(gameDatedTime);
                 if (status != 'DR' || status != 'DI' || status != 'DE') {
-                  if (gameDatedTime.setHours(0, 0, 0, 0) == todaysDate.setHours(0, 0, 0, 0) || (today.getHours() >= 0 && today.getHours() <= 2)) {
-                    if (today.getHours() >= gameDatedTime.getHours() - 1) {
+                  if (gameDate.setHours(0, 0, 0, 0) == todaysDate.setHours(0, 0, 0, 0) || (today.getHours() >= 0 && today.getHours() <= 2)) {
+                    if (today.getHours() >= gameDateTime.getHours() - 1) {
                       $scope.gameURLs.push('http://gd2.mlb.com' + game.game_data_directory + "/boxscore.json");
                     }
                   }
