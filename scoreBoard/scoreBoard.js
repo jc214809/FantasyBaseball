@@ -117,7 +117,7 @@
         var todaysDate = new Date();
         var selectedDate = $scope.selectedDate;
         poollingFactory.callFnOnInterval(function() {
-          if (selectedDate.setHours(0, 0, 0, 0) == todaysDate || (today.getHours() >= 0 && today.getHours() <= 2)) {
+          if (selectedDate.setHours(0, 0, 0, 0) == todaysDate.setHours(0, 0, 0, 0) || (today.getHours() >= 0 && today.getHours() <= 2)) {
             $scope.playersUpToBatUpdated = [];
             $scope.playersOnDeckUpdated = [];
             $scope.playersInTheHoleUpdated = [];
@@ -130,9 +130,11 @@
               $scope.eachGame = data.data.games.game;
               angular.forEach($scope.eachGame, function(game) {
                 if (game.hasOwnProperty('inhole')) {
-                  $scope.playersUpToBatUpdated.push(game.batter.id);
-                  $scope.playersOnDeckUpdated.push(game.ondeck.id);
-                  $scope.playersInTheHoleUpdated.push(game.inhole.id);
+                  if (game.status.inning_state == 'top' || game.status.inning_state == 'bottom') {
+                    $scope.playersUpToBatUpdated.push(game.batter.id);
+                    $scope.playersOnDeckUpdated.push(game.ondeck.id);
+                    $scope.playersInTheHoleUpdated.push(game.inhole.id);
+                  }
                 };
                 for (var i = 0; i < $scope.allGamesDetails.length; i++) {
                   if ($scope.allGamesDetails[i].gameId == game.game_pk) {
@@ -525,9 +527,11 @@
             $scope.eachGame = data.data.games.game;
             angular.forEach($scope.eachGame, function(game) {
               if (game.hasOwnProperty('inhole')) {
-                $scope.playersUpToBat.push(game.batter.id);
-                $scope.playersOnDeck.push(game.ondeck.id);
-                $scope.playersInTheHole.push(game.inhole.id);
+                if (game.status.inning_state == 'top' || game.status.inning_state == 'bottom') {
+                  $scope.playersUpToBat.push(game.batter.id);
+                  $scope.playersOnDeck.push(game.ondeck.id);
+                  $scope.playersInTheHole.push(game.inhole.id);
+                }
               }
               $scope.gamesDetails = [];
               $scope.gamesDetails.status = game.status.ind;
@@ -560,11 +564,11 @@
               var status = game.status.ind;
               $scope.allGamesDetails.push($scope.gamesDetails);
               if (status != 'DR' || status != 'DI' || status != 'DE') {
-                //if (gameDatedTime.setHours(0, 0, 0, 0) == todaysDate.setHours(0, 0, 0, 0) || (today.getHours() >= 0 && today.getHours() <= 2)) {
-                //if (today.getHours() >= gameDatedTime.getHours() - 1) {
-                $scope.gameURLs.push('http://gd2.mlb.com' + game.game_data_directory + "/boxscore.json");
-                //}
-                //}
+                if (gameDatedTime.setHours(0, 0, 0, 0) == todaysDate.setHours(0, 0, 0, 0) || (today.getHours() >= 0 && today.getHours() <= 2)) {
+                  //if (today.getHours() >= gameDatedTime.getHours() - 1) {
+                  $scope.gameURLs.push('http://gd2.mlb.com' + game.game_data_directory + "/boxscore.json");
+                  //}
+                }
               }
               //$scope.gameURLs.push('http://gd2.mlb.com' + game.game_data_directory + "/boxscore.json");
             });
