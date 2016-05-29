@@ -565,11 +565,11 @@
               var status = game.status.ind;
               $scope.allGamesDetails.push($scope.gamesDetails);
               if (status != 'DR' || status != 'DI' || status != 'DE') {
-                if (gameDatedTime.setHours(0, 0, 0, 0) == todaysDate.setHours(0, 0, 0, 0) || (today.getHours() >= 0 && today.getHours() <= 2)) {
+                //if (gameDatedTime.setHours(0, 0, 0, 0) == todaysDate.setHours(0, 0, 0, 0) || (today.getHours() >= 0 && today.getHours() <= 2)) {
                   //if (today.getHours() >= gameDatedTime.getHours() - 1) {
                   $scope.gameURLs.push('http://gd2.mlb.com' + game.game_data_directory + "/boxscore.json");
                   //}
-                }
+          //      }
               }
               //$scope.gameURLs.push('http://gd2.mlb.com' + game.game_data_directory + "/boxscore.json");
             });
