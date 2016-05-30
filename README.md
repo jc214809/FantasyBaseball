@@ -12,3 +12,7 @@ New Player images
 keep the streak
 
 http://stackoverflow.com/questions/5229081/positionrelative-leaves-an-empty-space
+
+//Useful Links
+http://www.mlb.com/fantasylookup/json/named.fb_players_bio_next_7.bam?player_id=475582
+http://www.mlb.com/fantasylookup/json/named.fb_players_bio_last_10.bam?player_id=475582

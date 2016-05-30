@@ -116,6 +116,7 @@
         var today = new Date();
         var todaysDate = new Date();
         var selectedDate = $scope.selectedDate;
+        var selectedDateTime = $scope.selectedDate;
         poollingFactory.callFnOnInterval(function() {
           if (selectedDate.setHours(0, 0, 0, 0) == todaysDate.setHours(0, 0, 0, 0) || (today.getHours() >= 0 && today.getHours() <= 2)) {
             $scope.playersUpToBatUpdated = [];
@@ -168,11 +169,9 @@
                     $scope.allGamesDetails[i] = $scope.gamesDetails;
                   }
                 }
-                //$scope.allGamesDetails.push($scope.gamesDetails);
                 var gameDateTime = new Date(game.time_date + ' ' + game.ampm);
                 var gameDate = new Date(game.time_date + ' ' + game.ampm)
                 var status = game.status.ind;
-                //console.log(gameDatedTime);
                 if (status != 'DR' || status != 'DI' || status != 'DE') {
                   if (gameDate.setHours(0, 0, 0, 0) == todaysDate.setHours(0, 0, 0, 0) || (today.getHours() >= 0 && today.getHours() <= 2)) {
                     if (today.getHours() >= gameDateTime.getHours() - 1) {
@@ -565,13 +564,10 @@
               var status = game.status.ind;
               $scope.allGamesDetails.push($scope.gamesDetails);
               if (status != 'DR' || status != 'DI' || status != 'DE') {
-                //if (gameDatedTime.setHours(0, 0, 0, 0) == todaysDate.setHours(0, 0, 0, 0) || (today.getHours() >= 0 && today.getHours() <= 2)) {
-                  //if (today.getHours() >= gameDatedTime.getHours() - 1) {
+                if (today.getHours() >= gameDatedTime.getHours() - 1 || selectedDate.getDate() < todaysDate.getDate()) {
                   $scope.gameURLs.push('http://gd2.mlb.com' + game.game_data_directory + "/boxscore.json");
-                  //}
-          //      }
+                }
               }
-              //$scope.gameURLs.push('http://gd2.mlb.com' + game.game_data_directory + "/boxscore.json");
             });
             angular.forEach($scope.gameURLs, function(games) {
               $scope.game = $http.get(games);
@@ -581,48 +577,46 @@
                   eachBatter.gameID = $scope.matchup.game_pk;
                   eachBatter.teamID = $scope.matchup.away_id;
                   $scope.allGames.push(eachBatter);
-                  //console.log(eachBatter);
                 });
                 angular.forEach(gameData[0].data.data.boxscore.batting[1].batter, function(eachBatter) {
                   eachBatter.gameID = $scope.matchup.game_pk;
                   eachBatter.teamID = $scope.matchup.home_id;
                   $scope.allGames.push(eachBatter);
-                  //console.log(eachBatter);
                 });
-                angular.forEach(gameData[0].data.data.boxscore.pitching, function(eachBatter) {
-                  delete eachBatter.pitcher;
-                  if (eachBatter.team_flag == 'away') {
-                    eachBatter.teamID = $scope.matchup.away_id;
+                angular.forEach(gameData[0].data.data.boxscore.pitching, function(eachStaff) {
+                  delete eachStaff.pitcher;
+                  if (eachStaff.team_flag == 'away') {
+                    eachStaff.teamID = $scope.matchup.away_id;
                     if ($scope.matchup.status_ind == 'F' || $scope.matchup.status_ind == 'O') {
                       if (parseInt($scope.matchup.linescore.home_team_runs) < parseInt($scope.matchup.linescore.away_team_runs)) {
-                        eachBatter.win = '1';
-                        eachBatter.loss = '0';
+                        eachStaff.win = '1';
+                        eachStaff.loss = '0';
                       } else {
-                        eachBatter.win = '0';
-                        eachBatter.loss = '1';
+                        eachStaff.win = '0';
+                        eachStaff.loss = '1';
                       }
                     } else {
-                      eachBatter.win = '0';
-                      eachBatter.loss = '0';
+                      eachStaff.win = '0';
+                      eachStaff.loss = '0';
                     }
                   } else {
-                    eachBatter.teamID = $scope.matchup.home_id;
+                    eachStaff.teamID = $scope.matchup.home_id;
                     if ($scope.matchup.status_ind == 'F' || $scope.matchup.status_ind == 'O') {
                       if (parseInt($scope.matchup.linescore.home_team_runs) > parseInt($scope.matchup.linescore.away_team_runs)) {
-                        eachBatter.win = '1';
-                        eachBatter.loss = '0';
+                        eachStaff.win = '1';
+                        eachStaff.loss = '0';
                       } else {
-                        eachBatter.win = '0';
-                        eachBatter.loss = '1';
+                        eachStaff.win = '0';
+                        eachStaff.loss = '1';
                       }
                     } else {
-                      eachBatter.win = '0';
-                      eachBatter.loss = '0';
+                      eachStaff.win = '0';
+                      eachStaff.loss = '0';
                     }
                   }
-                  eachBatter.gameID = $scope.matchup.game_pk;
-                  eachBatter.status = $scope.matchup.status_ind;
-                  $scope.allPitchingStaffs.push(eachBatter);
+                  eachStaff.gameID = $scope.matchup.game_pk;
+                  eachStaff.status = $scope.matchup.status_ind;
+                  $scope.allPitchingStaffs.push(eachStaff);
                 });
               });
             });
