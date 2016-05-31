@@ -69,7 +69,7 @@
       .directive('bases', function() {
         return {
           restrict: 'E',
-          controller: 'countCtrl',
+          controller: 'basesCtrl',
           scope: {
             currentGame: '=details',
             id: '=id'

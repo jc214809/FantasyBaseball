@@ -37,8 +37,9 @@
        'fantasyBaseball.batters',
        'fantasyBaseball.pitchingStaff',
        'fantasyBaseball.playerStatus',
-       'fantasyBaseball.count'
-     ]) //
+       'fantasyBaseball.count',
+       'fantasyBaseball.bases'
+     ])
      .config(function myAppConfig($routeProvider, $httpProvider, $locationProvider) {
        $routeProvider
          .when('/', {
