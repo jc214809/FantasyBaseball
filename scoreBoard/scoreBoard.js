@@ -1,8 +1,8 @@
-    angular.module('fantasyBaseball.scoreboard', ['fantasyBaseball.weeklyScoreBoard', 'fantasyBaseball.lineup', 'fantasyBaseball.pitchingStaff'])
-      .directive('lineup', function() {
+    angular.module('fantasyBaseball.scoreboard', ['fantasyBaseball.weeklyScoreBoard', 'fantasyBaseball.batters', 'fantasyBaseball.pitchingStaff'])
+      .directive('batters', function() {
         return {
           restrict: 'E',
-          controller: 'lineupCtrl',
+          controller: 'battersCtrl',
           scope: {
             players: '=players',
             allGames: '=allgames',
@@ -13,7 +13,7 @@
             allGamesDetails: '=details',
             allInjuryInfo: '=injuryinfo'
           },
-          templateUrl: 'scoreBoard/batters/lineup.html'
+          templateUrl: 'scoreBoard/batters/batters.html'
         };
       })
       .directive('staff', function() {
@@ -80,21 +80,21 @@
       .directive('status', function() {
         return {
           restrict: 'E',
-          controller: 'lineupCtrl',
+          controller: 'battersCtrl',
           templateUrl: "scoreBoard/game-info/status.html"
         };
       })
       .directive('gamedata', function() {
         return {
           restrict: 'E',
-          controller: 'lineupCtrl',
+          controller: 'battersCtrl',
           templateUrl: 'scoreBoard/game-info/gameData.html'
         };
       })
       .directive('pregamedata', function() {
         return {
           restrict: 'E',
-          controller: 'lineupCtrl',
+          controller: 'battersCtrl',
           templateUrl: 'scoreBoard/game-info/pregameData.html'
         };
       })

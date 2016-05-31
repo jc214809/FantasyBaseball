@@ -1,5 +1,5 @@
-angular.module('fantasyBaseball.lineup', [])
-  .controller('lineupCtrl', function lineupController($scope, $http, $q) {
+angular.module('fantasyBaseball.batters', [])
+  .controller('battersCtrl', function lineupController($scope, $http, $q) {
     //$scope.allInjuryInfo = [];
     $scope.gameStatus = function(gameID) {
       for (var i = 0; i < $scope.allGames.length; i++) {

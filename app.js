@@ -34,7 +34,7 @@
        'ngRoute',
        'fantasyBaseball.scoreboard',
        'fantasyBaseball.weeklyScoreBoard',
-       'fantasyBaseball.lineup',
+       'fantasyBaseball.batters',
        'fantasyBaseball.pitchingStaff',
        'fantasyBaseball.playerStatus',
        'fantasyBaseball.count'
