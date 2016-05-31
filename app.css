@@ -24,42 +24,6 @@
   left: 20px;
 }
 
-.circle {
-  position: relative;
-  font-size: 4px!important;
-  color: grey;
-  padding: 0px 0px 0px 0px;
-}
-
-.activeBall {
-  color: green;
-}
-
-.activeStrike {
-  color: red;
-}
-
-.activeOut {
-  color: blue;
-}
-
-.strike {
-  top: -3px;
-  right: 14px;
-  /*margin-right: -10px;*/
-}
-
-.out {
-  top: 1px;
-  right: 21.25px;
-  /*margin-right: -10px;*/
-}
-
-.ball {
-  top: -7px;
-  /*margin-right: 10px;*/
-}
-
 
 /*.score-away-abb{*/
 

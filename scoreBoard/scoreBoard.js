@@ -1,8 +1,8 @@
-    angular.module('fantasyBaseball.scoreboard', ['fantasyBaseball.weeklyScoreBoard', 'fantasyBaseball.lineup', 'fantasyBaseball.pitchingStaff'])
-      .directive('lineup', function() {
+    angular.module('fantasyBaseball.scoreboard', ['fantasyBaseball.weeklyScoreBoard', 'fantasyBaseball.batters', 'fantasyBaseball.pitchingStaff'])
+      .directive('batters', function() {
         return {
           restrict: 'E',
-          controller: 'lineupCtrl',
+          controller: 'battersCtrl',
           scope: {
             players: '=players',
             allGames: '=allgames',
@@ -13,7 +13,7 @@
             allGamesDetails: '=details',
             allInjuryInfo: '=injuryinfo'
           },
-          templateUrl: 'scoreBoard/lineup.html'
+          templateUrl: 'scoreBoard/batters/batters.html'
         };
       })
       .directive('staff', function() {
@@ -25,7 +25,7 @@
             allPitchingStaffs: '=allpitchingstaffs',
             allGamesDetails: '=details'
           },
-          templateUrl: 'scoreBoard/pitchingStaff.html'
+          templateUrl: 'scoreBoard/staffs/pitchingStaff.html'
         };
       })
       .directive('scores', function() {
@@ -53,7 +53,7 @@
             allGames: '=batters',
             player: '=player'
           },
-          templateUrl: 'scoreBoard/playerStatus.html'
+          templateUrl: 'scoreBoard/player-info/playerStatus.html'
         };
       })
       .directive('count', function() {
@@ -63,7 +63,7 @@
           scope: {
             currentGame: '=details'
           },
-          templateUrl: 'scoreBoard/count.html'
+          templateUrl: 'scoreBoard/count/count.html'
         };
       })
       .directive('bases', function() {
@@ -74,28 +74,28 @@
             currentGame: '=details',
             id: '=id'
           },
-          templateUrl: 'scoreBoard/bases.html'
+          templateUrl: 'scoreBoard/bases/bases.html'
         };
       })
       .directive('status', function() {
         return {
           restrict: 'E',
-          controller: 'lineupCtrl',
-          templateUrl: "scoreBoard/status.html"
+          controller: 'battersCtrl',
+          templateUrl: "scoreBoard/game-info/status.html"
         };
       })
       .directive('gamedata', function() {
         return {
           restrict: 'E',
-          controller: 'lineupCtrl',
-          templateUrl: 'scoreBoard/gameData.html'
+          controller: 'battersCtrl',
+          templateUrl: 'scoreBoard/game-info/gameData.html'
         };
       })
       .directive('pregamedata', function() {
         return {
           restrict: 'E',
-          controller: 'lineupCtrl',
-          templateUrl: 'scoreBoard/pregameData.html'
+          controller: 'battersCtrl',
+          templateUrl: 'scoreBoard/game-info/pregameData.html'
         };
       })
       .factory("poollingFactory", function($timeout) {
@@ -116,7 +116,6 @@
         var today = new Date();
         var todaysDate = new Date();
         var selectedDate = $scope.selectedDate;
-        var selectedDateTime = $scope.selectedDate;
         poollingFactory.callFnOnInterval(function() {
           if (selectedDate.setHours(0, 0, 0, 0) == todaysDate.setHours(0, 0, 0, 0) || (today.getHours() >= 0 && today.getHours() <= 2)) {
             $scope.playersUpToBatUpdated = [];
