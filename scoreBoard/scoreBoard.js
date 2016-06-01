@@ -69,7 +69,7 @@
       .directive('bases', function() {
         return {
           restrict: 'E',
-          controller: 'basesCtrl',
+          controller: 'bases Ctrl',
           scope: {
             currentGame: '=details',
             id: '=id'
@@ -563,7 +563,7 @@
               var status = game.status.ind;
               $scope.allGamesDetails.push($scope.gamesDetails);
               if (status != 'DR' || status != 'DI' || status != 'DE') {
-                if (today.getHours() >= gameDatedTime.getHours() - 1 || selectedDate.getDate() < todaysDate.getDate()) {
+                if (today.getHours() >= gameDatedTime.getHours() - 1 || selectedDate < todaysDate) {
                   $scope.gameURLs.push('http://gd2.mlb.com' + game.game_data_directory + "/boxscore.json");
                 }
               }
