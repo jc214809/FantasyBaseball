@@ -132,7 +132,7 @@
               $scope.eachGame = data.data.games.game;
               angular.forEach($scope.eachGame, function(game) {
                 if (game.hasOwnProperty('inhole')) {
-                  if (game.status.inning_state == 'top' || game.status.inning_state == 'bottom') {
+                  if (game.status.inning_state.toLowerCase() == 'top' || game.status.inning_state.toLowerCase() == 'bottom') {
                     $scope.playersUpToBatUpdated.push(game.batter.id);
                     $scope.playersOnDeckUpdated.push(game.ondeck.id);
                     $scope.playersInTheHoleUpdated.push(game.inhole.id);
@@ -528,7 +528,7 @@
             $scope.eachGame = data.data.games.game;
             angular.forEach($scope.eachGame, function(game) {
               if (game.hasOwnProperty('inhole')) {
-                if (game.status.inning_state == 'top' || game.status.inning_state == 'bottom') {
+                if (game.status.inning_state.toLowerCase() == 'top' || game.status.inning_state.toLowerCase() == 'bottom') {
                   $scope.playersUpToBat.push(game.batter.id);
                   $scope.playersOnDeck.push(game.ondeck.id);
                   $scope.playersInTheHole.push(game.inhole.id);
