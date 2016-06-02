@@ -2,10 +2,58 @@ angular.module('fantasyBaseball.weeklyScoreBoard', [])
   .controller('weeklyScoreBoardCtrl', function weeklyScoreBoardController($scope, $http, $q) {
     $scope.awayScores = null;
     $scope.homeScores = null;
-    if ($scope.awayTeam != undefined && $scope.homeTeam != undefined) {
+    $scope.homeTeam = null;
+    $scope.awayTeam = null;
+    $.ajax({
+      url: 'http://www.mlb.com/fantasylookup/json/named.fb_index_schedule.bam?league_id=' + $scope.leagueID,
+      type: 'GET',
+      dataType: 'json',
+      error: function() {
+        alert("Error getting Schedule data. Cors-Anywhere may be down.");
+      },
+      success: function(data) {
+        $scope.schedule = [];
+        $scope.matchUpIds = [];
+        $scope.opponentsSchedule = [];
+        $scope.masterSchedule = data.fb_index_schedule.queryResults;
+        angular.forEach($scope.masterSchedule.row, function(schedule) {
+          if (schedule.team_id == $scope.teamID) {
+            $scope.schedule.push(schedule);
+            $scope.matchUpIds.push(schedule.matchup_set);
+          }
+        });
+
+        for (var i = 0; i < $scope.masterSchedule.row.length; i++) {
+          if ($scope.masterSchedule.row[i].team_id != $scope.teamID && $scope.matchUpIds.indexOf($scope.masterSchedule.row[i].matchup_set) != -1) {
+            $scope.opponentsSchedule.push($scope.masterSchedule.row[i]);
+          }
+        }
+        for (var i = 0; i < $scope.schedule.length; i++) {
+          if ($scope.schedule[i].period_id == $scope.periodId) {
+            if ($scope.schedule[i].is_home == 'y') {
+              $scope.homeTeam = $scope.schedule[i];
+            } else {
+              $scope.awayTeam = $scope.schedule[i];
+            }
+            break;
+          }
+        }
+        for (var i = 0; i < $scope.opponentsSchedule.length; i++) {
+          if ($scope.opponentsSchedule[i].period_id == $scope.periodId) {
+            if ($scope.opponentsSchedule[i].is_home == 'y') {
+              $scope.homeTeam = $scope.opponentsSchedule[i];
+            } else {
+              $scope.awayTeam = $scope.opponentsSchedule[i];
+            }
+            break;
+          }
+        }
+        $scope.getScoresData();
+      }
+    });
+    $scope.getScoresData = function() {
       $.ajax({
-        url: 'http://mlb.mlb.com/fantasylookup/json/named.fb_team_score_by_date.bam?away_team_id=' + $scope.awayTeam.team_id + '&home_team_id=' + $scope.homeTeam.team_id + '&period_id=' + $scope
-          .periodId,
+        url: 'http://mlb.mlb.com/fantasylookup/json/named.fb_team_score_by_date.bam?away_team_id=' + $scope.awayTeam.team_id + '&home_team_id=' + $scope.homeTeam.team_id + '&period_id=' + $scope.periodId,
         type: 'GET',
         dataType: 'json',
         error: function() {
