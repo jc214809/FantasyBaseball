@@ -568,7 +568,7 @@
               var status = game.status.ind;
               $scope.allGamesDetails.push($scope.gamesDetails);
               if (status != 'DR' || status != 'DI' || status != 'DE') {
-                if (today.getHours() >= gameDatedTime.getHours() - 1 || selectedDate < todaysDate) {
+                if (today.getHours() >= gameDatedTime.getHours() - 1 || selectedDate > todaysDate) {
                   $scope.gameURLs.push('http://gd2.mlb.com' + game.game_data_directory + "/boxscore.json");
                 }
               }
