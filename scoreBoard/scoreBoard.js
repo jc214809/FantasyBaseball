@@ -295,6 +295,9 @@
         $.ajax({
           url: 'http://www.mlb.com/fantasylookup/json/named.fb_index_schedule.bam?league_id=' + $scope.leagueID,
           type: 'GET',
+          headers: {
+            'Cache-Control': 'max-age=604800' 
+          },
           dataType: 'json',
           error: function() {
             alert("Error getting Schedule data. Cors-Anywhere may be down.");
