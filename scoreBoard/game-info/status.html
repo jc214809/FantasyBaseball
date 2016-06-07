@@ -1,6 +1,6 @@
 <img class="status-icon" alt="Final" ng-if="currentGame.status == 'F' || currentGame.status =='O'" src='/FantasyBaseball/images/pictures/Final.jpg' />
 <img alt="Warm Up" ng-if="currentGame.status == 'PW'" class="status-icon" src="../FantasyBaseball/images/pictures/warmUp.jpg" />
-<b class="pregame-info" ng-if="currentGame.status == 'DR'|| currentGame.status == 'DI' || currentGame.status == 'DE'">{{currentGame.awayTeamAbb}} @ {{currentGame.homeTeamAbb}}</b>
+<b class="pregame-info" ng-if="currentGame.status == 'DR'|| currentGame.status == 'DI' || currentGame.status == 'DE'||currentGame.status == 'PR'">{{currentGame.awayTeamAbb}} @ {{currentGame.homeTeamAbb}}</b>
 <blink ng-if="currentGame.status == 'DR'|| currentGame.status == 'PR'|| currentGame.status == 'DI' || currentGame.status == 'IR' || currentGame.status == 'MA'|| currentGame.status == 'MM'|| currentGame.status == 'DE'|| currentGame.status == 'NF'|| currentGame.status == 'MO'">
   <img alt="PPD" ng-if="currentGame.status == 'DR'|| currentGame.status == 'DI' || currentGame.status == 'DE'" class="status-icon" src="../FantasyBaseball/images/pictures/PPD.jpg" />
   <img alt="Delay" ng-if="currentGame.status == 'IR'|| currentGame.status == 'PR'" class="status-icon" src="../FantasyBaseball/images/pictures/Delay.jpg" />
