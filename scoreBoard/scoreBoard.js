@@ -162,18 +162,18 @@
                     $scope.gamesDetails.strikes = game.status.s;
                     $scope.gamesDetails.outs = game.status.o;
                     $scope.gamesDetails.doubleheader = game.double_header_sw;
-                    // if (game.tbd_flag == 'Y' && game.double_header_sw == 'Y') {
-                    $scope.gamesDetails.gameTime = game.time + ' ' + game.ampm;
-                    // } else {
-                    //   $scope.gamesDetails.gameTime = "Game 2";
-                    // }
+                    if ((game.tbd_flag == 'N' && game.double_header_sw == 'Y') || game.double_header_sw == 'N') {
+                      $scope.gamesDetails.gameTime = game.time + ' ' + game.ampm;
+                    } else {
+                      $scope.gamesDetails.gameTime = "Game 2";
+                    }
                     $scope.allGamesDetails[i] = $scope.gamesDetails;
                   }
                 }
                 var gameDateTime = new Date(game.time_date + ' ' + game.ampm);
                 var gameDate = new Date(game.time_date + ' ' + game.ampm)
                 var status = game.status.ind;
-                if (status != 'DR' || status != 'DI' || status != 'DE') {
+                if ((status != 'DR' || status != 'DI' || status != 'DE') && game.tbd_flag == 'N') {
                   if (gameDate.setHours(0, 0, 0, 0) == todaysDate.setHours(0, 0, 0, 0) || (today.getHours() >= 0 && today.getHours() <= 2)) {
                     if (today.getHours() >= gameDateTime.getHours() - 1) {
                       $scope.gameURLs.push('http://gd2.mlb.com' + game.game_data_directory + "/boxscore.json");
@@ -559,15 +559,15 @@
               $scope.gamesDetails.strikes = game.status.s;
               $scope.gamesDetails.outs = game.status.o;
               $scope.gamesDetails.doubleheader = game.double_header_sw;
-              // if (game.tbd_flag == 'Y' && game.double_header_sw == 'Y') {
-              $scope.gamesDetails.gameTime = game.time + ' ' + game.ampm;
-              // } else {
-              //   $scope.gamesDetails.gameTime = "Game 2";
-              // }
+              if ((game.tbd_flag == 'N' && game.double_header_sw == 'Y') || game.double_header_sw == 'N') {
+                $scope.gamesDetails.gameTime = game.time + ' ' + game.ampm;
+              } else {
+                $scope.gamesDetails.gameTime = "Game 2";
+              }
               var gameDatedTime = new Date(game.time_date + ' ' + game.ampm);
               var status = game.status.ind;
               $scope.allGamesDetails.push($scope.gamesDetails);
-              if (status != 'DR' || status != 'DI' || status != 'DE') {
+              if ((status != 'DR' || status != 'DI' || status != 'DE') && game.tbd_flag == 'N') {
                 if (today.getHours() >= gameDatedTime.getHours() - 1 || (selectedDate != todaysDate && today.getHours() <= 10)) {
                   $scope.gameURLs.push('http://gd2.mlb.com' + game.game_data_directory + "/boxscore.json");
                 }
