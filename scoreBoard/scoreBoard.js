@@ -173,7 +173,7 @@
                 var gameDateTime = new Date(game.time_date + ' ' + game.ampm);
                 var gameDate = new Date(game.time_date + ' ' + game.ampm)
                 var status = game.status.ind;
-                if ((status != 'DR' || status != 'DI' || status != 'DE') && game.tbd_flag == 'N') {
+                if ((status != 'DR' || status != 'DI' || status != 'DE') && (game.tbd_flag == 'N' || game.hasOwnProperty('batter'))) {
                   if (gameDate.setHours(0, 0, 0, 0) == todaysDate.setHours(0, 0, 0, 0) || (today.getHours() >= 0 && today.getHours() <= 2)) {
                     if (today.getHours() >= gameDateTime.getHours() - 1) {
                       $scope.gameURLs.push('http://gd2.mlb.com' + game.game_data_directory + "/boxscore.json");
@@ -567,7 +567,7 @@
               var gameDatedTime = new Date(game.time_date + ' ' + game.ampm);
               var status = game.status.ind;
               $scope.allGamesDetails.push($scope.gamesDetails);
-              if ((status != 'DR' || status != 'DI' || status != 'DE') && game.tbd_flag == 'N') {
+              if ((status != 'DR' || status != 'DI' || status != 'DE') && (game.tbd_flag == 'N' || game.hasOwnProperty('batter'))) {
                 if (today.getHours() >= gameDatedTime.getHours() - 1 || (selectedDate != todaysDate && today.getHours() <= 10)) {
                   $scope.gameURLs.push('http://gd2.mlb.com' + game.game_data_directory + "/boxscore.json");
                 }
