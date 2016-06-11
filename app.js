@@ -56,7 +56,7 @@
          .when('/matchups', {
            controller: 'MatchupsCtrl',
            templateUrl: 'utilities/matchups/matchups.html',
-           pageTitle: 'weeklyScoreBoard'
+           pageTitle: 'Matchups'
          });
      })
      .controller('AppCtrl', function AppCtrl($scope, $location, $http) {
