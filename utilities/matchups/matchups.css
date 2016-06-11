@@ -1,0 +1,17 @@
+.matchups {
+  font-size: 75%;
+}
+
+.pitcher {
+  color: #0000FF;
+}
+
+.matchups th {
+  background-color: red;
+  color: white;
+}
+
+.stats {
+  color: #FFCC00;
+  font-weight: bold;
+}

@@ -1,0 +1,43 @@
+<!-- <p>{{playersGames | json}}</p> -->
+<!-- <p>{{viewPitcherBatterData | json}}</p> -->
+<input type="text" ng-model="period_id" name="">
+<!-- <input type="text" value="GO" name=""> -->
+<input type="button" ng-click="getLineUp()" value="GO" name="">
+<table class="table-bordered matchups" ng-if="lineUp">
+  <thead>
+    <th>Player</th>
+    <th>Slot</th>
+    <th>Team</th>
+    <th hidden>POS</th>
+    <th>Monday</th>
+    <th>Tuesday</th>
+    <th>Wensday</th>
+    <th>Thursday</th>
+    <th>Friday</th>
+    <th>Saturday</th>
+    <th>Sunday</th>
+  </thead>
+  <tbody>
+    <tr ng-repeat="player in lineUp" nowrap>
+      <td nowrap>{{player.player_name}}</td>
+      <td nowrap>{{player.slot_val}}</td>
+      <td nowrap>{{player.team_name}}</td>
+      <td nowrap hidden>{{player.position}}</td>
+      <td nowrap class="stats">{{findPvsBData(player.player_id, 1)}}<b class="pitcher">{{PitcherBatterData.opp_probable_pitcher_name}}</b>
+        <br> {{PitcherBatterData.pitcherVsBatter.h}}-{{PitcherBatterData.pitcherVsBatter.ab}}, {{PitcherBatterData.pitcherVsBatter.avg}}, {{PitcherBatterData.pitcherVsBatter.hr}} HR, {{PitcherBatterData.pitcherVsBatter.d}} 2B, {{PitcherBatterData.pitcherVsBatter.t}} 3B
+      </td>
+      <td nowrap class="stats">{{findPvsBData(player.player_id, 2)}}<b class="pitcher">{{PitcherBatterData.opp_probable_pitcher_name}}</b>
+        <br> {{PitcherBatterData.pitcherVsBatter.h}}-{{PitcherBatterData.pitcherVsBatter.ab}}, {{PitcherBatterData.pitcherVsBatter.avg}}, {{PitcherBatterData.pitcherVsBatter.hr}} HR, {{PitcherBatterData.pitcherVsBatter.d}} 2B, {{PitcherBatterData.pitcherVsBatter.t}} 3B</td>
+      <td nowrap class="stats">{{findPvsBData(player.player_id, 3)}}<b class="pitcher">{{PitcherBatterData.opp_probable_pitcher_name}}</b>
+        <br> {{PitcherBatterData.pitcherVsBatter.h}}-{{PitcherBatterData.pitcherVsBatter.ab}}, {{PitcherBatterData.pitcherVsBatter.avg}}, {{PitcherBatterData.pitcherVsBatter.hr}} HR, {{PitcherBatterData.pitcherVsBatter.d}} 2B, {{PitcherBatterData.pitcherVsBatter.t}} 3B</td>
+      <td nowrap class="stats">{{findPvsBData(player.player_id, 4)}}<b class="pitcher">{{PitcherBatterData.opp_probable_pitcher_name}}</b>
+        <br> {{PitcherBatterData.pitcherVsBatter.h}}-{{PitcherBatterData.pitcherVsBatter.ab}}, {{PitcherBatterData.pitcherVsBatter.avg}}, {{PitcherBatterData.pitcherVsBatter.hr}} HR, {{PitcherBatterData.pitcherVsBatter.d}} 2B, {{PitcherBatterData.pitcherVsBatter.t}} 3B</td>
+      <td nowrap class="stats">{{findPvsBData(player.player_id, 5)}}<b class="pitcher">{{PitcherBatterData.opp_probable_pitcher_name}}</b>
+        <br> {{PitcherBatterData.pitcherVsBatter.h}}-{{PitcherBatterData.pitcherVsBatter.ab}}, {{PitcherBatterData.pitcherVsBatter.avg}}, {{PitcherBatterData.pitcherVsBatter.hr}} HR, {{PitcherBatterData.pitcherVsBatter.d}} 2B, {{PitcherBatterData.pitcherVsBatter.t}} 3B</td>
+      <td nowrap class="stats">{{findPvsBData(player.player_id, 6)}}<b class="pitcher">{{PitcherBatterData.opp_probable_pitcher_name}}</b>
+        <br> {{PitcherBatterData.pitcherVsBatter.h}}-{{PitcherBatterData.pitcherVsBatter.ab}}, {{PitcherBatterData.pitcherVsBatter.avg}}, {{PitcherBatterData.pitcherVsBatter.hr}} HR, {{PitcherBatterData.pitcherVsBatter.d}} 2B, {{PitcherBatterData.pitcherVsBatter.t}} 3B</td>
+      <td nowrap class="stats">{{findPvsBData(player.player_id, 0)}}<b class="pitcher">{{PitcherBatterData.opp_probable_pitcher_name}}</b>
+        <br> {{PitcherBatterData.pitcherVsBatter.h}}-{{PitcherBatterData.pitcherVsBatter.ab}}, {{PitcherBatterData.pitcherVsBatter.avg}}, {{PitcherBatterData.pitcherVsBatter.hr}} HR, {{PitcherBatterData.pitcherVsBatter.d}} 2B, {{PitcherBatterData.pitcherVsBatter.t}} 3B</td>
+    </tr>
+  </tbody>
+</table>

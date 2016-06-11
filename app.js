@@ -38,7 +38,8 @@
        'fantasyBaseball.pitchingStaff',
        'fantasyBaseball.playerStatus',
        'fantasyBaseball.count',
-       'fantasyBaseball.bases'
+       'fantasyBaseball.bases',
+       'fantasyBasebal.utilities.matchups'
      ])
      .config(function myAppConfig($routeProvider, $httpProvider, $locationProvider) {
        $routeProvider
@@ -50,6 +51,11 @@
          .when('/login', {
            controller: 'weeklyScoreBoardCtrl',
            templateUrl: 'weeklyScoreboard/weeklyScoreBoard.html',
+           pageTitle: 'weeklyScoreBoard'
+         })
+         .when('/matchups', {
+           controller: 'MatchupsCtrl',
+           templateUrl: 'utilities/matchups/matchups.html',
            pageTitle: 'weeklyScoreBoard'
          });
      })
