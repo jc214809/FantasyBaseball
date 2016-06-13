@@ -1,4 +1,6 @@
-   jQuery.ajaxPrefilter(function(options) {
+   try { localStorage.test = 2; } catch (e) {
+  alert('You are in Private Browsing mode');
+}jQuery.ajaxPrefilter(function(options) {
      if (options.crossDomain && jQuery.support.cors) {
        var today = new Date().getHours();
        if (today >= 7 && today <= 19) {
