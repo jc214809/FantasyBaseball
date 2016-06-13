@@ -97,25 +97,25 @@ angular.module('fantasyBasebal.utilities.matchups', [])
 
 
     $scope.getPitcherVsBatter = function(hittersId, pitchersId) {
-      //if (hittersId == undefined || pitchersId == undefined) {
       $scope.Joel = {};
-      $.ajax({
-        url: 'http://m.mlb.com/lookup/json/named.stats_batter_vs_pitcher_composed.bam?league_list_id=%27mlb%27&game_type=%27R%27&player_id=' + hittersId + '&pitcher_id=' + pitchersId,
-        type: 'GET',
-        async: false,
-        dataType: 'json',
-        success: function(data) {
-          $scope.Joel = data.stats_batter_vs_pitcher_composed.stats_batter_vs_pitcher_total.queryResults.row;
-          //return data.stats_batter_vs_pitcher_composed.stats_batter_vs_pitcher_total.queryResults.row;
-        },
-        error: function() {
-          alert("Error getting Pitcher vs Batter data. Cors-Anywhere may be down.");
-          //return $scope.Joel;
-        }
-      });
-      // } else {
-      //   return $scope.Joel;
-      // }
+      if (hittersId != undefined && pitchersId != undefined && hittersId != '' && pitchersId != '') {
+        $.ajax({
+          url: 'http://m.mlb.com/lookup/json/named.stats_batter_vs_pitcher_composed.bam?league_list_id=%27mlb%27&game_type=%27R%27&player_id=' + hittersId + '&pitcher_id=' + pitchersId,
+          type: 'GET',
+          async: false,
+          dataType: 'json',
+          success: function(data) {
+            $scope.Joel = data.stats_batter_vs_pitcher_composed.stats_batter_vs_pitcher_total.queryResults.row;
+            //return data.stats_batter_vs_pitcher_composed.stats_batter_vs_pitcher_total.queryResults.row;
+          },
+          error: function() {
+            alert("Error getting Pitcher vs Batter data. Cors-Anywhere may be down.");
+            //return $scope.Joel;
+          }
+        });
+      } else {
+        //return $scope.Joel;
+      }
 
       //pitcherVsBatter.done($scope.history);
       //pitcherVsBatter.fail(alert("fail"));
