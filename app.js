@@ -1,6 +1,13 @@
-   try { localStorage.test = 2; } catch (e) {
-  alert('You are in Private Browsing mode');
-}jQuery.ajaxPrefilter(function(options) {
+try {
+  // try to use localStorage
+  localStorage.test = 2;        
+} catch (e) {
+  // there was an error so...
+  alert('You are in Privacy Mode\nPlease deactivate Privacy Mode and then reload the page.');
+}
+
+
+jQuery.ajaxPrefilter(function(options) {
      if (options.crossDomain && jQuery.support.cors) {
        var today = new Date().getHours();
        if (today >= 7 && today <= 19) {
