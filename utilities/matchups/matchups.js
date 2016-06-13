@@ -1,6 +1,6 @@
 angular.module('fantasyBasebal.utilities.matchups', [])
   .controller('MatchupsCtrl', function($scope, $http) {
-    $scope.period_id = $scope.periodId;
+    $scope.period_id = weekOfYear(new Date) - 3;;
     $scope.getLineUp = function() {
       $scope.playersGames = [];
       var lineup = $.ajax({
