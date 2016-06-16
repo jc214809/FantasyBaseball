@@ -2,6 +2,7 @@ angular.module('fantasyBasebal.utilities.matchups', [])
   .controller('MatchupsCtrl', function($scope, $http) {
     $scope.period_id = weekOfYear(new Date) - 3;;
     $scope.getLineUp = function() {
+      spinner.show();
       $scope.playersGames = [];
       var lineup = $.ajax({
         url: 'http://www.mlb.com/fantasylookup/json/named.fb_team_lineup.bam?period_id=' + $scope.period_id + '&team_id=' + $scope.teamID,
@@ -21,6 +22,7 @@ angular.module('fantasyBasebal.utilities.matchups', [])
         },
         error: function() {
           alert("Error getting Lineup data. Cors-Anywhere may be down.");
+          spinner.hide();
         }
       });
       //lineup.done($scope.getViewSchedule());
@@ -63,10 +65,12 @@ angular.module('fantasyBasebal.utilities.matchups', [])
             }
           }
           //$scope.playersGames = $scope.viewSchedule;
+           spinner.hide();
           $scope.$apply();
         },
         error: function() {
           alert("Error getting index Schedule data. Cors-Anywhere may be down.");
+           spinner.hide();
         }
       });
       //viewSchedule.done($scope.Joel($scope.viewSchedule));
@@ -110,7 +114,7 @@ angular.module('fantasyBasebal.utilities.matchups', [])
           },
           error: function() {
             alert("Error getting Pitcher vs Batter data. Cors-Anywhere may be down.");
-            //return $scope.Joel;
+             spinner.hide();
           }
         });
       } else {
