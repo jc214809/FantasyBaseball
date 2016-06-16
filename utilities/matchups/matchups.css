@@ -26,3 +26,8 @@
     top: 0;
     color: white;
 }
+
+.spinnerRenderSection {
+    display: flex;
+    margin: 0 auto;
+}
