@@ -162,7 +162,7 @@
                     $scope.gamesDetails.strikes = game.status.s;
                     $scope.gamesDetails.outs = game.status.o;
                     $scope.gamesDetails.doubleheader = game.double_header_sw;
-                    if ((game.tbd_flag == 'N' && game.double_header_sw == 'Y') || game.double_header_sw == 'N') {
+                    if ((game.tbd_flag == 'N' && game.double_header_sw == 'Y') || game.double_header_sw == 'N' || game.double_header_sw == 'S') {
                       $scope.gamesDetails.gameTime = game.time + ' ' + game.ampm;
                     } else {
                       $scope.gamesDetails.gameTime = "Game 2";
@@ -559,7 +559,7 @@
               $scope.gamesDetails.strikes = game.status.s;
               $scope.gamesDetails.outs = game.status.o;
               $scope.gamesDetails.doubleheader = game.double_header_sw;
-              if ((game.tbd_flag == 'N' && game.double_header_sw == 'Y') || game.double_header_sw == 'N') {
+              if ((game.tbd_flag == 'N' && game.double_header_sw == 'Y') || game.double_header_sw == 'N' || game.double_header_sw == 'S') {
                 $scope.gamesDetails.gameTime = game.time + ' ' + game.ampm;
               } else {
                 $scope.gamesDetails.gameTime = "Game 2";
